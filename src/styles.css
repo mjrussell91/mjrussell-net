@@ -1,4 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+/* Tailwind Docs: 
+    https://tailwindcss.com/docs/functions-and-directives
+    https://tailwindcss.com/docs/theme
+*/
+
 @import "tailwindcss";
 
 @theme {

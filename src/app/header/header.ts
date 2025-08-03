@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 type Nav = {
 	label: string;
@@ -8,7 +9,7 @@ type Nav = {
 
 @Component({
 	selector: 'app-header',
-	imports: [CommonModule],
+	imports: [CommonModule, RouterModule],
 	templateUrl: './header.html',
 	styleUrl: './header.css'
 })

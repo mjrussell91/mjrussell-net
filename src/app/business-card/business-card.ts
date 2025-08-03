@@ -8,6 +8,8 @@ import { Icon } from '../icon/icon';
 	styleUrl: './business-card.css'
 })
 export class BusinessCard {
+	// Obfuscation: https://spencermortensen.com/articles/email-obfuscation/
+	// https://stackoverflow.com/questions/41318987/hide-email-address-from-bots-keep-mailto
 	protected readonly email: string = 'contact@test.com';
 	protected readonly phone: string = '+614 1234 5678';
 	protected readonly github: string = 'https://github.com/mjrussell91';

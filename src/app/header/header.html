@@ -1,9 +1,9 @@
-<header class="bg-blue-1 py-2 px-6 grid md:grid-cols-2 sm:grid-rows-2">
+<header class="bg-blue-1 py-2 px-6 grid md:grid-cols-2"> <!--  sm:grid-rows-2 -->
     <div>
-        <h1 class="font-black tracking-[0.025em] text-[1.61em]">Matthew Russell</h1> 
-        <h2 class="text-[0.92em] font-extralight tracking-[0.015em]"><span class="text-gray-1">[</span> Software <span class="text-gray-1">&</span> Systems Engineer <span class="text-gray-1">]</span></h2>
+        <h1 class="font-black tracking-[0.025em] text-[1.61em] text-center md:text-left">Matthew Russell</h1> 
+        <h2 class="text-[0.92em] font-extralight tracking-[0.015em] text-center md:text-left"><span class="text-gray-1">[</span> Software <span class="text-gray-1">&</span> Systems Engineer <span class="text-gray-1">]</span></h2>
     </div>
-    <nav class="flex flex-row sm:flex-row sm:justify-center justify-end space-x-4 py-4 tracking-[0.025em] text-[1.13em] font-light">
+    <nav class="flex space-x-4 py-4 tracking-[0.025em] text-[1.13em] font-light md:justify-end justify-center">
         <a *ngFor="let nav of navs" [href]="nav.route">{{ nav.label }}</a>
     </nav>
 </header>

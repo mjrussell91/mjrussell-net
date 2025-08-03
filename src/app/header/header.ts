@@ -15,7 +15,7 @@ type Nav = {
 export class Header {
 	public navs: Nav[] = [
 		{ label: 'About', route: 'about' },
-		{ label: 'CV', route: 'CV' },
+		{ label: 'CV', route: 'cv' },
 		{ label: 'Projects', route: 'projects' },
 		{ label: 'Contact', route: 'contact' }
 	]

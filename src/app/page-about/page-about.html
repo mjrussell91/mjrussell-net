@@ -1,16 +1,24 @@
-<section>
+<section class="flex flex-col gap-4">
     <header class="text-center">
         <h1 class="font-black tracking-[0.025em] text-[2.3em] text-center sm:text-1.61em">Matthew Russell</h1> 
         <h2 class="text-[1.42em] font-extralight tracking-[0.015em] text-center sm:text-0.92em">
             <span class="text-gray-1">[</span> Software <span class="text-gray-1">&</span> Systems Engineer <span class="text-gray-1">]</span>
         </h2>
     </header>
+    <img [src]="profileSrc" alt="Profile picture of Matthew Russell" class="mx-auto my-6 rounded-full w-48 h-48 object-cover border-2 border-white-1" width="192" height="192" loading="lazy" />
     <article>
-        <p class="text-justify mt-8">
-            Hey, I'm Matthew Russell, an educated and experienced systems and software engineer seeking technical work that is engaging and
-rewarding. Offering a broad set of skills and a deep understanding of software and the systems that they’re
-founded on. Personable and a clear communicator who works well in teams and can manage projects, as well as
+        <p>
+            Hey, I'm Matthew Russell and I'm an educated and experienced systems and software engineer from Brisbane, Australia. Offering a broad set of skills and a deep understanding of software and 
+            the systems that they’re founded on. Personable and a clear communicator who works well in teams and can manage projects, as well as
 collaborate with others and complete tasks independently.
         </p>
+        <br />
+        <p>You can read my resume including my education, skills, experience, and work history on my 
+            <a [routerLink]="['/cv']">curriculum vitae</a>.</p>
+        <br />
+        <p>Experience my work in action by going through my web development <a [routerLink]="['/projects']">projects</a>, including GitHub repositories where available. 
+            You can also find my GitHub profile there for the code for this site and more.</p>
+        <br />
+        <p>Please feel free to reach out to me via my <a [routerLink]="['/contact']">contact page</a> with any inquiries and I'll get back to you.</p>
     </article>
-</section>
+</section> 

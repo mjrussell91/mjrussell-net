@@ -18,9 +18,38 @@
     --color-gray-2: #839496;
     --color-gray-3: #657b83;
     --color-gray-4: #586e75;
+
+    /* container: {
+      padding: {
+        DEFAULT: '1rem',
+        sm: '2rem',
+        lg: '4rem',
+        xl: '5rem',
+        '2xl': '6rem',
+      },
+    }; */
 }
 
 :root {
     background-color: var(--color-blue-3);
     color: var(--color-white-1);
+}
+
+p {
+    color: var(--color-white-2);
+    max-width: 752px;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: justify;
+
+    a {
+        /* color: var(--color-white-1); */
+        text-decoration: underline;
+
+        &:hover {
+            color: var(--color-gray-1);
+        }
+    }
 }

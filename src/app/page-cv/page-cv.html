@@ -1,1 +1,53 @@
-<p>page-cv works!</p>
+<section class="flex flex-col mx-auto gap-4 text-white-2">
+    <!-- <p>
+        Matthew J. Russell is a software engineer with a passion for building
+        scalable and maintainable applications. With a strong background in
+        full-stack development, Matthew has worked on various projects that
+        leverage modern technologies to deliver exceptional user experiences.
+    </p> 
+    <p>
+        Matthew is currently seeking remote opportunities where he can contribute
+        to a dynamic team and continue to grow as a developer.
+    </p> -->
+
+    <h1 class="pb-6">Curriculum Vitae</h1>
+    <h2>Matthew Russell</h2>
+    <hr />
+    <p>
+        An educated and experienced systems and software engineer seeking technical work that is engaging and
+        rewarding. Offering a broad set of skills and a deep understanding of software and the systems that they’re
+        founded on. Personable and a clear communicator who works well in teams and can manage projects, as well as
+        collaborate with others and complete tasks independently.
+    </p>
+    <br />
+    <h2>Education</h2>
+    <hr />
+    <div class="flex flex-col font-sans">
+        <span>{{ degree.year }} <strong>{{ degree.title }}</strong>, {{ degree.institution}}</span>
+        <span>{{ degree.major }}</span>
+        <div class="flex flex-row">
+            <ul class="list-disc">
+                <strong><li class="list-none">Technical Competencies:</li></strong>
+                <li *ngFor="let competency of degree.technicalCompetencies" class="ml-8">{{ competency }}</li>
+            </ul>
+            <ul class="list-disc">
+                <strong><li class="list-none">Business Competencies:</li></strong>
+                <li *ngFor="let competency of degree.businessCompetencies" class="ml-8">{{ competency }}</li>
+            </ul>
+        </div>
+    </div>
+    <ul>
+        <li *ngFor="let edu of education">
+            {{ edu.year }} <strong>{{ edu.title }}</strong>, {{ edu.institution }}
+        </li>
+    </ul>
+    <br />
+    <h2>Certifications & Training</h2>
+    <hr />
+    <ul>
+        <li *ngFor="let course of certsAndTraining">
+            {{ course.year }} <strong>{{ course.title }}</strong>, {{ course.institution }}
+        </li>
+    </ul>
+
+</section>

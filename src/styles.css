@@ -35,21 +35,47 @@
     color: var(--color-white-1);
 }
 
-p {
-    color: var(--color-white-2);
+section {
     max-width: 752px;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    /* max-width: 74ch; */
     margin-left: auto;
     margin-right: auto;
-    text-align: justify;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
 
-    a {
-        /* color: var(--color-white-1); */
-        text-decoration: underline;
+    h1 {
+        font-size: 2rem;
+        font-weight: bold;
+        color: var(--color-white-1);
+        text-align: center;
+    }
 
-        &:hover {
-            color: var(--color-gray-1);
+    h2 {
+        font-size: 1.6rem;
+        font-weight: bold;
+        color: var(--color-white-1);
+    }
+
+    hr {
+        color: var(--color-gray-1);
+        margin-top: -1em;
+    }
+
+    p {
+        color: var(--color-white-2);
+        text-align: justify;
+    
+        a {
+            /* color: var(--color-white-1); */
+            text-decoration: underline;
+    
+            &:hover {
+                color: var(--color-gray-1);
+            }
         }
+    }
+
+    strong {
+        color: var(--color-white-1);
     }
 }

@@ -28,11 +28,11 @@
         <div class="flex flex-row">
             <ul class="list-disc">
                 <strong><li class="list-none">Technical Competencies:</li></strong>
-                <li *ngFor="let competency of degree.technicalCompetencies" class="ml-8">{{ competency }}</li>
+                <li *ngFor="let competency of degree.technicalCompetencies">{{ competency }}</li>
             </ul>
             <ul class="list-disc">
                 <strong><li class="list-none">Business Competencies:</li></strong>
-                <li *ngFor="let competency of degree.businessCompetencies" class="ml-8">{{ competency }}</li>
+                <li *ngFor="let competency of degree.businessCompetencies">{{ competency }}</li>
             </ul>
         </div>
     </div>
@@ -50,4 +50,13 @@
         </li>
     </ul>
 
+    <br />
+    <h2>Skills</h2>
+    <hr />
+    <ul *ngFor="let category of skills">
+        <strong>{{ category.title }}</strong>
+        <li *ngFor="let skill of category.skills">
+            {{ skill }}
+        </li>
+    </ul>
 </section>

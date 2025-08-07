@@ -15,6 +15,11 @@ type Education = {
 	institution: string;
 	year: number;
 };
+
+type Skills = {
+	title: string;
+	skills: string[];
+}
 @Component({
 	selector: 'app-page-cv',
 	imports: [CommonModule],
@@ -109,6 +114,61 @@ export class PageCv {
 			title: 'Windows 7 Training',
 			institution: 'Dimension Data Learning Services',
 			year: 2012
+		}
+	];
+
+	protected readonly skills: Skills[] = [
+		{
+			title: 'Windows Server and Microsoft products',
+			skills: [
+				'Experienced in supporting Windows Server OSes, Domains, Active Directory, Group Policies, DFS, SCCM and Windows Patching',
+				'Managing AD Users and Groups, troubleshooting account issues, managing permissions and access to network fileshares, and running user access reports',
+				'Securing Windows systems using host-based firewalls, network ACLs, least-privilege user access and patching against known vulnerabilities',
+				'Managing Windows servers remotely through PowerShell to configure and automate tasks'
+			]
+		},
+		{
+			title: 'Virtualisation and Cloud',
+			skills: [
+				'Completed VMware vSphere v6.5 Install, Configure and Manage course.  Experience in deploying ESXi hosts, VMware appliances, virtual networking and network storage provisioning',
+				'Experienced in managing VM’s including hardware provisioning, snapshots and backups, fault tolerance, high availability and troubleshooting',
+				'Experience using Azure to deploy VM’s, import VM’s and other services such as SQL Cluster Fileshare Witnesses'
+			]
+		},
+		{
+			title: 'Datacentre Operations',
+			skills: [
+				'Experienced in physically installing, racking, and configuring Dell Chassis’s, blade servers, and rack-mount servers',
+				'Familiar with datacentre operations and procedures, hardware management and networking',
+				'Vendor management for hardware suppliers such as Dell, HP and Apple. Quotes, purchasing, raising support requests for technical issues and hardware warranty replacements'
+			]
+		},
+		{
+			title: 'Programming and Scripting',
+			skills: [
+				'Strong programming ability with knowledge in data structures and algorithms. Experienced in JavaScript/TypeScript, Bash, and SQL. Some experience with Rust, Python, PowerShell, Java, C, Objective C and C++',
+				'Experienced fullstack web developer with knowledge of JavaScript, TypeScript, frameworks such as Vue, Angular, and React. Good knowledge of code management using Git, HTTP request and APIs, deploying websites, servers, databases, and other services/APIs.',
+				'Scripting and automation using Bash and PowerShell to manage servers, deployments and services, automatically install and update software to remote hosts, and manage fileshares'
+			]
+		},
+		{
+			title: 'Projects and Project Management',
+			skills: [
+				'Worked on several server refresh projects to replace hardware and upgrade virtual servers. For hardware this included design and validation of the new systems, procurement, installation, and decommissioning of old equipment, replacing many chassis, blades, rackmounts, and switches. Upgraded over 50 virtual servers and 10 applications to new OS/application versions and associated web, database, and application servers',
+				'Completed many web development projects from custom web stores to backend portals, tooling, and automation for businesses. Requirements gathering, application design, agile development process, deployment of site and security hardening, code handover, and maintenance including bug fixing and implementing new features',
+				'Completed a web-based system for an industry client with secure log in, user account management, web forms, PHP and SQL database. Gathered requirements from client, designed system, developed in agile project methodology, created documentation and delivered presentations. The project was completed on time and signed off by the client as meeting agreed specifications. I was awarded a High Distinction for this project',
+				'Workplace project to automate operational administrative tasks such as account provisioning and management of access to network fileshares. Current business and technical processes were analysed to determine critical points that require the most manual intervention. Through a combination of process changes and PowerShell scripts we are aiming to automate over 90% of the workload'
+			]
+		},
+		{
+			title: 'Client Service and Communication',
+			skills: [
+				'Strong communication skills with the ability to explain technical concepts to non-technical stakeholders',
+				'Experienced in gathering requirements from clients and translating them into technical specifications',
+				'Proven track record of delivering high-quality customer service and support'
+// 	Focused on client satisfaction and outcomes, received Outstand Client Service aware and continued feedback from clients
+//  Strong written and verbal communication skills, ability to interface with clients of varying technical proficiency, experience in supporting executive clients
+			]
 		}
 	];
 }

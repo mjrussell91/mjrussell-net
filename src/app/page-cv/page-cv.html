@@ -1,4 +1,4 @@
-<section class="flex flex-col mx-auto gap-4 text-white-2">
+<section class="flex flex-col mx-auto gap-4">
     <!-- <p>
         Matthew J. Russell is a software engineer with a passion for building
         scalable and maintainable applications. With a strong background in
@@ -23,21 +23,26 @@
     <h2>Education</h2>
     <hr />
     <div class="flex flex-col font-sans">
-        <span>{{ degree.year }} <strong>{{ degree.title }}</strong>, {{ degree.institution}}</span>
-        <span>{{ degree.major }}</span>
-        <div class="flex flex-row">
-            <ul class="list-disc">
-                <strong><li class="list-none">Technical Competencies:</li></strong>
-                <li *ngFor="let competency of degree.technicalCompetencies">{{ competency }}</li>
+        <div class="flex flex-row gap-2">
+            <span>{{ degree.year }}</span> <span><strong>{{ degree.title }}</strong>, {{ degree.institution}}</span>
+        </div>
+        <div class="flex fex-row gap-2">
+            <span class="text-blue-3">2012</span>
+            <span>{{ degree.major }}</span>
+        </div>
+        <div class="flex md:flex-row flex-col gap-2 mt-2">
+            <ul>
+                <strong><li>Technical Competencies:</li></strong>
+                <li *ngFor="let competency of degree.technicalCompetencies" class="list">{{ competency }}</li>
             </ul>
-            <ul class="list-disc">
-                <strong><li class="list-none">Business Competencies:</li></strong>
-                <li *ngFor="let competency of degree.businessCompetencies">{{ competency }}</li>
+            <ul>
+                <strong><li>Business Competencies:</li></strong>
+                <li *ngFor="let competency of degree.businessCompetencies" class="list">{{ competency }}</li>
             </ul>
         </div>
     </div>
     <ul>
-        <li *ngFor="let edu of education">
+        <li *ngFor="let edu of education" class="list-none">
             {{ edu.year }} <strong>{{ edu.title }}</strong>, {{ edu.institution }}
         </li>
     </ul>
@@ -55,7 +60,7 @@
     <hr />
     <ul *ngFor="let category of skills">
         <strong>{{ category.title }}</strong>
-        <li *ngFor="let skill of category.skills">
+        <li *ngFor="let skill of category.skills" class="list">
             {{ skill }}
         </li>
     </ul>

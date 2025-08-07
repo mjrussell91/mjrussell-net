@@ -13,21 +13,13 @@
 
     --color-white-1: #fdf6e3;
     --color-white-2: #eee8d5;
+    --color-white-3: #879394;
+    --color-white-4: #96A0A0;
 
     --color-gray-1: #93a1a1;
     --color-gray-2: #839496;
     --color-gray-3: #657b83;
     --color-gray-4: #586e75;
-
-    /* container: {
-      padding: {
-        DEFAULT: '1rem',
-        sm: '2rem',
-        lg: '4rem',
-        xl: '5rem',
-        '2xl': '6rem',
-      },
-    }; */
 }
 
 :root {
@@ -36,6 +28,7 @@
 }
 
 section {
+    color: var(--color-white-4);
     max-width: 752px;
     /* max-width: 74ch; */
     margin-left: auto;
@@ -79,9 +72,10 @@ section {
         color: var(--color-white-1);
     }
 
-    li {
+    .list {
         margin-left: 1.5rem;
         list-style-type: disc;
+        color: var(--color-white-2)
     }
 
     ul > strong > li {

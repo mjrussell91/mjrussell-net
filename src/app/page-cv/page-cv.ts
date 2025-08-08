@@ -5,7 +5,7 @@ type Degree = {
 	title: string;
 	major: string;
 	institution: string;
-	year: number;
+	year: Date;
 	technicalCompetencies: string[];
 	businessCompetencies: string[];
 };
@@ -13,7 +13,7 @@ type Degree = {
 type Education = {
 	title: string;
 	institution: string;
-	year: number;
+	year: Date;
 };
 
 type Skills = {
@@ -42,7 +42,7 @@ export class PageCv {
 		title: 'Bachelor of Information Technology',
 		major: 'Major in Marketing & Management',
 		institution: 'Griffith University',
-		year: 2012,
+		year: new Date('2012-01-01'),
 		technicalCompetencies: [
 			'Advanced programming techniques and discrete mathematics', 
 			'Computer science, network engineering, and cybersecurity', 
@@ -61,22 +61,22 @@ export class PageCv {
 		{
 			title: 'Queensland Certificate of Education',
 			institution: 'Capalaba State College',
-			year: 2008
+			year: new Date('2008-01-01')
 		},
 		{
 			title: 'Certificate III of Information Technology',
 			institution: 'Metropolitan South Institute of TAFE',
-			year: 2008
+			year: new Date('2008-01-01')
 		},
 		{
 			title: 'Certificate II of Business',
 			institution: 'Metropolitan South Institute of TAFE',
-			year: 2008
+			year: new Date('2008-01-01')
 		},
 		{
 			title: 'Certificate I of Workplace Education',
 			institution: 'Metropolitan South Institute of TAFE',
-			year: 2007
+			year: new Date('2007-01-01')
 		}
 	];
 
@@ -84,47 +84,47 @@ export class PageCv {
 		{
 			title: 'VMware vSphere v6.5 Certificate',
 			institution: 'Dimension Data Learning Services',
-			year: 2017
+			year: new Date('2017-01-01')
 		},
 		{
 			title: 'CompTIA Cloud Essentials Certification',
 			institution: 'Linux Academy',
-			year: 2017
+			year: new Date('2017-01-01')
 		},
 		{
 			title: 'Azure Essentials',
 			institution: 'Linux Academy',
-			year: 2017
+			year: new Date('2017-01-01')
 		},
 		{
 			title: 'ITIL Fundamentals Training',
 			institution: 'UXC Consulting',
-			year: 2015
+			year: new Date('2015-01-01')
 		},
 		{
 			title: 'Windows 10 Training',
 			institution: 'Dimension Data Learning Services',
-			year: 2015
+			year: new Date('2015-01-01')
 		},
 		{
 			title: 'Windows 8 Training',
 			institution: 'Dimension Data Learning Services',
-			year: 2013
+			year: new Date('2013-01-01')
 		},
 		{
 			title: 'Mac OS X Training',
 			institution: 'Dimension Data Learning Services',
-			year: 2013
+			year: new Date('2013-01-01')
 		},
 		{
 			title: 'Client Service Training',
 			institution: 'Griffith University',
-			year: 2013
+			year: new Date('2013-01-01')
 		},
 		{
 			title: 'Windows 7 Training',
 			institution: 'Dimension Data Learning Services',
-			year: 2012
+			year: new Date('2012-01-01')
 		}
 	];
 

@@ -15,6 +15,7 @@
     --color-white-2: #eee8d5;
     --color-white-3: #879394;
     --color-white-4: #96A0A0;
+    --color-white-5: #CBCBCB;
 
     --color-gray-1: #93a1a1;
     --color-gray-2: #839496;
@@ -28,7 +29,7 @@
 }
 
 section {
-    color: var(--color-white-4);
+    color: var(--color-white-5);
     max-width: 752px;
     /* max-width: 74ch; */
     margin-left: auto;
@@ -75,7 +76,7 @@ section {
     .list {
         margin-left: 1.5rem;
         list-style-type: disc;
-        color: var(--color-white-2)
+        color: var(--color-white-5)
     }
 
     ul > strong > li {

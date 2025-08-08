@@ -47,7 +47,7 @@
         </li>
     </ul>
     <br />
-    <h2>Certifications & Training</h2>
+    <h2>Certifications and Training</h2>
     <hr />
     <ul>
         <li *ngFor="let course of certsAndTraining">
@@ -64,4 +64,26 @@
             {{ skill }}
         </li>
     </ul>
+
+    <br />
+    <h2>Employment History</h2>
+    <hr />
+    <ul *ngFor="let job of employmentHistory">
+        <li>
+            <strong>{{ job.title }}</strong>, {{ job.organisation }} ({{ job.startDate | date: 'shortDate' }} - {{ job.endDate ? (job.endDate | date: 'shortDate') : 'Present' }})
+            <ul>
+                <strong>Roles and Duties</strong>
+                <li *ngFor="let role of job.rolesAndDuties" class="list">{{ role }}</li>
+            </ul>
+            <ul>
+                <strong>Outcomes and Achievements</strong>
+                <li *ngFor="let outcome of job.outcomesAndAchievements" class="list">{{ outcome }}</li>
+            </ul>
+            <ul *ngIf="job.projects && job.projects.length > 0">
+                <strong>Projects</strong>
+                <li *ngFor="let project of job.projects" class="list">{{ project }}</li>
+            </ul>
+        </li>
+    </ul>
+
 </section>

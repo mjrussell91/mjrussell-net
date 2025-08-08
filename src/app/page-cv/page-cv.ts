@@ -20,6 +20,17 @@ type Skills = {
 	title: string;
 	skills: string[];
 }
+
+type Employment = {
+	title: string;
+	description: string;
+	organisation: string;
+	startDate: Date;
+	endDate: Date | null;
+	rolesAndDuties: string[];
+	outcomesAndAchievements: string[];
+	projects: string[];
+}
 @Component({
 	selector: 'app-page-cv',
 	imports: [CommonModule],
@@ -169,6 +180,139 @@ export class PageCv {
 // 	Focused on client satisfaction and outcomes, received Outstand Client Service aware and continued feedback from clients
 //  Strong written and verbal communication skills, ability to interface with clients of varying technical proficiency, experience in supporting executive clients
 			]
+		}
+	];
+
+	protected readonly employmentHistory: Employment[] = [
+		{
+			title: 'Software Engineer',
+			description: 'Developing dynamic web applications and responsible for the lifecycle of the application from agile development, managing deployments, servers, APIs, and services through to testing, CI/CD, and monitoring.',
+			organisation: 'Pxel',
+			startDate: new Date('2021-08-01'),
+			endDate: null, // Present
+			rolesAndDuties: [
+				'Developing web applications using JavaScript/TypeScript on frameworks including Vue3, Nuxt3, and React. Dynamic pages using data from content management systems such as WordPress, Shopify/Sanity, and Directus accessed via REST APIs and GraphQL',
+				'Deploying sites using static site generation and server side rendering on Cloud services including AWS, Azure, CloudFlare, Netlify, and Dockerised deployments. Using CI/CD tools to integrate testing, automate builds on branch commits, and generate preview links from pull requests',
+				'Standing up servers and services in the Cloud such as EC2s for hosting applications, S3 buckets for application data, SQL databases, API proxies, and CDNs'
+			],
+			outcomesAndAchievements: [
+				'Successfully built and deployed over 10 web applications with many complex custom features, reliable uptime and stability, and customisable for the user from their CMS'
+			],
+			projects: [
+				'WLTH Banking Customer Portal - Nuxt app providing access for to user to their data integrating Okta authentication, user preference management, securely proxied API calls, and security hardening',
+				'The Reserve Pricing Tool - Used Puppeteer to scrape public pricing data for products and store them in Directus. The Nuxt app allowed the users to match scraped products against their own products from Shopify, compare prices against competitors, and show the largest price differential to ensure fair pricing of their products',
+				'EverVessel - Web store with the front end built using React and Sanity APIs for the back end, custom components to allow users to enter text and images for laser engravings',
+				'ITP - Integrated AI tools for answering tax questions and booking appointments into a Vue front end. Used a custom built NodeJS Express app as an API to handle calls to OpenAI, manage conversations, and return responses to the front end',
+				'GQS Tax Builder - Nuxt app that takes property inspection data for tax purposes, parses the data for assets into a table, allows the user to enter values and make changes, then the app automatically calculates and generates various tax deprecation schedules over 40 years as well as exporting the tables as a CSV so that they can be copied into reports'
+			]
+		},
+		{
+			title: 'Social Analytics Lab Coordinator',
+			description: 'Managed the Social Analytics Lab at Griffith University, a research lab that stored, managed, and analysed administrative data for social science research. This involved compiling data for projects, managing users and project approvals, maintaining servers, and maintaining the physical and security infrastructure.',
+			organisation: 'Griffith University',
+			startDate: new Date('2019-07-01'),
+			endDate: new Date('2024-12-01'),
+			rolesAndDuties: [
+				'Compiling data from datasets for research projects using SQL and GIS tools, and updating datasets from data custodians',
+				'Managing project administration including applications, approvals from custodians and committees, and reporting on project updates and outcomes',
+				'Managing users including their application, induction, keys and swipe cards, physical and computer access'
+			],
+			outcomesAndAchievements: [
+				'Grew the lab to over 80 researchers working across 50 research projects from 3 data sources to produce over 100 outputs including journal publications, manuscripts, reports, and conference presentations'
+			],
+			projects: []
+		},
+		{
+			title: 'Systems Engineer',
+			description: 'Responsible for the delivery of the Server Refresh Project to upgrade out of warranty physical server hardware and upgrade unsupported Windows Server OS versions.',
+			organisation: 'Griffith University',
+			startDate: new Date('2018-03-01'),
+			endDate: new Date('2019-07-01'),
+			rolesAndDuties: [
+				'Maintaining and installing physical server hardware, including Dell M1000e chassis, Dell M-series blades, and Dell R-series servers, working with hardware vendors to support and repair hardware',
+				'Maintaining and extending warranty support for all server assets',
+				'Designing and quoting server hardware solutions to meet operational, project, and application requirements',
+				'On-call responsibility for diagnosing and resolving server incidents, production outage incidents as well as successful participation as primary contact for Disaster Recovery simulation event',
+				'Deploying and configuring Windows Server OSes and configuring for application requirements',
+				'Managing security hardening of servers and complying to Solution Architecture standards'
+			],
+			outcomesAndAchievements: [
+				'Successfully delivered Server Refresh Project 2018: Install and configure Dell M1000e chassis and Dell M640 blades, upgrade or decommission over 50 Windows 2008 R2 servers and 10 applications',
+				'Received Sustained Performance Award from the Director of IT Infrastructure'
+			],
+			projects: []
+		},
+		{
+			title: 'Senior Systems Administrator',
+			description: 'Support of nearly one thousand Windows VM servers across two Data Centres at Griffith University.',
+			organisation: 'Griffith University',
+			startDate: new Date('2016-11-01'),
+			endDate: new Date('2018-03-01'),
+			rolesAndDuties: [
+				'Diagnosing and resolving issues with Windows servers such as performance, disk capacity, access, firewall, and VMware host contention',
+				'On-call responsibility for diagnosing and resolving server incidents as well as successful participation as primary contact for Disaster Recovery simulation event',
+				'Deploying and configuring Windows Server OSes and configuration for application requirements',
+				'Provisioning and managing VMware VM’s including deployment, snapshots, disk management and hardware rightsizing, migrating hosts and managing performance',
+				'Managing physical hosts, working with vendors to resolve hardware faults',
+				'Managing Windows domains, AD accounts and groups, access to servers and network shares',
+				'Supervise and train new staff'
+			],
+			outcomesAndAchievements: [
+				'Awarded System Administrator of the Month as nominated by colleagues',
+				'Continued feedback for high-levels of client satisfaction',
+				'Awarded for maintaining a high rate of service desk tickets resolved',
+				'Project to automate 90% of manual operational tasks through process changes and PowerShell scripts'
+			],
+			projects: []
+		},
+		{
+			title: 'Computing Support Officer',
+			description: 'IT support of a fleet of nearly 5000 staff machines at Griffith University from a wide range of vendors, configurations, software, and peripherals.',
+			organisation: 'Griffith University',
+			startDate: new Date('2012-07-01'),
+			endDate: new Date('2016-11-01'),
+			rolesAndDuties: [
+				'Responsible for managing the lifecycle of machines from various vendors such as Dell, HP , and Apple and included quoting, procurement, setup, installation and migration of user data and software, support and warranty, and asset disposal',
+				'Managed Windows, macOS and Linux machines with a multitude of software packages and peripheral devices. Includes BYOD devices such as iOS and Android phones and tables',
+				'Diagnose and resolve complex technical issues across a wide variety of software and hardware',
+				'Excellent client service and communication while managing work based on ITIL principles'
+			],
+			outcomesAndAchievements: [
+				'Development and support of Griffith University Red Zone, an innovative technology space that used large tiled screens with meshed display, convoluted projectors onto a curved surface, and interactive topology projection using silicone sand'
+			],
+			projects: []
+		},
+		{
+			title: 'Audiovisual Support Attendant',
+			description: 'Support of Griffith AV spaces; Lecture Theatres, Seminar Rooms, Video Conferences, Teaching Laboratories, Events',
+			organisation: 'Griffith University',
+			startDate: new Date('2011-12-01'),
+			endDate: new Date('2012-06-01'),
+			rolesAndDuties: [
+				'Support of AV equipment; Projectors, Lecture Capture/Echo 360, AMX touch panels and control panels, touch screens, Cisco control panels, Cisco Video Conference Televisions, Public Address systems, mixers, microphones and video cameras.',
+				'Supporting a wide range of clients from students to executives while while working within a team and independently, including on-call out of hours'
+			],
+			outcomesAndAchievements: [
+				'Received Outstanding Client Service award in this role',
+				'Team was nominated for Outstanding Client Service award in this role'
+			],
+			projects: []
+		},
+		{
+			title: 'Computer Laboratory Attendant',
+			description: 'Supported student, common use and teaching computer laboratories',
+			organisation: 'Griffith University',
+			startDate: new Date('2009-11-01'),
+			endDate: new Date('2011-11-01'),
+			rolesAndDuties: [
+				'Supported student, common use and teaching computer laboratories',
+				'Audit, clean, maintain and re-image computer laboratories',
+				'Supported clients in issues with using and teaching in computer laboratory spaces'
+			],
+			outcomesAndAchievements: [
+				'Coordinated multiple staff at multiple locations in the installation of new computer laboratories and disposal of old equipment'
+			],
+			projects: []
 		}
 	];
 }

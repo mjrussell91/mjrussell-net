@@ -88,4 +88,12 @@
         </li>
         <br />
     </ul>
+
+    <h2>Honours and Achievements</h2>
+    <hr />
+    <ul>
+        <li *ngFor="let honour of honoursAndAchievements">
+            {{ honour.year | date: 'yyyy' }} <strong>{{ honour.title }}</strong>, {{ honour.institution }}
+        </li>
+    </ul>
 </section>

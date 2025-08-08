@@ -315,4 +315,12 @@ export class PageCv {
 			projects: []
 		}
 	];
+
+	protected readonly honoursAndAchievements: Education[] = [
+		{ year: new Date('2018-01-01'), title: 'Sustained Performance Award', institution: 'Griffith University - ITI Director Recognition' },
+		{ year: new Date('2017-01-01'), title: 'Systems Administrator of the Month', institution: 'Griffith University - S3 Team Recognition' },
+		{ year: new Date('2012-01-01'), title: 'Outstanding Client Service', institution: 'Griffith University - ICTS Staff Recognition' },
+		{ year: new Date('2008-01-01'), title: 'Academic Distinction Award', institution: 'Capalaba State College' },
+		{ year: new Date('2007-01-01'), title: 'Technology Captain', institution: 'Capalaba State College' }
+	]
 }

@@ -28,7 +28,7 @@
     color: var(--color-white-1);
 }
 
-section {
+section, article {
     color: var(--color-white-5);
     max-width: 752px;
     /* max-width: 74ch; */

@@ -66,12 +66,15 @@
     </ul>
 
     <br />
-    <h2>Employment History</h2>
-    <hr />
+    <h2 >Employment History</h2>
+    <hr class="mb-4"/>
     <ul *ngFor="let job of employmentHistory">
-        {{ job.startDate | date: 'MMM yyyy' }} - {{ job.endDate ? (job.endDate | date: 'MMM yyyy') : 'Present' }} <strong>{{ job.title }}</strong>, {{ job.organisation }}
-        <p>{{ job.description }}</p>
-        <br />
+        <div class="flex justify-between pb-4">
+            <span><strong>{{ job.title }}</strong>, {{ job.organisation }}</span>
+            <span class="justify-end"><strong>{{ job.startDate | date: 'MMM yyyy' }} - {{ job.endDate ? (job.endDate | date: 'MMM yyyy') : 'Present' }}</strong></span>
+        </div>
+        <hr />
+        <p class="my-4">{{ job.description }}</p>
         <li>
             <ul>
                 <strong>Roles and Duties</strong>
@@ -87,6 +90,7 @@
             </ul>
         </li>
         <br />
+        <!-- <hr/> -->
     </ul>
 
     <h2>Honours and Achievements</h2>

@@ -1,17 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, input, computed } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
 	selector: 'app-icon',
-	imports: [],
+	imports: [CommonModule],
 	templateUrl: './icon.html',
 	styleUrl: './icon.css'
 })
 export class Icon {
-	// Docs: https://v17.angular.io/guide/svg-in-templates
-	// https://stackoverflow.com/questions/46101539/is-there-a-way-to-add-source-to-an-svg-element
+	color = input<string>('var(--color-white-1)');
+	size = input<number>(18);
+	icon = input.required<string>();
 
 
-	// Icons: https://www.svgrepo.com/svg/437851/email
-	// public fillColor = 'var(--color-white-1)';
-	public fillColor = 'red';
+	public fillColor = computed(() => `${this.color()}`);
+	public iconSelector = computed(() => this.icon());
+	public iconSize = computed(() => `${this.size()}px`);
 }

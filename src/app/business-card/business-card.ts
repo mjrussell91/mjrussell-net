@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
-import { Icon } from '../icon/icon';
 
 @Component({
 	selector: 'app-business-card',
-	imports: [Icon],
+	imports: [],
 	templateUrl: './business-card.html',
 	styleUrl: './business-card.css'
 })

@@ -2,8 +2,19 @@
     <h1>Projects</h1>
     <section *ngFor="let project of projects" class="mb-12">
         <div class="flex justify-between">
-            <h2 class="pb-2"><a [href]="project.link" target="_blank">{{ project.title }}</a></h2>
-            <h3 class="justify-end text-white-2 pt-2" ><a *ngIf="project.repository" [href]="project.repository" target="_blank" class="justify-end">GitHub</a></h3>
+            <h2 class="pb-4 hover:text-white-1">
+                <a *ngIf="project.link" [href]="project.link" target="_blank">{{ project.title }}</a>
+                <span *ngIf="!project.link">{{ project.title }}</span>
+            </h2>
+            <h3 class="justify-end text-white-2 flex gap-2 items-center mb-5 text-l ">
+                <app-icon *ngFor="let icon of project.icons" [icon]="icon" [size]="28"></app-icon>
+                <!-- <span *ngIf="project.icons.length > 0 && project.repository" class="mx-1"> | </span> -->
+                <a *ngIf="project.repository" [href]="project.repository" target="_blank" class="justify-end ml-4 hover:text-white-1 rounded-l-full rounded-r-full border-white-1 border-x-[2px] border-y-[2px] p-1">
+                    <span class="flex gap-2 items-center">
+                        <app-icon [icon]="'github'" [size]="20"></app-icon>GitHub
+                    </span>
+                </a>
+            </h3>
         </div>
         <hr />
 

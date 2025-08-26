@@ -133,7 +133,7 @@ export class PageCv {
 			title: 'Windows Server and Microsoft products',
 			skills: [
 				'Experienced in supporting Windows Server OSes, Domains, Active Directory, Group Policies, DFS, SCCM and Windows Patching',
-				'Managing AD Users and Groups, troubleshooting account issues, managing permissions and access to network fileshares, and user access reportingp',
+				'Managing AD Users and Groups, troubleshooting account issues, managing permissions and access to network fileshares, and user access reporting',
 				'Securing Windows systems and applying cybersecurity best practices by using host-based firewalls, network ACLs, least-privilege user access scanning and patching for known vulnerabilities',
 				'PowerShell to manage remote hosts, configure and automate tasks'
 			]

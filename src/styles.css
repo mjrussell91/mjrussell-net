@@ -22,6 +22,15 @@
     --color-gray-2: #839496;
     --color-gray-3: #657b83;
     --color-gray-4: #586e75;
+
+    --color-brand-yellow: #b58900;
+    --color-brand-orange: #cb4b16;
+    --color-brand-red: #dc322f;
+    --color-brand-magenta: #d33682;
+    --color-brand-violet: #6c71c4;
+    --color-brand-blue: #268bd2;
+    --color-brand-cyan: #2aa198;
+    --color-brand-green: #859900;
 }
 
 :root {

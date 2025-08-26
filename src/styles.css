@@ -29,6 +29,10 @@
     color: var(--color-white-1);
 }
 
+nav > a {
+    font-weight: 350;
+}
+
 section, article {
     color: var(--color-white-5);
     max-width: 752px;
@@ -40,14 +44,14 @@ section, article {
 
     h1 {
         font-size: 2rem;
-        font-weight: bold;
+        font-weight: 550;
         color: var(--color-white-1);
         text-align: center;
     }
 
     h2 {
         font-size: 1.6rem;
-        font-weight: bold;
+        font-weight: 450;
         color: var(--color-white-1);
     }
 
@@ -59,6 +63,8 @@ section, article {
     p {
         color: var(--color-white-2);
         text-align: justify;
+        
+        font-weight: 300;
     
         a {
             /* color: var(--color-white-1); */
@@ -70,18 +76,27 @@ section, article {
         }
     }
 
+    li {
+        font-weight: 300;
+    }
+
+    li > strong {
+        font-weight: 450;
+        margin-left: 0.25rem;
+    }
+
     strong {
         color: var(--color-white-1);
+        font-weight: 550;
     }
 
     .list {
         margin-left: 1.5rem;
         list-style-type: disc;
-        color: var(--color-white-5)
+        color: var(--color-white-5);
     }
 
-    ul > strong > li {
-        margin-left: 0px;
-        list-style-type: none;
-    }
+ 
+
+
 }

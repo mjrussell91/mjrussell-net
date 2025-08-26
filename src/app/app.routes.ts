@@ -7,6 +7,7 @@ import { PageContact } from './page-contact/page-contact';
 import { PageNotFound } from './page-not-found/page-not-found';
 
 export const routes: Routes = [
+    { path: '', component: PageAbout },
     { path: 'about', component: PageAbout },
     { path: 'cv', component: PageCv },
     { path: 'projects', component: PageProjects },

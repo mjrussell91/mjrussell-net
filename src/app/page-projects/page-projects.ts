@@ -22,7 +22,7 @@ export class PageProjects {
 		{
 			title: 'mjrussell.net',
 			link: 'https://mjrussell.net',
-			icons: ['angular'],
+			icons: ['angular', 'typescript'],
 			repository: 'https://github.com/mjrussell91/mjrussell-net',
 			description: `A personal website built with Angular, showcasing my CV, projects, skills, and experience. It serves as a portfolio and a demonstration of my ability to design, build, and deploy web applications.`,
 			imageSrc: 'mjrussell-net.png'
@@ -39,7 +39,7 @@ export class PageProjects {
 		{
 			title: 'MJR Portal',
 			link: null,
-			icons: ['directus', 'nodejs', 'angular'],
+			icons: ['directus', 'websocket', 'nodejs', 'angular', 'typescript'],
 			repository: null,
 			description: `A personal web portal with a collection of custom tools built with Angular and NodeJS. Weather observations, forecasts, and warnings sourced from Bureau of Meteorology public API data. 
 			Interactive web-based music client with playlist management, library, and controls for the MPD music player with a NodeJS backend that integrates with the MPD instance. Custom notepad, wiki, code snippets, and quick references stored in a Directus backend and QuillJS as a text editor. 
@@ -50,7 +50,7 @@ export class PageProjects {
 		{
 			title: 'GQS - Tax Builder',
 			link: null,
-			icons: ['vue', 'firebase'],
+			icons: ['firebase', 'nuxt'],
 			repository: null,
 			description: `An internal tool that lets the client to upload with one click inspection data including asset details collected from properties for the customer, combined with their value and other details to automatically generate tax depreciation schedules. `,
 			imageSrc: 'gqs-tax-build.png'
@@ -58,7 +58,7 @@ export class PageProjects {
 		{
 			title: 'EverVessel',
 			link: 'https://www.evervessel.com',
-			icons: ['react', 'typescript', 'shopify'],
+			icons: ['shopify', 'nuxt', 'typescript'],
 			repository: null,
 			description: `Web store for EverVessel water bottles and accessories built in React and using Shopify as a backend. Integrated e-commerce features and custom features such as a canvas element for custom text and logo engravings, and bulk purchasing options.`,
 			imageSrc: 'evervessel.png'
@@ -66,7 +66,7 @@ export class PageProjects {
 		{
 			title: 'EverVessel - Engraving Portal',
 			link: null,
-			icons: ['react', 'typescript', 'firebase'],
+			icons: ['firebase', 'nuxt', 'typescript'],
 			repository: null,
 			description: `Portal to manage and automate orders for the engraving partner to display order details, group by SKU, print shipping labels, and update order statuses.`,
 			imageSrc: 'ev-engraving-portal.png'
@@ -74,7 +74,7 @@ export class PageProjects {
 		{
 			title: 'The Reserve - Pricing Tool',
 			link: null,
-			icons: ['vue', 'wordpress'],
+			icons: ['puppeteer','websocket', 'nodejs', 'nuxt'],
 			repository: null,
 			description: `Internal tool that allows the client to match their products from Shopify against pricing data scraped from various public sources to ensure fair market value. Data collected from various websites with custom Puppeteer scripts that run daily...`,
 			imageSrc: 'pricing-tool.png'
@@ -82,17 +82,17 @@ export class PageProjects {
 		{
 			title: 'WLTH - Customer Portal',
 			link: null,
-			icons: ['vue', 'typescript'],
+			icons: ['nuxt', 'typescript'],
 			repository: null,
-			description: `Banking portal for WLTH customers to view account balances, transactions, interest rates, bonus points and other financial information as well as manage their customer details and preferences. Built with Vue and security hardened, the app integrated with WLTH's API through an API gateway.`,
+			description: `Banking portal for WLTH customers to view account balances, transactions, interest rates, bonus points and other financial information as well as manage their customer details and preferences. Built with nuxt and security hardened, the app integrated with WLTH's API through an API gateway.`,
 			imageSrc: 'wlth-dashboard.png'
 		},
 		{
 			title: 'EML Payments',
 			link: 'https://www.emlpayments.com',
-			icons: ['vue', 'wordpress'],
+			icons: ['wordpress', 'nuxt'],
 			repository: null,
-			description: `Public website for EML Payments company that shows payment solutions, use cases, company and investor details. Built with Vue and a WordPress backend that used the ACF plugin so the client could manage content and pages through custom built block components.`,
+			description: `Public website for EML Payments company that shows payment solutions, use cases, company and investor details. Built with nuxt and a WordPress backend that used the ACF plugin so the client could manage content and pages through custom built block components.`,
 			imageSrc: 'eml-payments.png'
 		},
 	];

@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { HttpClient } from "@angular/common/http";
-import { FormsModule, NgForm } from "@angular/forms";
+import { FormsModule } from "@angular/forms";
 import { ReplaySubject } from "rxjs";
 
 type ContactFormData = {
@@ -35,15 +35,6 @@ export class PageContact {
 		subject: "",
 		message: "",
   	};
-
-	// form: ContactFormData = {
-	// 	name: "Test Name",
-	// 	organisation: "Test Organisation",
-	// 	email: "test@example.com",
-	// 	subject: "Test Subject",
-	// 	message: "Test Message",
-  	// };
-
 
 	validationErrors: ContactFormValidation = {
 		name: "",

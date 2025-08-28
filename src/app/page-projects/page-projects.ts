@@ -72,11 +72,13 @@ export class PageProjects {
 			imageSrc: 'ev-engraving-portal.png'
 		},
 		{
-			title: 'The Reserve - Pricing Tool',
+			title: 'Pricing Tool',
 			link: null,
-			icons: ['puppeteer','websocket', 'nodejs', 'nuxt'],
+			icons: ['shopify', 'websocket', 'nodejs', 'nuxt'],
 			repository: null,
-			description: `Internal tool that allows the client to match their products from Shopify against pricing data scraped from various public sources to ensure fair market value. Data collected from various websites with custom Puppeteer scripts that run daily...`,
+			description: `Internal tool that allows the client to match their Shopify products against pricing data scraped from various public sources to inform pricing decisions. Data collected from various APIs and websites with custom Puppeteer scripts that run on a schedule.
+			 Data is stored in a Directus CMS with a SQL database and accessed via a REST API. A custom WebSocket server passes events and real-time data to the client to show job and status updates, notifications, and logs to a terminal interface.
+			 Interface includes a search, product list, websites, running jobs, queued jobs, terminal interface for job logs and progress, and an interactive product matching interface to verify scraped data against Shopify products. Combing to create a dashboard that highlights the largest pricing differentials, new products, and stale data.`,
 			imageSrc: 'pricing-tool.png'
 		},
 		{

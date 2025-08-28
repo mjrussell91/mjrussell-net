@@ -44,12 +44,9 @@ nav > a {
 
 section, article {
     color: var(--color-white-5);
-    max-width: 752px;
-    /* max-width: 74ch; */
+    max-width: 74ch;
     margin-left: auto;
     margin-right: auto;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
 
     h1 {
         font-size: 2rem;
@@ -104,8 +101,4 @@ section, article {
         list-style-type: disc;
         color: var(--color-white-5);
     }
-
- 
-
-
 }

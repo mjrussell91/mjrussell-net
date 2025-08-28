@@ -1,9 +1,8 @@
-import { Component, Injectable } from "@angular/core";
+import { Component } from "@angular/core";
 import { CommonModule } from "@angular/common";
-// import { NgForm } from '@angular/forms';
 import { HttpClient } from "@angular/common/http";
-import { FormsModule } from "@angular/forms";
-import { NgClass } from "@angular/common";
+import { FormsModule, NgForm } from "@angular/forms";
+import { ReplaySubject } from "rxjs";
 
 type ContactFormData = {
 	name: string;
@@ -13,14 +12,21 @@ type ContactFormData = {
 	message: string;
 };
 
+type ContactFormValidation = {
+	name: string;
+	email: string;
+	subject: string;
+	message: string;
+};
+
 @Component({
 	selector: "app-page-contact",
-	imports: [FormsModule, NgClass, CommonModule],
+	imports: [FormsModule, CommonModule],
 	templateUrl: "./page-contact.html",
 	styleUrl: "./page-contact.css",
 })
 export class PageContact {
-  	constructor(private http: HttpClient) {}
+	constructor(private http: HttpClient) { }
 
   	form: ContactFormData = {
 		name: "",
@@ -30,34 +36,45 @@ export class PageContact {
 		message: "",
   	};
 
-	validationErrors: ContactFormData = {
+	// form: ContactFormData = {
+	// 	name: "Test Name",
+	// 	organisation: "Test Organisation",
+	// 	email: "test@example.com",
+	// 	subject: "Test Subject",
+	// 	message: "Test Message",
+  	// };
+
+
+	validationErrors: ContactFormValidation = {
 		name: "",
-		organisation: "",
 		email: "",
 		subject: "",
 		message: "",
 	};
-	responseMessage: string = "";
+
+	private responseMessageSubject = new ReplaySubject<any>(1);
+	public responseMessage = this.responseMessageSubject.asObservable();
+	public submitted: boolean = false;
+	public buttonColor: string = 'bg-gray-1';
 
 	validate(): boolean {
 		this.validationErrors = {
 			name: "",
-			organisation: "",
 			email: "",
 			subject: "",
 			message: "",
 		};
-		let valid = true;
-		if (!this.form.name || this.form.name.trim().length < 2) {
-			this.validationErrors.name = "Name is required (min 2 characters).";
+		let valid: boolean = true;
+		if (!this.form.name || this.form.name.trim().length < 1) {
+			this.validationErrors.name = "Name is required.";
 			valid = false;
 		}
-		if (!this.form.subject || this.form.subject.trim().length < 2) {
-			this.validationErrors.subject = "Subject is required (min 2 characters).";
+		if (!this.form.subject || this.form.subject.trim().length < 1) {
+			this.validationErrors.subject = "Subject is required.";
 			valid = false;
 		}
-		if (!this.form.message || this.form.message.trim().length < 2) {
-			this.validationErrors.message = "Message is required (min 2 characters).";
+		if (!this.form.message || this.form.message.trim().length < 1) {
+			this.validationErrors.message = "Message is required.";
 			valid = false;
 		}
 		if (this.form.email) {
@@ -71,34 +88,41 @@ export class PageContact {
 			valid = false;
 		}
 		// Organisation is optional, no validation needed
+		if (valid) this.buttonColor = 'bg-brand-blue';
 		return valid;
 	}
 
-  	async submit() {
-		this.responseMessage = "";
-		if (!this.validate()) {
-			this.responseMessage = "Some fields are invalid or required.";
-			return;
-		}
-		try {
-			const response: any = await this.http
-				.post("/api/contact", this.form, { observe: "response" })
-				.toPromise();
-			if (response.status === 200) {
-				this.responseMessage = "Form submitted successfully!";
-				this.form = {
-				name: "",
-				organisation: "",
-				email: "",
-				subject: "",
-				message: "",
-				};
-			} else {
-				this.responseMessage =
-				"Contact message not sent. Please try again later.";
+		async submit() {
+			this.submitted = true;
+			this.responseMessageSubject.next(" ");
+			if (!this.validate()) {
+				this.responseMessageSubject.next("Some fields are invalid or required.");
+				return;
 			}
-		} catch (error: any) {
-			this.responseMessage = "Contact message not sent. " + (error?.message || "An error occurred.");
+
+			const url = "https://3ocqjazpxob7bmw7epb3w6sdlq0xnbth.lambda-url.ap-southeast-2.on.aws/";
+			try {
+				this.buttonColor = 'bg-gray-1';
+				this.responseMessageSubject.next("Sending...");
+				const response: any = await this.http
+					.post(url, this.form, {
+						observe: "response",
+						headers: {
+							"Content-Type": "application/json",
+						}
+					}).toPromise();
+				if (response.status === 200) {
+					this.responseMessageSubject.next("Contact message successfully sent.");
+					this.buttonColor = 'bg-brand-green';
+				} else {
+					console.error('Error sending contact message: ',response);
+					this.buttonColor = 'bg-brand-red';
+					this.responseMessageSubject.next("Contact message was not sent due to an unspecified error. Please check the console logs or try again later.");
+				}
+			} catch (error: any) {
+				console.error('Error sending contact message: ', error);
+				this.responseMessageSubject.next(`Contact message was not sent. ${error?.error?.message || 'An error has occurred.'}`);
+				this.buttonColor = 'bg-brand-red';
+			}
 		}
-  	}
 }

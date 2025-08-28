@@ -1,12 +1,12 @@
 <section>
     <h1>Contact Me</h1>
     <br />
-    <p class="md:mx-8">Please fill out the form below to get in touch. Apologies for no direct email contact, this form helps prevent spam and protect my privacy. I will respond to your legitimate inquiries.</p>
+    <p class="">Please fill out the form below to get in touch. Apologies for no direct email contact, this form helps prevent spam and protect my privacy. I will respond to your legitimate inquiries.</p>
     <br />
     <br />
-	<form class="flex flex-col gap-6 max-w-2xl mx-auto" (ngSubmit)="submit()" #contactForm="ngForm" novalidate>
+	<form class="flex flex-col gap-6 x-auto" (ngSubmit)="submit()" #contactForm="ngForm" novalidate>
 		<!-- Row 1: Name and Organisation -->
-		<div class="flex flex-row gap-4">
+		<div class="flex sm:flex-row flex-col gap-4">
 			<div class="flex-1 flex flex-col">
 				<label for="name" class="mb-1 font-semibold">Name <span class="text-brand-red">*</span></label>
 				<input id="name" name="name" type="text" class="border rounded px-3 py-2 bg-blue-4" [(ngModel)]="form.name" (input)="validate()" required aria-required="true" />
@@ -18,7 +18,7 @@
 			</div>
 		</div>
 		<!-- Row 2: Subject and Email -->
-		<div class="flex flex-row gap-4">
+		<div class="flex flex-col sm:flex-row gap-4">
 			<div class="flex-1 flex flex-col">
 				<label for="subject" class="mb-1 font-semibold">Subject <span class="text-brand-red">*</span></label>
 				<input id="subject" name="subject" type="text" class="border rounded px-3 py-2 bg-blue-4" [(ngModel)]="form.subject" (input)="validate()" required aria-required="true" />
@@ -37,7 +37,7 @@
 			<span *ngIf="validationErrors.message" class="text-brand-red text-sm mt-1">{{ validationErrors.message }}</span>
 		</div>
 		<!-- Row 4: Response Message & Submit Button -->
-		<div class="flex items-center justify-between gap-8">
+		<div class="flex flex-col sm:flex-row items-center justify-between gap-8">
             <p class="mt-2 text-lg text-left!" aria-live="polite">{{ responseMessage | async }}</p>
 			<button [disabled]="!contactForm.valid || submitted" id="contact-form-submit-button" type="submit" [class]="buttonColor" class="text-white px-6 py-2 rounded transition-colors cursor-pointer disabled:cursor-default">Contact</button>
 		</div>

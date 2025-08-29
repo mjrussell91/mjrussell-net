@@ -202,10 +202,10 @@ export class PageCv {
 				'Successfully built and deployed over 10 web applications with many complex custom features, reliable uptime and stability, and customisable for the user from their CMS'
 			],
 			projects: [
-				'WLTH Banking Customer Portal - Portal and dashboard access for to user to their data integrating Okta authentication, user preference management, securely proxied API calls, and security hardening',
+				`WLTH - Banking portal for WLTH customers to view account balances, transactions, interest rates, reward points, and other financial information as well as manage their customer details and preferences. Built with Nuxt and TypeScript, security hardened, Okta authentication, and integrated WLTH's APIs with secure API gateways.`,
 				'Pricing Tool - Internal tool that allows the client to match their Shopify products against pricing data scraped from various public sources using Puppeteer and APIs to inform pricing decisions. Built with Nuxt, Shopify, Directus, Puppeteer, and WebSockets',
 				'EverVessel - Web store with the front end built using React and Sanity APIs for the back end, custom components to allow users to enter text and images for laser engravings',
-				'GQS Tax Builder - Nuxt app that takes property inspection data for tax purposes, parses the data for assets into a table, allows the user to enter values and make changes, then the app automatically calculates and generates various tax deprecation schedules over 40 years as well as exporting the tables as a CSV so that they can be copied into reports'
+				'Tax Builder - Nuxt app that takes property inspection data for tax purposes, parses the data for assets into a table, allows the user to enter values and make changes, then the app automatically calculates and generates various tax deprecation schedules over 40 years as well as exporting the tables as a CSV so that they can be copied into reports'
 			]
 		},
 		{

@@ -44,7 +44,7 @@ export class PageCv {
 		institution: 'Griffith University',
 		year: new Date('2012-01-01'),
 		technicalCompetencies: [
-			'Advanced programming techniques and discrete mathematics', 
+			'Advanced programming concepts including algorithms and discrete mathematics', 
 			'Computer science, network engineering, and cybersecurity', 
 			'Systems analysis and design, database design and administration, information systems',
 			'Web development and user experience design',
@@ -130,18 +130,31 @@ export class PageCv {
 
 	protected readonly skills: Skills[] = [
 		{
-			title: 'Windows Server and Microsoft products',
+			title: 'Software Development',
 			skills: [
-				'Experienced in supporting Windows Server OSes, Domains, Active Directory, Group Policies, DFS, SCCM and Windows Patching',
-				'Managing AD Users and Groups, troubleshooting account issues, managing permissions and access to network fileshares, and user access reporting',
-				'Securing Windows systems and applying cybersecurity best practices by using host-based firewalls, network ACLs, least-privilege user access scanning and patching for known vulnerabilities',
-				'PowerShell to manage remote hosts, configure and automate tasks'
+				'Strong programming ability with knowledge in data structures, algorithms, and Object-Oriented Programming. Experienced in JavaScript/TypeScript, Bash, and SQL, with some experience in Rust, Python, PowerShell, Java, C, Objective C and C++',
+				'Experienced fullstack web developer with knowledge of JavaScript, TypeScript, frameworks such as Vue, Angular, and React. Good knowledge of HTTP requests and APIs, deploying websites, servers, firewalls, databases, and other services/APIs',
+				'Competent using Git and repositories such as GitHub and GitLab for code version control including cloning repositories, committing regularly with clear descriptions, branching, merging, and pull requests'
+			]
+		},
+		{
+			title: 'Systems Engineering and Scripting',
+			skills: [
+				'Strong terminal and Linux experience. Scripting and automation using Bash and PowerShell including managing and monitoring hosts and services',
+				'Systems administrator experienced in managing VMs, HyperVisors, and physical servers and applying least privilege principle to service accounts and file permissions',
+			]
+		},
+		{
+			title: 'Projects and Project Management',
+			skills: [
+				'Completed many web development projects from custom web stores to backend portals, tooling, and automation for businesses. Requirements gathering, application design, agile development process, deployment and security hardening, code handover, and maintenance including bug fixing and implementing additional features',
+				'Managed several server refresh projects to replace hardware and upgrade virtual servers. Hardware refresh included design and validation of the new systems, procurement, installation, and decommissioning of old equipment replacing many chassis, blades, rackmounts, and switches. Upgraded over 50 virtual servers and 10 applications to new OS/application versions and associated web, database, and application servers'
 			]
 		},
 		{
 			title: 'Virtualisation and Cloud',
 			skills: [
-				'Completed VMware vSphere v6.5 Install, Configure and Manage course.  Experience in deploying ESXi hosts, VMware appliances, virtual networking and network storage provisioning',
+				'Experienced in deploying ESXi hosts, VMware appliances, virtual networking and network storage provisioning. Completed VMware vSphere v6.5 Install, Configure and Manage course',
 				'Experienced in managing VM’s including hardware provisioning, snapshots and backups, fault tolerance, high availability and troubleshooting',
 				'Experience using Azure to deploy VM’s, import VM’s and other services such as SQL Cluster Fileshare Witnesses'
 			]
@@ -155,30 +168,20 @@ export class PageCv {
 			]
 		},
 		{
-			title: 'Programming and Scripting',
+			title: 'Windows Server and Microsoft products',
 			skills: [
-				'Strong programming ability with knowledge in data structures and algorithms. Experienced in JavaScript/TypeScript, Bash, and SQL. Some experience with Rust, Python, PowerShell, Java, C, Objective C and C++',
-				'Experienced fullstack web developer with knowledge of JavaScript, TypeScript, frameworks such as Vue, Angular, and React. Good knowledge of code management using Git, HTTP request and APIs, deploying websites, servers, databases, and other services/APIs.',
-				'Scripting and automation using Bash and PowerShell to manage servers, deployments and services, automatically install and update software to remote hosts, and manage fileshares'
-			]
-		},
-		{
-			title: 'Projects and Project Management',
-			skills: [
-				'Worked on several server refresh projects to replace hardware and upgrade virtual servers. For hardware this included design and validation of the new systems, procurement, installation, and decommissioning of old equipment, replacing many chassis, blades, rackmounts, and switches. Upgraded over 50 virtual servers and 10 applications to new OS/application versions and associated web, database, and application servers',
-				'Completed many web development projects from custom web stores to backend portals, tooling, and automation for businesses. Requirements gathering, application design, agile development process, deployment of site and security hardening, code handover, and maintenance including bug fixing and implementing new features',
-				'Completed a web-based system for an industry client with secure log in, user account management, web forms, PHP and SQL database. Gathered requirements from client, designed system, developed in agile project methodology, created documentation and delivered presentations. The project was completed on time and signed off by the client as meeting agreed specifications. I was awarded a High Distinction for this project',
-				'Workplace project to automate operational administrative tasks such as account provisioning and management of access to network fileshares. Current business and technical processes were analysed to determine critical points that require the most manual intervention. Through a combination of process changes and PowerShell scripts we are aiming to automate over 90% of the workload'
+				'Experienced in supporting Windows Server OSes, Domains, Active Directory, Group Policies, DFS, SCCM and Windows Patching',
+				'Managing AD Users and Groups, troubleshooting account issues, managing permissions and access to network fileshares, and user access reporting',
+				'Securing Windows systems and applying cybersecurity best practices by using host-based firewalls, network ACLs, least-privilege user access scanning and patching for known vulnerabilities',
+				'PowerShell to manage remote hosts, configure and automate tasks'
 			]
 		},
 		{
 			title: 'Client Service and Communication',
 			skills: [
-				'Strong communication skills with the ability to explain technical concepts to non-technical stakeholders',
+				'Strong written and verbal communication skills with the ability to explain technical concepts to non-technical stakeholders',
 				'Experienced in gathering requirements from clients and translating them into technical specifications',
-				'Proven track record of delivering high-quality customer service and support'
-// 	Focused on client satisfaction and outcomes, received Outstand Client Service aware and continued feedback from clients
-//  Strong written and verbal communication skills, ability to interface with clients of varying technical proficiency, experience in supporting executive clients
+				'Proven track record of delivering high-quality customer service and support, receiving Outstanding Client Service awards and continued feedback from clients'
 			]
 		}
 	];
@@ -199,16 +202,15 @@ export class PageCv {
 				'Successfully built and deployed over 10 web applications with many complex custom features, reliable uptime and stability, and customisable for the user from their CMS'
 			],
 			projects: [
-				'WLTH Banking Customer Portal - Nuxt app providing access for to user to their data integrating Okta authentication, user preference management, securely proxied API calls, and security hardening',
-				'The Reserve Pricing Tool - Used Puppeteer to scrape public pricing data for products and store them in Directus. The Nuxt app allowed the users to match scraped products against their own products from Shopify, compare prices against competitors, and show the largest price differential to ensure fair pricing of their products',
+				'WLTH Banking Customer Portal - Portal and dashboard access for to user to their data integrating Okta authentication, user preference management, securely proxied API calls, and security hardening',
+				'Pricing Tool - Internal tool that allows the client to match their Shopify products against pricing data scraped from various public sources using Puppeteer and APIs to inform pricing decisions. Built with Nuxt, Shopify, Directus, Puppeteer, and WebSockets',
 				'EverVessel - Web store with the front end built using React and Sanity APIs for the back end, custom components to allow users to enter text and images for laser engravings',
-				'ITP - Integrated AI tools for answering tax questions and booking appointments into a Vue front end. Used a custom built NodeJS Express app as an API to handle calls to OpenAI, manage conversations, and return responses to the front end',
 				'GQS Tax Builder - Nuxt app that takes property inspection data for tax purposes, parses the data for assets into a table, allows the user to enter values and make changes, then the app automatically calculates and generates various tax deprecation schedules over 40 years as well as exporting the tables as a CSV so that they can be copied into reports'
 			]
 		},
 		{
 			title: 'Social Analytics Lab Coordinator',
-			description: 'Managed the Social Analytics Lab at Griffith University, a research lab that stored, managed, and analysed administrative data for social science research. This involved compiling data for projects, managing users and project approvals, maintaining servers, and maintaining the physical and security infrastructure.',
+			description: 'Managed the Social Analytics Lab at Griffith University, a research lab that stored, managed, and analysed administrative data from several Queensland Government agencies for social science research. This involved compiling data for projects, managing user and project approvals, physical and computer access. Maintaining IT infrastructure, software, data, and security systems.',
 			organisation: 'Griffith University',
 			startDate: new Date('2019-07-01'),
 			endDate: new Date('2024-12-01'),
@@ -229,12 +231,9 @@ export class PageCv {
 			startDate: new Date('2018-03-01'),
 			endDate: new Date('2019-07-01'),
 			rolesAndDuties: [
-				'Maintaining and installing physical server hardware, including Dell M1000e chassis, Dell M-series blades, and Dell R-series servers, working with hardware vendors to support and repair hardware',
-				'Maintaining and extending warranty support for all server assets',
+				'Maintaining and installing physical server hardware, including Dell M1000e chassis, Dell M-series blades, and Dell R-series servers, working with hardware vendors to extend warranty support and repair hardware',
 				'Designing and quoting server hardware solutions to meet operational, project, and application requirements',
-				'On-call responsibility for diagnosing and resolving server incidents, production outage incidents as well as successful participation as primary contact for Disaster Recovery simulation event',
-				'Deploying and configuring Windows Server OSes and configuring for application requirements',
-				'Managing security hardening of servers and complying to Solution Architecture standards'
+				'Deploying and configuring Windows Server OSes and configuring applications to comply with the Solution Architecture and security hardening',
 			],
 			outcomesAndAchievements: [
 				'Successfully delivered Server Refresh Project 2018: Install and configure Dell M1000e chassis and Dell M640 blades, upgrade or decommission over 50 Windows 2008 R2 servers and 10 applications',
@@ -251,23 +250,20 @@ export class PageCv {
 			rolesAndDuties: [
 				'Diagnosing and resolving issues with Windows servers such as performance, disk capacity, access, firewall, and VMware host contention',
 				'On-call responsibility for diagnosing and resolving server incidents as well as successful participation as primary contact for Disaster Recovery simulation event',
-				'Deploying and configuring Windows Server OSes and configuration for application requirements',
 				'Provisioning and managing VMware VM’s including deployment, snapshots, disk management and hardware rightsizing, migrating hosts and managing performance',
-				'Managing physical hosts, working with vendors to resolve hardware faults',
 				'Managing Windows domains, AD accounts and groups, access to servers and network shares',
-				'Supervise and train new staff'
 			],
 			outcomesAndAchievements: [
+				'Completed a project to automate 90% of manual operational tasks through process changes and PowerShell scripts',
 				'Awarded System Administrator of the Month as nominated by colleagues',
-				'Continued feedback for high-levels of client satisfaction',
 				'Awarded for maintaining a high rate of service desk tickets resolved',
-				'Project to automate 90% of manual operational tasks through process changes and PowerShell scripts'
+				'Continued feedback for high-levels of client satisfaction'
 			],
 			projects: []
 		},
 		{
 			title: 'Computing Support Officer',
-			description: 'IT support of a fleet of nearly 5000 staff machines at Griffith University from a wide range of vendors, configurations, software, and peripherals.',
+			description: 'Support a fleet of nearly 5000 staff computers at Griffith University with a wide range of vendors, configurations, software, and peripherals.',
 			organisation: 'Griffith University',
 			startDate: new Date('2012-07-01'),
 			endDate: new Date('2016-11-01'),
@@ -284,12 +280,13 @@ export class PageCv {
 		},
 		{
 			title: 'Audiovisual Support Attendant',
-			description: 'Support of Griffith AV spaces; Lecture Theatres, Seminar Rooms, Video Conferences, Teaching Laboratories, Events',
+			description: 'Support of AV equipment and spaces including Lecture Theatres, Seminar Rooms, Video Conferences, Teaching Laboratories, and Events across Griffith University.',
 			organisation: 'Griffith University',
 			startDate: new Date('2011-12-01'),
 			endDate: new Date('2012-06-01'),
 			rolesAndDuties: [
-				'Support of AV equipment; Projectors, Lecture Capture/Echo 360, AMX touch panels and control panels, touch screens, Cisco control panels, Cisco Video Conference Televisions, Public Address systems, mixers, microphones and video cameras.',
+				'Support of Griffith AV spaces; Lecture Theatres, Seminar Rooms, Video Conferences, Teaching Laboratories, Events',
+				'Support of AV equipment; Projectors, Lecture Capture/Echo 360, AMX touch panels and control panels, touch screens, Cisco control panels, Cisco Video Conference Televisions, Public Address systems, mixers, microphones and video cameras',
 				'Supporting a wide range of clients from students to executives while while working within a team and independently, including on-call out of hours'
 			],
 			outcomesAndAchievements: [
@@ -300,14 +297,14 @@ export class PageCv {
 		},
 		{
 			title: 'Computer Laboratory Attendant',
-			description: 'Supported student, common use and teaching computer laboratories',
+			description: 'Support of hardware and software for student, common use, and teaching computer laboratories across multiple campuses at Griffith University.',
 			organisation: 'Griffith University',
 			startDate: new Date('2009-11-01'),
 			endDate: new Date('2011-11-01'),
 			rolesAndDuties: [
-				'Supported student, common use and teaching computer laboratories',
-				'Audit, clean, maintain and re-image computer laboratories',
-				'Supported clients in issues with using and teaching in computer laboratory spaces'
+				'Provide IT support for computers in laboratories including warranty repairs and managing software issues',
+				'Audit, clean, maintain, and re-image computer laboratories',
+				'Install new computer hardware including cable management and imaging, disposal of old equipment including wiping of data and e-waste'
 			],
 			outcomesAndAchievements: [
 				'Coordinated multiple staff at multiple locations in the installation of new computer laboratories and disposal of old equipment'

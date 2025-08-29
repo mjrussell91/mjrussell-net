@@ -35,7 +35,7 @@
     </div>
     <ul>
         <li *ngFor="let edu of education" class="list-none">
-            {{ edu.year | date: 'yyyy' }} <strong>{{ edu.title }}</strong>, {{ edu.institution }}
+            {{ edu.year | date: 'yyyy' }} <strong>&nbsp;{{ edu.title }}</strong>, {{ edu.institution }}
         </li>
     </ul>
     <br />
@@ -43,7 +43,7 @@
     <hr />
     <ul>
         <li *ngFor="let course of certsAndTraining">
-            {{ course.year | date: 'yyyy' }} <strong>{{ course.title }}</strong>, {{ course.institution }}
+            {{ course.year | date: 'yyyy' }} <strong>&nbsp;{{ course.title }}</strong>, {{ course.institution }}
         </li>
     </ul>
 
@@ -60,6 +60,9 @@
     <br />
     <h2 >Employment History</h2>
     <hr class="mb-4"/>
+    <p>Long and stable career working in the Higher Education sector at Griffith University from internal IT support and infrastructure roles to research management. 
+        Several years experience working as a software engineer developing various web applications and systems.</p>
+    <br />
     <ul *ngFor="let job of employmentHistory">
         <div class="flex justify-between pb-4">
             <span><strong>{{ job.title }}</strong>, {{ job.organisation }}</span>

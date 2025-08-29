@@ -1,5 +1,9 @@
 <article class="flex flex-col mx-auto gap-4">
     <h1>Projects</h1>
+    <p>Explore some of my personal and professional projects to see my work in action and a demonstration of my skills and experience in web development. GitHub repositories are provided where available but most code is private. 
+        Links to public projects are also provided where available. View my <a href="https://github.com/mjrussell91">GitHub profile</a> for more of my code. 
+    </p>
+    <br />
     <section *ngFor="let project of projects" class="mb-12">
         <div class="flex justify-between">
             <h2 class="pb-4 hover:text-white-1">
@@ -8,8 +12,7 @@
             </h2>
             <h3 class="justify-end text-white-2 flex gap-2 items-center mb-5 text-l ">
                 <app-icon *ngFor="let icon of project.icons" [icon]="icon" [size]="28"></app-icon>
-                <!-- <span *ngIf="project.icons.length > 0 && project.repository" class="mx-1"> | </span> -->
-                <a *ngIf="project.repository" [href]="project.repository" target="_blank" class="justify-end ml-4 hover:text-white-1 rounded-l-full rounded-r-full border-white-1 border-x-[2px] border-y-[2px] p-1">
+                <a *ngIf="project.repository" [href]="project.repository" target="_blank" class="justify-end ml-4 hover:text-white-1 rounded-l-full rounded-r-full border-white-1 border-[1px] p-1">
                     <span class="flex gap-2 items-center">
                         <app-icon [icon]="'github'" [size]="20"></app-icon>GitHub
                     </span>
@@ -17,11 +20,6 @@
             </h3>
         </div>
         <hr />
-
-        <!-- <div class="flex flex-row justify-between mb-6">
-            <a *ngIf="project.link" [href]="project.link" target="_blank" class="underline">{{ project.link }}</a>
-            <a *ngIf="project.repository" [href]="project.repository" target="_blank" class="justify-end underline">{{ project.repository }}</a>
-        </div> -->
         <p class="mt-6">
             {{ project.description }}
         </p>

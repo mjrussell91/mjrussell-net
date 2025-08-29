@@ -52,7 +52,7 @@ export class PageProjects {
 			link: null,
 			icons: ['firebase', 'nuxt'],
 			repository: null,
-			description: `An internal tool that lets the client to upload with one click inspection data including asset details collected from properties for the customer, combined with their value and other details to automatically generate tax depreciation schedules. `,
+			description: `An internal tool that lets the client to upload with one click inspection data from other tools that includes asset details collected from properties for the customer. They are combined with their value and other details such as renovation dates and common property to automatically calculate tax depreciation schedules. These are displayed in the app and exported and CSV files for easy reporting for the client. Built with Nuxt using Firebase as a backend for storing job data.`,
 			imageSrc: 'gqs-tax-build.png'
 		},
 		{
@@ -60,7 +60,7 @@ export class PageProjects {
 			link: 'https://www.evervessel.com',
 			icons: ['shopify', 'nuxt', 'typescript'],
 			repository: null,
-			description: `Web store for EverVessel water bottles and accessories built in React and using Shopify as a backend. Integrated e-commerce features and custom features such as a canvas element for custom text and logo engravings, and bulk purchasing options.`,
+			description: `Web store for EverVessel water bottles and accessories. Handles e-commerce features such as localisation for currency and shipping, trust bar with customer reviews, and features such as a canvas element for custom text and logo engravings during checkout, and bulk purchasing options. Built in React with TypeScript and a custom Sanity backend for managing products and orders.`,
 			imageSrc: 'evervessel.png'
 		},
 		{
@@ -68,13 +68,13 @@ export class PageProjects {
 			link: null,
 			icons: ['firebase', 'nuxt', 'typescript'],
 			repository: null,
-			description: `Portal to manage and automate orders for the engraving partner to display order details, group by SKU, print shipping labels, and update order statuses.`,
+			description: `Portal to manage and automate orders for the engraving partner by sorting orders into batches based on their date, grouping the batch by SKU, displaying order details, printing shipping labels, and updating order statuses.`,
 			imageSrc: 'ev-engraving-portal.png'
 		},
 		{
 			title: 'Pricing Tool',
 			link: null,
-			icons: ['shopify', 'websocket', 'nodejs', 'nuxt'],
+			icons: ['directus', 'shopify', 'websocket', 'nodejs', 'nuxt'],
 			repository: null,
 			description: `Internal tool that allows the client to match their Shopify products against pricing data scraped from various public sources to inform pricing decisions. Data collected from various APIs and websites with custom Puppeteer scripts that run on a schedule.
 			 Data is stored in a Directus CMS with a SQL database and accessed via a REST API. A custom WebSocket server passes events and real-time data to the client to show job and status updates, notifications, and logs to a terminal interface.
@@ -83,10 +83,10 @@ export class PageProjects {
 		},
 		{
 			title: 'WLTH - Customer Portal',
-			link: null,
+			link: 'https://wlth.com/',
 			icons: ['nuxt', 'typescript'],
 			repository: null,
-			description: `Banking portal for WLTH customers to view account balances, transactions, interest rates, bonus points and other financial information as well as manage their customer details and preferences. Built with nuxt and security hardened, the app integrated with WLTH's API through an API gateway.`,
+			description: `Banking portal for WLTH customers to view account balances, transactions, interest rates, reward points, and other financial information as well as manage their customer details and preferences. Built with Nuxt and TypeScript, security hardened, Okta authentication, and integrated WLTH's APIs with secure API gateways.`,
 			imageSrc: 'wlth-dashboard.png'
 		},
 		{
@@ -94,7 +94,7 @@ export class PageProjects {
 			link: 'https://www.emlpayments.com',
 			icons: ['wordpress', 'nuxt'],
 			repository: null,
-			description: `Public website for EML Payments company that shows payment solutions, use cases, company and investor details. Built with nuxt and a WordPress backend that used the ACF plugin so the client could manage content and pages through custom built block components.`,
+			description: `Public website for EML Payments that shows payment solutions, use cases, company and investor details. Built with Nuxt and a WordPress backend that combines the ACF plugin and custom block components to allow the client to edit and add content.`,
 			imageSrc: 'eml-payments.png'
 		},
 	];

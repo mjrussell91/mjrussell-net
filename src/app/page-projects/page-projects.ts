@@ -25,7 +25,7 @@ export class PageProjects {
 			icons: ['angular', 'typescript'],
 			repository: 'https://github.com/mjrussell91/mjrussell-net',
 			description: `A personal website built with Angular, showcasing my CV, projects, skills, and experience. It serves as a portfolio and a demonstration of my ability to design, build, and deploy web applications.`,
-			imageSrc: 'mjrussell-net.png'
+			imageSrc: 'mjrussell-net.jpg'
 		},
 		{
 			title: 'Project Euler',
@@ -34,7 +34,7 @@ export class PageProjects {
 			repository: 'https://github.com/mjrussell91/project-euler',
 			description: `Solutions for Project Euler (projecteuler.net) problems written in Rust. Project Euler exists to encourage, challenge, and develop the skills and enjoyment of anyone with an interest in the fascinating world of mathematics. 
 			Solutions to problems should be found in under a minute with an efficiently designed program on a modest computer. These puzzles are a fun intersection between maths and programming that challenge me.`,
-			imageSrc: 'project-euler.png'
+			imageSrc: 'project-euler.jpg'
 		},
 		{
 			title: 'MJR Portal',
@@ -45,7 +45,7 @@ export class PageProjects {
 			Interactive web-based music client with playlist management, library, and controls for the MPD music player with a NodeJS backend that integrates with the MPD instance. Custom notepad, wiki, code snippets, and quick references stored in a Directus backend and QuillJS as a text editor. 
 			Dashboards that monitor the status and performance of my machines and servers using data from the Glances web API. The joy of programming is being able to hand craft tools and solutions that suit your own needs and workflow. Hosted on an AWS EC2 instance using using SSR and PM2 to manage the server and related NodeJS backend with Nginx as a reverse proxy supplying HTTPS.
 			`,
-			imageSrc: 'mjr-portal.png'
+			imageSrc: 'mjr-portal.jpg'
 		},
 		{
 			title: 'GQS - Tax Builder',
@@ -53,7 +53,7 @@ export class PageProjects {
 			icons: ['firebase', 'nuxt'],
 			repository: null,
 			description: `An internal tool that lets the client to upload with one click inspection data from other tools that includes asset details collected from properties for the customer. They are combined with their value and other details such as renovation dates and common property to automatically calculate tax depreciation schedules. These are displayed in the app and exported and CSV files for easy reporting for the client. Built with Nuxt using Firebase as a backend for storing job data.`,
-			imageSrc: 'gqs-tax-build.png'
+			imageSrc: 'gqs-tax-build.jpg'
 		},
 		{
 			title: 'EverVessel',
@@ -61,7 +61,7 @@ export class PageProjects {
 			icons: ['shopify', 'nuxt', 'typescript'],
 			repository: null,
 			description: `Web store for EverVessel water bottles and accessories. Handles e-commerce features such as localisation for currency and shipping, trust bar with customer reviews, and features such as a canvas element for custom text and logo engravings during checkout, and bulk purchasing options. Built in React with TypeScript and a custom Sanity backend for managing products and orders.`,
-			imageSrc: 'evervessel.png'
+			imageSrc: 'evervessel.jpg'
 		},
 		{
 			title: 'EverVessel - Engraving Portal',
@@ -69,7 +69,7 @@ export class PageProjects {
 			icons: ['firebase', 'nuxt', 'typescript'],
 			repository: null,
 			description: `Portal to manage and automate orders for the engraving partner by sorting orders into batches based on their date, grouping the batch by SKU, displaying order details, printing shipping labels, and updating order statuses.`,
-			imageSrc: 'ev-engraving-portal.png'
+			imageSrc: 'ev-engraving-portal.jpg'
 		},
 		{
 			title: 'Pricing Tool',
@@ -79,7 +79,7 @@ export class PageProjects {
 			description: `Internal tool that allows the client to match their Shopify products against pricing data scraped from various public sources to inform pricing decisions. Data collected from various APIs and websites with custom Puppeteer scripts that run on a schedule.
 			 Data is stored in a Directus CMS with a SQL database and accessed via a REST API. A custom WebSocket server passes events and real-time data to the client to show job and status updates, notifications, and logs to a terminal interface.
 			 Interface includes a search, product list, websites, running jobs, queued jobs, terminal interface for job logs and progress, and an interactive product matching interface to verify scraped data against Shopify products. Combing to create a dashboard that highlights the largest pricing differentials, new products, and stale data.`,
-			imageSrc: 'pricing-tool.png'
+			imageSrc: 'pricing-tool.jpg'
 		},
 		{
 			title: 'WLTH - Customer Portal',
@@ -87,7 +87,7 @@ export class PageProjects {
 			icons: ['nuxt', 'typescript'],
 			repository: null,
 			description: `Banking portal for WLTH customers to view account balances, transactions, interest rates, reward points, and other financial information as well as manage their customer details and preferences. Built with Nuxt and TypeScript, security hardened, Okta authentication, and integrated WLTH's APIs with secure API gateways.`,
-			imageSrc: 'wlth-dashboard.png'
+			imageSrc: 'wlth-dashboard.jpg'
 		},
 		{
 			title: 'EML Payments',
@@ -95,7 +95,7 @@ export class PageProjects {
 			icons: ['wordpress', 'nuxt'],
 			repository: null,
 			description: `Public website for EML Payments that shows payment solutions, use cases, company and investor details. Built with Nuxt and a WordPress backend that combines the ACF plugin and custom block components to allow the client to edit and add content.`,
-			imageSrc: 'eml-payments.png'
+			imageSrc: 'eml-payments.jpg'
 		},
 	];
 }

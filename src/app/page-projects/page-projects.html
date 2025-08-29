@@ -23,6 +23,6 @@
         <p class="mt-6">
             {{ project.description }}
         </p>
-        <img *ngIf="project.imageSrc" [src]="project.imageSrc" [alt]="project.title" class="rounded-md border-white-1 border-2 mt-6"/>
+        <img *ngIf="project.imageSrc" [src]="'projects/' + project.imageSrc" [alt]="project.title" class="rounded-md border-white-1 border-2 mt-6"/>
     </section>
 </article>

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Title } from '@angular/platform-browser';
+import { Title, Meta } from '@angular/platform-browser';
 
 type Degree = {
 	title: string;
@@ -39,9 +39,11 @@ type Employment = {
 	styleUrl: './page-cv.css'
 })
 export class PageCv {
-	constructor(private title: Title) {
+	constructor(private title: Title, private meta: Meta) {
 		this.title.setTitle('Matthew Russell | CV');
+		this.meta.updateTag({ name: 'description', content: 'Curriculum Vitae (CV, resume, resumé) of Matthew Russell, a software and systems engineer from Brisbane, Australia. Includes education, training, skills, and experience.' });
 	}
+
 	protected readonly degree: Degree = {
 		title: 'Bachelor of Information Technology',
 		major: 'Major in Marketing & Management',

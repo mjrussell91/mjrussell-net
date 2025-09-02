@@ -1,4 +1,4 @@
-import { Title } from '@angular/platform-browser';
+import { Title, Meta } from '@angular/platform-browser';
 import { Component } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { HttpClient } from "@angular/common/http";
@@ -27,11 +27,12 @@ type ContactFormValidation = {
 	styleUrl: "./page-contact.css",
 })
 export class PageContact {
-	constructor(private title: Title, private http: HttpClient) {
+	constructor(private title: Title, private meta: Meta, private http: HttpClient) {
 		this.title.setTitle('Matthew Russell | Contact');
+		this.meta.updateTag({ name: 'description', content: 'Contact page for Matthew Russell, a software and systems engineer from Brisbane, Australia. Get in touch for inquiries about my Curriculum Vitae (CV, resume, resumé), projects, work, freelance, job, offer, interview, opportunities, and more.' });
 	}
 
-  	form: ContactFormData = {
+	form: ContactFormData = {
 		name: "",
 		organisation: "",
 		email: "",

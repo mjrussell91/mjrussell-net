@@ -1,7 +1,7 @@
-<header class="bg-blue-1"> <!--  sm:grid-rows-2 -->
+<header class="bg-blue-1">
     <div class="container mx-auto md:px-6 grid md:grid-cols-2 mb-4 md:mb-6 items-center py-1">
         <div>
-            <h1 class="font-bold tracking-[0.025em] text-[1.6em] text-center md:text-left align-middle">Matthew Russell</h1>
+            <h1 class="font-black tracking-[0.025em]  text-[1.61em] text-center md:text-left">Matthew Russell</h1>
         </div>
         <nav class="flex space-x-4 tracking-[0.025em] text-[1.13em]  md:justify-end justify-center text-gray-1">
             <a *ngFor="let nav of navs" [routerLink]="nav.route" [routerLinkActive]="'text-white-1'" class="hover:text-white-1 ">{{ nav.label }}</a>

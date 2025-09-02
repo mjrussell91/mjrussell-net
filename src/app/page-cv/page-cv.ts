@@ -44,8 +44,8 @@ export class PageCv {
 		institution: 'Griffith University',
 		year: new Date('2012-01-01'),
 		technicalCompetencies: [
-			'Advanced programming concepts including algorithms and discrete mathematics', 
-			'Computer science, network engineering, and cybersecurity', 
+			'Object-oriented programming, data structures, algorithms, and discrete mathematics',
+			'Computer science, network engineering, and cybersecurity',
 			'Systems analysis and design, database design and administration, information systems',
 			'Web development and user experience design',
 		],
@@ -290,8 +290,8 @@ export class PageCv {
 				'Supporting a wide range of clients from students to executives while while working within a team and independently, including on-call out of hours'
 			],
 			outcomesAndAchievements: [
-				'Received Outstanding Client Service award in this role',
-				'Team was nominated for Outstanding Client Service award in this role'
+				'Received Outstanding Client Service award',
+				'Team was nominated for Outstanding Client Service award'
 			],
 			projects: []
 		},

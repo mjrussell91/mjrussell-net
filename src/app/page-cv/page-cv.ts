@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Title } from '@angular/platform-browser';
 
 type Degree = {
 	title: string;
@@ -38,6 +39,9 @@ type Employment = {
 	styleUrl: './page-cv.css'
 })
 export class PageCv {
+	constructor(private titleService: Title) {
+		this.titleService.setTitle('Matthew Russell | CV');
+	}
 	protected readonly degree: Degree = {
 		title: 'Bachelor of Information Technology',
 		major: 'Major in Marketing & Management',

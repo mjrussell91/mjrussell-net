@@ -1,3 +1,4 @@
+import { Title } from '@angular/platform-browser';
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Icon } from "../icon/icon";
@@ -18,6 +19,9 @@ type Project = {
 	styleUrl: './page-projects.css'
 })
 export class PageProjects {
+	constructor(private titleService: Title) {
+		this.titleService.setTitle('Matthew Russell | Projects');
+	}
 	protected readonly projects: Project[] = [
 		{
 			title: 'mjrussell.net',

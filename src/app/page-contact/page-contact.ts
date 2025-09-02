@@ -1,3 +1,4 @@
+import { Title } from '@angular/platform-browser';
 import { Component } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { HttpClient } from "@angular/common/http";
@@ -26,7 +27,9 @@ type ContactFormValidation = {
 	styleUrl: "./page-contact.css",
 })
 export class PageContact {
-	constructor(private http: HttpClient) { }
+	constructor(private titleService: Title, private http: HttpClient) {
+		this.titleService.setTitle('Matthew Russell | Contact');
+	}
 
   	form: ContactFormData = {
 		name: "",

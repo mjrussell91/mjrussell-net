@@ -50,14 +50,14 @@ section, article {
     margin-right: auto;
 
     h1 {
-        font-size: 2rem;
+        font-size: 2.1rem;
         font-weight: 550;
         color: var(--color-white-1);
         text-align: center;
     }
 
     h2 {
-        font-size: 1.6rem;
+        font-size: 1.7rem;
         font-weight: 450;
         color: var(--color-white-1);
     }
@@ -70,7 +70,7 @@ section, article {
     p {
         color: var(--color-white-2);
         /* text-align: justify; */
-        
+        font-size: 1.05em;
         font-weight: 300;
     
         a {
@@ -84,6 +84,7 @@ section, article {
     }
 
     li {
+        /* font-size: 1.05em; */
         font-weight: 300;
     }
 

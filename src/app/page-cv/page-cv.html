@@ -64,9 +64,9 @@
         Several years experience working as a software engineer developing various web applications and systems.</p>
     <br />
     <ul *ngFor="let job of employmentHistory">
-        <div class="flex justify-between pb-4">
-            <span><strong>{{ job.title }}</strong>, {{ job.organisation }}</span>
-            <span class="justify-end"><strong>{{ job.startDate | date: 'MMM yyyy' }} - {{ job.endDate ? (job.endDate | date: 'MMM yyyy') : 'Present' }}</strong></span>
+        <div class="flex justify-between pb-4 text-[1.15em] font-[250]">
+            <span class=""><strong class="font-[300]!">{{ job.title }}</strong>, {{ job.organisation }}</span>
+            <span class="justify-end"><strong class="font-[300]!">{{ job.startDate | date: 'MMM yyyy' }} - {{ job.endDate ? (job.endDate | date: 'MMM yyyy') : 'Present' }}</strong></span>
         </div>
         <hr />
         <p class="my-4">{{ job.description }}</p>

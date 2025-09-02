@@ -69,7 +69,7 @@ section, article {
 
     p {
         color: var(--color-white-2);
-        text-align: justify;
+        /* text-align: justify; */
         
         font-weight: 300;
     

@@ -11,10 +11,10 @@ import { RouterModule } from '@angular/router';
 	styleUrl: './page-about.css'
 })
 export class PageAbout {
-	constructor(private titleService: Title) {
-		this.titleService.setTitle('Matthew Russell | About');
+	constructor(private title: Title) {
+		this.title.setTitle('Matthew Russell | About');
 	}
-	
+
 	protected readonly profileSrc = 'profile.jpg';
 
 }

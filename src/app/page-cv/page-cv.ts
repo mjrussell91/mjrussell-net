@@ -39,8 +39,8 @@ type Employment = {
 	styleUrl: './page-cv.css'
 })
 export class PageCv {
-	constructor(private titleService: Title) {
-		this.titleService.setTitle('Matthew Russell | CV');
+	constructor(private title: Title) {
+		this.title.setTitle('Matthew Russell | CV');
 	}
 	protected readonly degree: Degree = {
 		title: 'Bachelor of Information Technology',

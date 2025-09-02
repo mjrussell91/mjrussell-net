@@ -27,8 +27,8 @@ type ContactFormValidation = {
 	styleUrl: "./page-contact.css",
 })
 export class PageContact {
-	constructor(private titleService: Title, private http: HttpClient) {
-		this.titleService.setTitle('Matthew Russell | Contact');
+	constructor(private title: Title, private http: HttpClient) {
+		this.title.setTitle('Matthew Russell | Contact');
 	}
 
   	form: ContactFormData = {

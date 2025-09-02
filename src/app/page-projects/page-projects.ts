@@ -19,8 +19,8 @@ type Project = {
 	styleUrl: './page-projects.css'
 })
 export class PageProjects {
-	constructor(private titleService: Title) {
-		this.titleService.setTitle('Matthew Russell | Projects');
+	constructor(private title: Title) {
+		this.title.setTitle('Matthew Russell | Projects');
 	}
 	protected readonly projects: Project[] = [
 		{

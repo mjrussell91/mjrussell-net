@@ -4,7 +4,7 @@
             <h1 class="font-black tracking-[0.025em]  text-[1.61em] text-center md:text-left">Matthew Russell</h1>
         </div>
         <nav class="flex space-x-4 tracking-[0.025em] text-[1.13em]  md:justify-end justify-center text-gray-1">
-            <a *ngFor="let nav of navs" [routerLink]="nav.route" [routerLinkActive]="'text-white-1'" class="hover:text-white-1 ">{{ nav.label }}</a>
+            <a *ngFor="let nav of navs" [routerLink]="nav.route" [routerLinkActive]="'text-white-1'" [routerLinkActiveOptions]="{ exact: true }" class="hover:text-white-1 ">{{ nav.label }}</a>
         </nav>
     </div>
 </header>

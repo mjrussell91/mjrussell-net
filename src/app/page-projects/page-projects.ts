@@ -76,7 +76,7 @@ export class PageProjects {
 			imageSrc: 'mjr-portal.jpg'
 		},
 		{
-			title: 'GQS - Tax Builder',
+			title: 'Tax Builder',
 			link: null,
 			technologies: ['firebase', 'nuxt'],
 			repository: null,
@@ -92,7 +92,7 @@ export class PageProjects {
 			imageSrc: 'evervessel.jpg'
 		},
 		{
-			title: 'EverVessel - Engraving Portal',
+			title: 'Engraving Portal',
 			link: null,
 			technologies: ['firebase', 'nuxt', 'typescript'],
 			repository: null,

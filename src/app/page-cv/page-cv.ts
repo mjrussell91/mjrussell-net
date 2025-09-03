@@ -22,6 +22,12 @@ type Skills = {
 	skills: string[];
 }
 
+type Technologies = {
+	title: string;
+	icons: string[];
+	skills: string[];
+}
+
 type Employment = {
 	title: string;
 	description: string;
@@ -187,6 +193,90 @@ export class PageCv {
 		}
 	];
 
+	protected readonly technologies: Technologies[] = [
+		{
+			title: 'Containers and Docker',
+			icons: ['docker'],
+			skills: [
+				'can run containers, run apps as services using docker-compose, manage containers by listing, clearing unused containers and volumes through terminal or GUI',
+				'package apps as containers, pass in data/directories, pass in secrets, debug build issues',
+				'debug containers through shell access'
+			]
+		},
+		{
+			title: 'Git, GitHub & GitLab',
+			icons: ['git', 'gitlab','github'],
+			skills: [
+				'Familiar with core version control concepts and git version control, collaboration, branches, prs, code review, issue tracking, CI/CD integration, using other repos like GitLab, using terminal and GUI from IDE or standalone app',
+			]
+		},
+		{
+			title: 'Windows',
+			icons: ['windows'],
+			skills: [
+				'Servers, AD, domains, etc',
+			]
+		},
+		{
+			title: 'Linux',
+			icons: ['linux'],
+			skills: [
+				'package managers, services/systemd, networking, firewalls, users/groups, permissions, bash scripting',
+			]
+		},
+		{
+			title: 'AWS',
+			icons: ['aws'],
+			skills: [
+				'EC2, EBS, S3, Lambda, API Gateway, RDS, KMS, IAM, CLI',
+			]
+		},
+		{
+			title: 'Vue/Nuxt',
+			icons: ['vue', 'nuxt'],
+			skills: [
+				'generate projects, app config, new components, routing, pipes, binding and HTML syntax for loops, ifs, data binding (v-bind:), dynamic classes and attributes, dev server, builds, environments, proxy, debugging',
+			]
+		},
+		{
+			title: 'Angular',
+			icons: ['angular'],
+			skills: [
+				'generate projects, app config, new components, modules, routing, pipes, binding and HTML syntax for loops, ifs, data binding (inputs, outputs), dynamic classes and attributes, observables, dev server, builds, environments, proxy, debugging',
+			]
+		},
+		{
+			title: 'TypeScript',
+			icons: ['typescript'],
+			skills: [
+				'declaring types and interfaces (or are they classes?), typing vars, working with existing types (installing/importing them from repos), typesafty',
+			]
+		},
+		{
+			title: 'Web Servers, Nginx, Apache',
+			icons: ['nginx', 'apache'],
+			skills: [
+				'installation, configuring sites, ports, redirects, auth, certificates including generating and renewing,',
+			]
+		},
+		{
+			title: 'Databases, SQL, Postgres',
+			icons: ['postgres','sql', 'postgres'],
+			skills: [
+				'installation, configuring servers with users and sockets/bind IPs, service accounts, creating databases and tables, managing database permissions, connecting and DB client tools, service management, logging, backups, restoring',
+				'writing queries, temp tables, procedures/functions'
+			]
+		},
+		{
+			title: 'Others',
+			icons: [],
+			skills: [
+				'state management like pinia for various frameworks, wrote own state service for angular, state is immutables and shares data consistently and efficiently across an application, enables reactivity',
+				'JSON DBs like firebase? guess it doesnt hurt and I already have an icon'
+			]
+		},
+	];
+
 	protected readonly employmentHistory: Employment[] = [
 		{
 			title: 'Software Engineer',
@@ -262,56 +352,56 @@ export class PageCv {
 			],
 			projects: []
 		},
-		{
-			title: 'Computing Support Officer',
-			description: 'Support a fleet of nearly 5000 staff computers at Griffith University with a wide range of vendors, configurations, software, and peripherals.',
-			organisation: 'Griffith University',
-			startDate: new Date('2012-07-01'),
-			endDate: new Date('2016-11-01'),
-			rolesAndDuties: [
-				'Responsible for managing the lifecycle of machines from various vendors such as Dell, HP , and Apple and included quoting, procurement, setup, installation and migration of user data and software, support and warranty, and asset disposal',
-				'Managed Windows, macOS and Linux machines with a multitude of software packages and peripheral devices. Includes BYOD devices such as iOS and Android phones and tables',
-				'Diagnose and resolve complex technical issues across a wide variety of software and hardware',
-				'Excellent client service and communication while managing work based on ITIL principles'
-			],
-			outcomesAndAchievements: [
-				'Development and support of Griffith University Red Zone, an innovative technology space that used large tiled screens with meshed display, convoluted projectors onto a curved surface, and interactive topology projection using silicone sand'
-			],
-			projects: []
-		},
-		{
-			title: 'Audiovisual Support Attendant',
-			description: 'Support of AV equipment and spaces including Lecture Theatres, Seminar Rooms, Video Conferences, Teaching Laboratories, and Events across Griffith University.',
-			organisation: 'Griffith University',
-			startDate: new Date('2011-12-01'),
-			endDate: new Date('2012-06-01'),
-			rolesAndDuties: [
-				'Support of Griffith AV spaces; Lecture Theatres, Seminar Rooms, Video Conferences, Teaching Laboratories, Events',
-				'Support of AV equipment; Projectors, Lecture Capture/Echo 360, AMX touch panels and control panels, touch screens, Cisco control panels, Cisco Video Conference Televisions, Public Address systems, mixers, microphones and video cameras',
-				'Supporting a wide range of clients from students to executives while while working within a team and independently, including on-call out of hours'
-			],
-			outcomesAndAchievements: [
-				'Received Outstanding Client Service award',
-				'Team was nominated for Outstanding Client Service award'
-			],
-			projects: []
-		},
-		{
-			title: 'Computer Laboratory Attendant',
-			description: 'Support of hardware and software for student, common use, and teaching computer laboratories across multiple campuses at Griffith University.',
-			organisation: 'Griffith University',
-			startDate: new Date('2009-11-01'),
-			endDate: new Date('2011-11-01'),
-			rolesAndDuties: [
-				'Provide IT support for computers in laboratories including warranty repairs and managing software issues',
-				'Audit, clean, maintain, and re-image computer laboratories',
-				'Install new computer hardware including cable management and imaging, disposal of old equipment including wiping of data and e-waste'
-			],
-			outcomesAndAchievements: [
-				'Coordinated multiple staff at multiple locations in the installation of new computer laboratories and disposal of old equipment'
-			],
-			projects: []
-		}
+		// {
+		// 	title: 'Computing Support Officer',
+		// 	description: 'Support a fleet of nearly 5000 staff computers at Griffith University with a wide range of vendors, configurations, software, and peripherals.',
+		// 	organisation: 'Griffith University',
+		// 	startDate: new Date('2012-07-01'),
+		// 	endDate: new Date('2016-11-01'),
+		// 	rolesAndDuties: [
+		// 		'Responsible for managing the lifecycle of machines from various vendors such as Dell, HP , and Apple and included quoting, procurement, setup, installation and migration of user data and software, support and warranty, and asset disposal',
+		// 		'Managed Windows, macOS and Linux machines with a multitude of software packages and peripheral devices. Includes BYOD devices such as iOS and Android phones and tables',
+		// 		'Diagnose and resolve complex technical issues across a wide variety of software and hardware',
+		// 		'Excellent client service and communication while managing work based on ITIL principles'
+		// 	],
+		// 	outcomesAndAchievements: [
+		// 		'Development and support of Griffith University Red Zone, an innovative technology space that used large tiled screens with meshed display, convoluted projectors onto a curved surface, and interactive topology projection using silicone sand'
+		// ]	],
+		// 	projects: []
+		// },
+		// {
+		// 	title: 'Audiovisual Support Attendant',
+		// 	description: 'Support of AV equipment and spaces including Lecture Theatres, Seminar Rooms, Video Conferences, Teaching Laboratories, and Events across Griffith University.',
+		// 	organisation: 'Griffith University',
+		// 	startDate: new Date('2011-12-01'),
+		// 	endDate: new Date('2012-06-01'),
+		// 	rolesAndDuties: [
+		// 		'Support of Griffith AV spaces; Lecture Theatres, Seminar Rooms, Video Conferences, Teaching Laboratories, Events',
+		// 		'Support of AV equipment; Projectors, Lecture Capture/Echo 360, AMX touch panels and control panels, touch screens, Cisco control panels, Cisco Video Conference Televisions, Public Address systems, mixers, microphones and video cameras',
+		// 		'Supporting a wide range of clients from students to executives while while working within a team and independently, including on-call out of hours'
+		// 	],
+		// 	outcomesAndAchievements: [
+		// 		'Received Outstanding Client Service award',
+		// 		'Team was nominated for Outstanding Client Service award'
+		// 	],
+		// 	projects: []
+		// },
+		// {
+		// 	title: 'Computer Laboratory Attendant',
+		// 	description: 'Support of hardware and software for student, common use, and teaching computer laboratories across multiple campuses at Griffith University.',
+		// 	organisation: 'Griffith University',
+		// 	startDate: new Date('2009-11-01'),
+		// 	endDate: new Date('2011-11-01'),
+		// 	rolesAndDuties: [
+		// 		'Provide IT support for computers in laboratories including warranty repairs and managing software issues',
+		// 		'Audit, clean, maintain, and re-image computer laboratories',
+		// 		'Install new computer hardware including cable management and imaging, disposal of old equipment including wiping of data and e-waste'
+		// 	],
+		// 	outcomesAndAchievements: [
+		// 		'Coordinated multiple staff at multiple locations in the installation of new computer laboratories and disposal of old equipment'
+		// 	],
+		// 	projects: []
+		// }
 	];
 
 	protected readonly honoursAndAchievements: Education[] = [

@@ -21,7 +21,6 @@ export class App {
 	updateDescription(desc: string) {
 		this.meta.updateTag({ name: 'description', content: desc })
 	}
-	
 
 	ngOnInit() {
 		this.router.events.pipe(

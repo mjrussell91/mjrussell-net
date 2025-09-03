@@ -15,8 +15,8 @@
                     <app-icon *ngIf="getTech(tech)?.selector" [icon]="getTech(tech)?.selector" [size]="30"></app-icon>
                 </a>
                 <a *ngIf="project.repository" [href]="project.repository" target="_blank" class="justify-end ml-4 ">
-                    <button class="flex gap-2 items-center px-3 py-1 bg-brand-blue rounded text-white-2 hover:text-white-1 hover:cursor-pointer hover:drop-shadow-xs hover:drop-shadow-brand-blue">
-                        <app-icon [icon]="'github'" [size]="20"></app-icon>GitHub
+                    <button class="flex gap-2 items-center px-3 py-1 bg-brand-blue rounded-sm text-white-1 hover:cursor-pointer">
+                        <app-icon [icon]="'github'" [size]="20" [color]="'var(--color-white-1)'"></app-icon>GitHub
                     </button>
                 </a>
             </h3>

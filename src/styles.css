@@ -77,10 +77,10 @@ section, article {
     
         a {
             color: var(--color-brand-blue);
-            text-decoration: underline;
-    
+            
             &:hover {
-                color: var(--color-white-1);
+                text-decoration: underline;
+                /* color: var(--color-white-1); */
             }
         }
     }

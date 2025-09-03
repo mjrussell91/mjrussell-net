@@ -11,5 +11,5 @@ import { RouterModule } from '@angular/router';
 	styleUrl: './page-about.css'
 })
 export class PageAbout {
-	protected readonly profileSrc = 'profile.jpg';
+	protected readonly profileSrc = 'profile.webp';
 }

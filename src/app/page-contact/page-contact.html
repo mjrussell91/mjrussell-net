@@ -41,7 +41,7 @@
             <p class="mt-2 text-lg my-auto!" aria-live="polite">{{ responseMessage | async }}</p>
             <button *ngIf="formState == 'invalid'" class="text-white-1 px-6 py-2 rounded-sm bg-white-3 cursor-not-allowed">Contact</button>
             <button *ngIf="formState == 'valid'" class="text-white-1 px-6 py-2 rounded-sm bg-brand-blue cursor-pointer">Contact</button>
-            <button *ngIf="formState == 'loading'" class="text-white-1 px-6 py-2 rounded-sm bg-white-3 cursor-wait">Loading...</button>
+            <button *ngIf="formState == 'loading'" class="text-white-1 px-6 py-2 rounded-sm bg-white-3 cursor-wait">Sending...</button>
             <button *ngIf="formState == 'success'" class="text-white-1 px-6 py-2 rounded-sm bg-brand-green cursor-default">Success</button>
             <button *ngIf="formState == 'error'" class="text-white-1 px-6 py-2 rounded-sm bg-brand-red cursor-default">Error</button>
 		</div>

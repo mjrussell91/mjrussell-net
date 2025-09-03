@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
 export class Icon {
 	color = input<string>('var(--color-white-1)');
 	size = input<number>(18);
-	icon = input.required<string>();
+	icon = input.required<string | undefined>();
 
 
 	public fillColor = computed(() => `${this.color()}`);

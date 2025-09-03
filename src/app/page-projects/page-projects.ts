@@ -1,5 +1,4 @@
-import { Title, Meta } from '@angular/platform-browser';
-import { Component, computed } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Icon } from "../icon/icon";
 
@@ -24,11 +23,6 @@ type Technology = {
 	styleUrl: './page-projects.css'
 })
 export class PageProjects {
-	constructor(private title: Title, private meta: Meta) {
-		this.title.setTitle('Matthew Russell | Projects');
-		this.meta.updateTag({ name: 'description', content: 'A list of projects built by Matthew Russell, showcasing my work and demonstrating my skills and experience. Links and GitHub repositories that are public are provided. Projects include mjrussell.net, Project Euler, MJR Portal, Tax Builder, EverVessel, Engraving Portal, Pricing Tool, Customer Portal, and EML Payments.' });
-	}
-
 	public getTech(selector: string): Technology | undefined {
 		return this.technologies.find((f: Technology) => f.selector == selector)
 	}

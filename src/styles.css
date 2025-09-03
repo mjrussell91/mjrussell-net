@@ -71,7 +71,7 @@ section, article {
 
     p {
         color: var(--color-white-2);
-        /* text-align: justify; */
+        text-align: justify;
         font-size: 1.05em;
         font-weight: 300;
     

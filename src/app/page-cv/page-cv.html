@@ -1,6 +1,21 @@
 <section class="flex flex-col mx-auto gap-4">
     <h1 class="pb-6">Curriculum Vitae</h1>
-    <h2>Matthew Russell</h2>
+    <p>
+        Currently seeking remote (or Brisbane-based) opportunities for technical work where I can contribute as part of a team towards building applications and solving problems.
+    </p>
+
+    <!-- Table of Contents -->
+    <ul class="text-white-2">
+        Jump to:
+        <li class="list-disc ml-6"><a href="/cv#education" class="text-brand-blue hover:underline">Education</a></li>
+        <li class="list-disc ml-6"><a href="/cv#certs" class="text-brand-blue hover:underline">Certifications and Training</a></li>
+        <li class="list-disc ml-6"><a href="/cv#skills" class="text-brand-blue hover:underline">Skills and Attributes</a></li>
+        <li class="list-disc ml-6"><a href="/cv#employment" class="text-brand-blue hover:underline">Employment History</a></li>
+        <li class="list-disc ml-6"><a href="/cv#honours" class="text-brand-blue hover:underline">Honours and Achievements</a></li>
+        <li class="list-disc ml-6"><a href="/cv#references" class="text-brand-blue hover:underline">References</a></li>
+    </ul>
+
+    <h2 class="pt-6">Matthew Russell</h2>
     <hr />
     <p>
         An educated and experienced systems and software engineer  interested in technical work that is engaging and
@@ -8,11 +23,9 @@
         the computer systems that they’re founded on. A personable and clear communicator who works well in teams and collaborating with others. 
         Capable of managing projects and completing tasks independently to deliver results.
     </p>
-     <p>
-        Currently seeking remote (or Brisbane-based) opportunities for technical work where I can contribute as part of a team towards building applications and solving problems.
-    </p>
     <br />
-    <h2>Education</h2>
+
+    <h2 id="education">Education</h2>
     <hr />
     <div class="flex flex-col font-sans">
         <div class="flex flex-row gap-2">
@@ -39,16 +52,17 @@
         </li>
     </ul>
     <br />
-    <h2>Certifications and Training</h2>
+
+    <h2 id="certs">Certifications and Training</h2>
     <hr />
     <ul>
         <li *ngFor="let course of certsAndTraining">
             {{ course.year | date: 'yyyy' }} <strong>&nbsp;{{ course.title }}</strong>, {{ course.institution }}
         </li>
     </ul>
-
     <br />
-    <h2>Skills and Attributes</h2>
+
+    <h2 id="skills">Skills and Attributes</h2>
     <hr />
     <ul *ngFor="let category of skills">
         <strong>{{ category.title }}</strong>
@@ -56,17 +70,17 @@
             {{ skill }}
         </li>
     </ul>
-
     <br />
-    <h2 >Employment History</h2>
+
+    <h2 id="employment">Employment History</h2>
     <hr class="mb-4"/>
     <p>Long and stable career working in the Higher Education sector at Griffith University from internal IT support and infrastructure roles to research management. 
         Several years experience working as a software engineer developing various web applications and systems.</p>
     <br />
     <ul *ngFor="let job of employmentHistory">
-        <div class="flex justify-between pb-4 text-[1.15em] font-[250]">
-            <span class=""><strong class="font-[300]!">{{ job.title }}</strong>, {{ job.organisation }}</span>
-            <span class="justify-end"><strong class="font-[300]!">{{ job.startDate | date: 'MMM yyyy' }} - {{ job.endDate ? (job.endDate | date: 'MMM yyyy') : 'Present' }}</strong></span>
+        <div class="flex justify-between pb-4 text-[1.2em]! font-[250]">
+            <span class=""><strong class="font-[450]!">{{ job.title }}</strong>, {{ job.organisation }}</span>
+            <span class="justify-end"><strong class="text-[1em]! font-[250]!">{{ job.startDate | date: 'MMM yyyy' }} - {{ job.endDate ? (job.endDate | date: 'MMM yyyy') : 'Present' }}</strong></span>
         </div>
         <hr />
         <p class="my-4">{{ job.description }}</p>
@@ -87,7 +101,7 @@
         <br />
     </ul>
 
-    <h2>Honours and Achievements</h2>
+    <h2 id="honours">Honours and Achievements</h2>
     <hr />
     <ul>
         <li *ngFor="let honour of honoursAndAchievements">
@@ -96,7 +110,7 @@
     </ul>
     <br />
 
-    <h2>References</h2>
+    <h2 id="references">References</h2>
     <hr />
     <p class="mx-auto">Available upon request.</p>
 </section>

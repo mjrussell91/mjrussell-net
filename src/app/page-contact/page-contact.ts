@@ -20,6 +20,16 @@ type ContactFormValidation = {
 	message: string;
 };
 
+enum FormState {
+	Invalid = 'invalid',
+	Valid = 'valid',
+	Loading = 'loading',
+	Success = 'success',
+	Error = 'error',
+}
+
+
+
 @Component({
 	selector: "app-page-contact",
 	imports: [FormsModule, CommonModule],
@@ -49,8 +59,7 @@ export class PageContact {
 
 	private responseMessageSubject = new ReplaySubject<any>(1);
 	public responseMessage = this.responseMessageSubject.asObservable();
-	public submitted: boolean = false;
-	public buttonColor: string = 'bg-gray-1';
+	public formState: FormState = FormState.Invalid;
 
 	validate(): boolean {
 		this.validationErrors = {
@@ -83,12 +92,11 @@ export class PageContact {
 			valid = false;
 		}
 		// Organisation is optional, no validation needed
-		if (valid) this.buttonColor = 'bg-brand-blue';
+		if (valid) this.formState = FormState.Valid;
 		return valid;
 	}
 
 		async submit() {
-			this.submitted = true;
 			this.responseMessageSubject.next(" ");
 			if (!this.validate()) {
 				this.responseMessageSubject.next("Some fields are invalid or required.");
@@ -97,7 +105,7 @@ export class PageContact {
 
 			const url = "https://3ocqjazpxob7bmw7epb3w6sdlq0xnbth.lambda-url.ap-southeast-2.on.aws/";
 			try {
-				this.buttonColor = 'bg-gray-1';
+				this.formState = FormState.Loading
 				this.responseMessageSubject.next("Sending...");
 				const response: any = await this.http
 					.post(url, this.form, {
@@ -108,16 +116,16 @@ export class PageContact {
 					}).toPromise();
 				if (response.status === 200) {
 					this.responseMessageSubject.next("Contact message successfully sent.");
-					this.buttonColor = 'bg-brand-green';
+					this.formState = FormState.Success;
 				} else {
 					console.error('Error sending contact message: ',response);
-					this.buttonColor = 'bg-brand-red';
+					this.formState = FormState.Error
 					this.responseMessageSubject.next("Contact message was not sent due to an unspecified error. Please check the console logs or try again later.");
 				}
 			} catch (error: any) {
 				console.error('Error sending contact message: ', error);
 				this.responseMessageSubject.next(`Contact message was not sent. ${error?.error?.message || 'An error has occurred.'}`);
-				this.buttonColor = 'bg-brand-red';
+				this.formState = FormState.Error
 			}
 		}
 }

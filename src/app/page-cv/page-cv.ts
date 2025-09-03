@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Icon } from '../icon/icon';
 
 type Degree = {
 	title: string;
@@ -33,7 +34,7 @@ type Employment = {
 }
 @Component({
 	selector: 'app-page-cv',
-	imports: [CommonModule],
+	imports: [CommonModule, Icon],
 	templateUrl: './page-cv.html',
 	styleUrl: './page-cv.css'
 })

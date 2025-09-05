@@ -8,27 +8,27 @@ import { PageNotFound } from './page-not-found/page-not-found';
 
 export const routes: Routes = [
     { path: '', component: PageAbout, data: {
-            title: 'Matthew Russell | About',
+            title: 'Matthew Russell︱About',
             description: 'Matthew Russell is a software and systems engineer from Brisbane, Australia. Find my curriculum vitae (CV), projects, contact, and github here.'
         } 
     },
     { path: 'cv', component: PageCv, data: {
-            title: 'Matthew Russell | CV',
+            title: 'Matthew Russell︱CV',
             description: 'Curriculum Vitae (CV, resume, resumé) of Matthew Russell, a software and systems engineer from Brisbane, Australia. Includes education, training, skills, and experience.'
         } 
     },
     { path: 'projects', component: PageProjects, data: {
-            title: 'Matthew Russell | Projects',
+            title: 'Matthew Russell︱Projects',
             description: 'A list of projects built by Matthew Russell, showcasing my work and demonstrating my skills and experience. Links and GitHub repositories that are public are provided. Projects include mjrussell.net, Project Euler, MJR Portal, Tax Builder, EverVessel, Engraving Portal, Pricing Tool, Customer Portal, and EML Payments.'
         } 
     },
     { path: 'contact', component: PageContact, data: {
-            title: 'Matthew Russell | Contact',
+            title: 'Matthew Russell︱Contact',
             description: 'Contact page for Matthew Russell, a software and systems engineer from Brisbane, Australia. Get in touch for inquiries about my Curriculum Vitae (CV, resume, resumé), projects, work, freelance, job, offer, interview, opportunities, and more.'
         } 
     },
     { path: '**', component: PageNotFound, data: {
-            title: 'Matthew Russell | Error',
+            title: 'Matthew Russell︱Error',
             description: 'Error 404. Sorry, the page you are looking for does not exist.'
         } 
     }, // 404 / Page Not Found

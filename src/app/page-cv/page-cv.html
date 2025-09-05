@@ -10,7 +10,7 @@
             <li class="list-disc ml-6"><a href="/cv#education" class="text-brand-blue hover:underline">Education</a></li>
             <li class="list-disc ml-6"><a href="/cv#certs" class="text-brand-blue hover:underline">Certifications and Training</a></li>
             <li class="list-disc ml-6"><a href="/cv#skills" class="text-brand-blue hover:underline">Skills and Attributes</a></li>
-            <li class="list-disc ml-6"><a href="/cv#technologies" class="text-brand-blue hover:underline">Technologies and Applications</a></li>
+            <li class="list-disc ml-6"><a href="/cv#technologies" class="text-brand-blue hover:underline">Technologies and Software</a></li>
             <li class="list-disc ml-6"><a href="/cv#employment" class="text-brand-blue hover:underline">Employment History</a></li>
             <li class="list-disc ml-6"><a href="/cv#honours" class="text-brand-blue hover:underline">Honours and Achievements</a></li>
             <li class="list-disc ml-6"><a href="/cv#references" class="text-brand-blue hover:underline">References</a></li>
@@ -80,12 +80,12 @@
     </ul>
     <br />
 
-     <h2 id="technologies">Technologies and Applications</h2>
+    <h2 id="technologies">Technologies and Software</h2>
     <hr />
     <ul *ngFor="let tech of technologies">
         <span class="flex items-center gap-2">
             <strong>{{ tech.title }}</strong>
-            <app-icon *ngFor="let icon of tech.icons" [icon]="icon" [size]="20"></app-icon>
+            <a *ngFor="let icon of tech.icons" [href]="getTech(icon)?.url" target="_blank"><app-icon [icon]="icon" [size]="20"></app-icon></a>
         </span>
         <li *ngFor="let skill of tech.skills" class="list">
             {{ skill }}
@@ -101,7 +101,7 @@
     <ul *ngFor="let job of employmentHistory">
         <div class="flex justify-between pb-4 text-[1.2em]! font-[250]">
             <span class=""><strong class="font-[450]!">{{ job.title }}</strong>, {{ job.organisation }}</span>
-            <span class="justify-end"><strong class="text-[1em]! font-[250]!">{{ job.startDate | date: 'MMM yyyy' }} - {{ job.endDate ? (job.endDate | date: 'MMM yyyy') : 'Present' }}</strong></span>
+            <span class="justify-end"><strong class="text-[0.9em]! font-[250]! text-white-5!">{{ job.startDate | date: 'MMM yyyy' }} - {{ job.endDate ? (job.endDate | date: 'MMM yyyy') : 'Present' }}</strong></span>
         </div>
         <hr />
         <p class="my-4">{{ job.description }}</p>

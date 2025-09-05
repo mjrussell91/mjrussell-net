@@ -28,6 +28,11 @@ type Technologies = {
 	skills: string[];
 }
 
+type TechSelector = {
+	selector: string;
+	url: string;
+}
+
 type Employment = {
 	title: string;
 	description: string;
@@ -45,6 +50,10 @@ type Employment = {
 	styleUrl: './page-cv.css'
 })
 export class PageCv {
+	public getTech(selector: string): TechSelector | undefined {
+		return this.techSelectors.find((f: TechSelector) => f.selector == selector)
+	}
+
 	protected readonly degree: Degree = {
 		title: 'Bachelor of Information Technology',
 		major: 'Major in Marketing & Management',
@@ -174,15 +183,15 @@ export class PageCv {
 				'Vendor management for hardware suppliers such as Dell, HP and Apple. Quotes, purchasing, raising support requests for technical issues and hardware warranty replacements'
 			]
 		},
-		{
-			title: 'Windows Server and Microsoft products',
-			skills: [
-				'Experienced in supporting Windows Server OSes, Domains, Active Directory, Group Policies, DFS, SCCM and Windows Patching',
-				'Managing AD Users and Groups, troubleshooting account issues, managing permissions and access to network fileshares, and user access reporting',
-				'Securing Windows systems and applying cybersecurity best practices by using host-based firewalls, network ACLs, least-privilege user access scanning and patching for known vulnerabilities',
-				'PowerShell to manage remote hosts, configure and automate tasks'
-			]
-		},
+		// {
+		// 	title: 'Windows Server and Microsoft products',
+		// 	skills: [
+		// 		'Experienced in supporting Windows Server OSes, Domains, Active Directory, Group Policies, DFS, SCCM and Windows Patching',
+		// 		'Managing AD Users and Groups, troubleshooting account issues, managing permissions and access to network fileshares, and user access reporting',
+		// 		'Securing Windows systems and applying cybersecurity best practices by using host-based firewalls, network ACLs, least-privilege user access scanning and patching for known vulnerabilities',
+		// 		'PowerShell to manage remote hosts, configure and automate tasks'
+		// 	]
+		// },
 		{
 			title: 'Client Service and Communication',
 			skills: [
@@ -193,86 +202,114 @@ export class PageCv {
 		}
 	];
 
+	protected readonly techSelectors: TechSelector[] = [
+		{ selector: 'docker', url: 'https://www.docker.com' },
+		{ selector: 'git', url: 'https://git-scm.com' },
+		{ selector: 'gitlab', url: 'https://gitlab.com' },
+		{ selector: 'github', url: 'https://github.com' },
+		{ selector: 'windows', url: 'https://www.microsoft.com/windows' },
+		{ selector: 'linux', url: 'https://www.linux.org' },
+		{ selector: 'aws', url: 'https://aws.amazon.com' },
+		{ selector: 'vue', url: 'https://vuejs.org' },
+		{ selector: 'nuxt', url: 'https://nuxt.com' },
+		{ selector: 'angular', url: 'https://angular.io' },
+		{ selector: 'react', url: 'https://react.dev/' },
+		{ selector: 'typescript', url: 'https://www.typescriptlang.org' },
+		{ selector: 'ecmascript', url: 'https://262.ecma-international.org/' },
+		{ selector: 'javascript', url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript' },
+		{ selector: 'nginx', url: 'https://www.nginx.com' },
+		{ selector: 'apache', url: 'https://httpd.apache.org' },
+		{ selector: 'postgres', url: 'https://www.postgresql.org' },
+		{ selector: 'sql', url: 'https://en.wikipedia.org/wiki/SQL' },
+		{ selector: 'firebase', url: 'https://firebase.google.com/' },
+	];
+
 	protected readonly technologies: Technologies[] = [
 		{
-			title: 'Containers and Docker',
-			icons: ['docker'],
+			title: 'Web Frameworks - Angular, Vue, Nuxt',
+			icons: ['angular', 'vue', 'nuxt', 'react'],
 			skills: [
-				'can run containers, run apps as services using docker-compose, manage containers by listing, clearing unused containers and volumes through terminal or GUI',
-				'package apps as containers, pass in data/directories, pass in secrets, debug build issues',
-				'debug containers through shell access'
+				'Generate and configure projects, generate new components and layouts, managing routing',
+				'Dynamic binding of classes, styles, HTML/data and pipes, inputs, using loops and conditional statements to render content',
+				'Using Observables for reactive data in Angular and state management libraries such as Pinia, using prop drilling and input/output signals to reactively share data between components',
+				'Build static sites or deploy with Server Side Rendering, configure dev servers with proxy configs for APIs and other endpoints, environment configuration',
 			]
 		},
 		{
-			title: 'Git, GitHub & GitLab',
-			icons: ['git', 'gitlab','github'],
+			title: 'Git, GitHub, and GitLab',
+			icons: ['git', 'github', 'gitlab'],
 			skills: [
-				'Familiar with core version control concepts and git version control, collaboration, branches, prs, code review, issue tracking, CI/CD integration, using other repos like GitLab, using terminal and GUI from IDE or standalone app',
-			]
-		},
-		{
-			title: 'Windows',
-			icons: ['windows'],
-			skills: [
-				'Servers, AD, domains, etc',
-			]
-		},
-		{
-			title: 'Linux',
-			icons: ['linux'],
-			skills: [
-				'package managers, services/systemd, networking, firewalls, users/groups, permissions, bash scripting',
+				'Familiar with version control systems and managing code with Git including cloning, committing regularly with descriptive messages, and pushing',
+				'Code collaboration via branching, pulling updates, merging, pull requests, code reviews, and issue tracking',
+				'GitHub and GitLab for repository hosting, including CI/CD integration and using GitHub actions to run tests and builds',
+				'Experienced using Git via CLI, IDE, and GUI tools'
 			]
 		},
 		{
 			title: 'AWS',
 			icons: ['aws'],
 			skills: [
-				'EC2, EBS, S3, Lambda, API Gateway, RDS, KMS, IAM, CLI',
+				'Deploying and managing EC2 instances, using EBS to extend storage and create base images, setting static IPs for external access, security policies for firewall access, snapshotting, debugging performance issues and stuck instances, and monitoring',
+				'S3 Buckets for storing assets for web and other applications including backups, Lambda serverless functions and API Gateways to provide secure functions and APIs',
+				'IAM Users to manage access and permissions, KMS to manage API keys and encrypt AMI images, using the AWS CLI to manage AWS resources'
 			]
 		},
 		{
-			title: 'Vue/Nuxt',
-			icons: ['vue', 'nuxt'],
+			title: 'Containers and Docker',
+			icons: ['docker'],
 			skills: [
-				'generate projects, app config, new components, routing, pipes, binding and HTML syntax for loops, ifs, data binding (v-bind:), dynamic classes and attributes, dev server, builds, environments, proxy, debugging',
+				'Containerize applications with Docker and Docker Compose, building images that integrate application data, volumes, and secrets',
+				'Push images to DockerHub and Elastic Container Registry, and deploy images on Docker servers and Elastic Container Service',
+				'Manage containers, volumes, and images via CLI and GUI and performed in-container troubleshooting with shell access',
 			]
 		},
 		{
-			title: 'Angular',
-			icons: ['angular'],
+			title: 'Linux',
+			icons: ['linux'],
 			skills: [
-				'generate projects, app config, new components, modules, routing, pipes, binding and HTML syntax for loops, ifs, data binding (inputs, outputs), dynamic classes and attributes, observables, dev server, builds, environments, proxy, debugging',
+				'Experienced deploying and managing Linux machines, using package managers to install applications and updates, and managing services with systemd/systemctl',
+				'Configuring Linux machines including adding and extending disks and volumes, networks and firewalls, users and groups, sudoers file and root permissions, and file permissions',
+				'Comfortable using and working within a terminal and using SSH to manage machines. Securely manage SSH keys and maintain a SSH configs for work and personal. Can navigate filesystems, edit files, view logs, manage services and processes, and use utilities such as screen and tmux to manage workflows',
+				'Familiar with bash and alternative shells such as fish and zsh, managing shell configs for aliases and custom functions, writing shell scripts to automate tasks and run them using cron jobs',
 			]
 		},
 		{
-			title: 'TypeScript',
-			icons: ['typescript'],
+			title: 'TypeScript, ECMAScript, JavaScript',
+			icons: ['typescript', 'ecmascript', 'javascript'],
 			skills: [
-				'declaring types and interfaces (or are they classes?), typing vars, working with existing types (installing/importing them from repos), typesafty',
+				'Worked on several TypeScript code bases, using existing types as well as declaring new types and classes, and enforcing type safety for more stable code and better dev experience',
+				'Proficient in modern ECMAScript (ES6+) features including modules, arrow functions, async/await and promises, destructuring, and template literals.',
+				'Aware of JavaScript pitfalls including loose equality checks, type coercion, floating-point precision issues, and this binding quirks'
 			]
 		},
 		{
-			title: 'Web Servers, Nginx, Apache',
+			title: 'Web Servers, Nginx, and Apache',
 			icons: ['nginx', 'apache'],
 			skills: [
-				'installation, configuring sites, ports, redirects, auth, certificates including generating and renewing,',
+				'Installed and configured web servers such as Nginx and Apache for hosting applications',
+				'Managed site configurations including ports, redirects, authentication, and SSL/TLS certificates',
+				'Generated and renewed security certificates to maintain secure applications, migrated existing certificates, configured automated renewals'
 			]
 		},
 		{
-			title: 'Databases, SQL, Postgres',
-			icons: ['postgres','sql', 'postgres'],
+			title: 'Databases, SQL, Postgres, and Firebase',
+			icons: ['sql', 'postgres', 'firebase'],
 			skills: [
-				'installation, configuring servers with users and sockets/bind IPs, service accounts, creating databases and tables, managing database permissions, connecting and DB client tools, service management, logging, backups, restoring',
-				'writing queries, temp tables, procedures/functions'
+				'Installed and configured SQL servers (MS SQL Server, PostgreSQL, MariaDB), including users, permissions, sockets, and service accounts',
+				'Created and managed databases, tables, indexes, and stored procedures/functions',
+				'Performed database administration tasks such as backups, restores, logging, and service management',
+				'Wrote optimized SQL queries, leveraging temporary tables and indexing for performance',
+				'Implemented advanced features including failover clustering and fileshare witnesses for high availability',
+				'Integrated Firebase into applications with authentication, access rules, indexing, and query optimization'
 			]
 		},
 		{
-			title: 'Others',
-			icons: [],
+			title: 'Windows Server',
+			icons: ['windows'],
 			skills: [
-				'state management like pinia for various frameworks, wrote own state service for angular, state is immutables and shares data consistently and efficiently across an application, enables reactivity',
-				'JSON DBs like firebase? guess it doesnt hurt and I already have an icon'
+				'Deploying and configuring Windows Servers, Domain administration, managing Active Directory users and groups, Group Policies, file shares and DFS, and patching',
+				'Application configuration including installation, service accounts, network and firewall configuration, IIS web servers, security certificates, and monitoring',
+				'PowerShell scripting to automate managing servers including application installation, Active Directory, and file permissions'
 			]
 		},
 	];

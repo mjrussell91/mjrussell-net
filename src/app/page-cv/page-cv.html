@@ -46,51 +46,65 @@
         <div class="flex md:flex-row flex-col gap-2 mt-2">
             <ul>
                 <li><strong>Technical Competencies</strong></li>
-                <li *ngFor="let competency of degree.technicalCompetencies" class="list">{{ competency }}</li>
+                @for (competency of degree.technicalCompetencies; track competency) {
+                    <li class="list">{{ competency }}</li>
+                } 
             </ul>
             <ul>
                 <li><strong>Business Competencies</strong></li>
-                <li *ngFor="let competency of degree.businessCompetencies" class="list">{{ competency }}</li>
+                @for (competency of degree.businessCompetencies; track competency) {
+                    <li class="list">{{ competency }}</li>
+                }
             </ul>
         </div>
     </div>
     <ul>
-        <li *ngFor="let edu of education" class="list-none">
-            {{ edu.year | date: 'yyyy' }} <strong>&nbsp;{{ edu.title }}</strong>, {{ edu.institution }}
-        </li>
+        @for (edu of education; track edu) {
+            <li>{{ edu.year | date: 'yyyy' }} <strong>&nbsp;{{ edu.title }}</strong>, {{ edu.institution }}</li>
+        }
     </ul>
     <br />
 
     <h2 id="certs">Certifications and Training</h2>
     <hr />
     <ul>
-        <li *ngFor="let course of certsAndTraining">
-            {{ course.year | date: 'yyyy' }} <strong>&nbsp;{{ course.title }}</strong>, {{ course.institution }}
-        </li>
+        @for (course of certsAndTraining; track course) {
+            <li> {{ course.year | date: 'yyyy' }} <strong>&nbsp;{{ course.title }}</strong>, {{ course.institution }}</li>
+        }
     </ul>
     <br />
 
     <h2 id="skills">Skills and Attributes</h2>
     <hr />
-    <ul *ngFor="let category of skills">
-        <strong>{{ category.title }}</strong>
-        <li *ngFor="let skill of category.skills" class="list">
-            {{ skill }}
-        </li>
-    </ul>
+    @for (category of skills; track category) {
+        <ul>
+            <strong>{{ category.title }}</strong>
+            @for (skill of category.skills; track skill) {
+                <li class="list">
+                    {{ skill }}
+                </li>
+            }
+        </ul>
+    }
     <br />
 
     <h2 id="technologies">Technologies and Software</h2>
     <hr />
-    <ul *ngFor="let tech of technologies">
-        <span class="flex items-center gap-2">
-            <strong>{{ tech.title }}</strong>
-            <a *ngFor="let icon of tech.icons" [href]="getTech(icon)?.url" target="_blank"><app-icon [icon]="icon" [size]="20"></app-icon></a>
-        </span>
-        <li *ngFor="let skill of tech.skills" class="list">
-            {{ skill }}
-        </li>
-    </ul>
+    @for (tech of technologies; track tech) {
+        <ul>
+            <span class="flex items-center gap-2">
+                <strong>{{ tech.title }}</strong>
+                @for (icon of tech.icons; track icon) {
+                    <a [href]="getTech(icon)?.url" target="_blank"><app-icon [icon]="icon" [size]="20"></app-icon></a>
+                }
+            </span>
+            @for (skill of tech.skills; track skill) {
+                <li class="list">
+                    {{ skill }}
+                </li>
+            }
+        </ul>
+    }
     <br />
 
     <h2 id="employment">Employment History</h2>
@@ -98,36 +112,48 @@
     <p>Long and stable career working in the Higher Education sector at Griffith University from internal IT support and infrastructure roles to research management. 
         Several years experience working as a software engineer developing various web applications and systems.</p>
     <br />
-    <ul *ngFor="let job of employmentHistory">
-        <div class="flex justify-between pb-4 text-[1.2em]! font-[250]">
-            <span class=""><strong class="font-[450]!">{{ job.title }}</strong>, {{ job.organisation }}</span>
-            <span class="justify-end"><strong class="text-[0.9em]! font-[250]! text-white-5!">{{ job.startDate | date: 'MMM yyyy' }} - {{ job.endDate ? (job.endDate | date: 'MMM yyyy') : 'Present' }}</strong></span>
-        </div>
-        <hr />
-        <p class="my-4">{{ job.description }}</p>
-        <li>
-            <ul>
-                <strong>Roles and Duties</strong>
-                <li *ngFor="let role of job.rolesAndDuties" class="list">{{ role }}</li>
-            </ul>
-            <ul>
-                <strong>Outcomes and Achievements</strong>
-                <li *ngFor="let outcome of job.outcomesAndAchievements" class="list">{{ outcome }}</li>
-            </ul>
-            <ul *ngIf="job.projects && job.projects.length > 0">
-                <strong>Projects</strong>
-                <li *ngFor="let project of job.projects" class="list">{{ project }}</li>
-            </ul>
-        </li>
-        <br />
-    </ul>
+    @for (job of employmentHistory; track job) {
+        <ul>
+            <div class="flex justify-between pb-4 text-[1.2em]! font-[250]">
+                <span class=""><strong class="font-[450]!">{{ job.title }}</strong>, {{ job.organisation }}</span>
+                <span class="justify-end"><strong class="text-[0.9em]! font-[250]! text-white-5!">{{ job.startDate | date: 'MMM yyyy' }} - {{ job.endDate ? (job.endDate | date: 'MMM yyyy') : 'Present' }}</strong></span>
+            </div>
+            <hr />
+            <p class="my-4">{{ job.description }}</p>
+            <li>
+                <ul>
+                    <strong>Roles and Duties</strong>
+                    @for (role of job.rolesAndDuties; track role) {
+                        <li class="list">{{ role }}</li>
+                    }
+                </ul>
+                <ul>
+                    <strong>Outcomes and Achievements</strong>
+                    @for (outcome of job.outcomesAndAchievements; track outcome) {
+                        <li class="list">{{ outcome }}</li>
+                    }
+                </ul>
+                @if (job.projects && job.projects.length > 0) {
+                    <ul>
+                        <strong>Projects</strong>
+                        @for (project of job.projects; track project) {
+                            <li class="list">{{ project }}</li>
+                        }
+                    </ul>
+                }
+            </li>
+            <br />
+        </ul>
+    }
 
     <h2 id="honours">Honours and Achievements</h2>
     <hr />
     <ul>
-        <li *ngFor="let honour of honoursAndAchievements">
-            {{ honour.year | date: 'yyyy' }} <strong>{{ honour.title }}</strong>, {{ honour.institution }}
-        </li>
+        @for (honour of honoursAndAchievements; track honour) {
+            <li>
+                {{ honour.year | date: 'yyyy' }} <strong>{{ honour.title }}</strong>, {{ honour.institution }}
+            </li>
+        }
     </ul>
     <br />
 

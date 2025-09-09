@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, inject, OnInit } from "@angular/core";
 import { NavigationEnd, RouterOutlet, Router, ActivatedRoute } from "@angular/router";
 import { Header } from "./header/header";
 import { Footer } from "./footer/footer";
@@ -12,13 +12,15 @@ import { filter, map, mergeMap } from "rxjs";
 	templateUrl: "./app.html",
 	styleUrl: "./app.css",
 })
-export class App {
-	constructor(
-		private title: Title,
-		private meta: Meta,
-		private router: Router,
-		private activatedRoute: ActivatedRoute,
-	) {}
+export class App implements OnInit {
+	private title = inject(Title);
+	private meta = inject(Meta);
+	private router = inject(Router);
+	private activatedRoute = inject(ActivatedRoute);
+
+	constructor();
+
+	constructor() {}
 	updateTitle(title: string) {
 		this.title.setTitle(title);
 	}

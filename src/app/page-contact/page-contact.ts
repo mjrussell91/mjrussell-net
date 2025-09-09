@@ -1,6 +1,6 @@
-import { Component } from "@angular/core";
+import { Component, inject, OnInit } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { HttpClient, HttpResponse } from "@angular/common/http";
+import { HttpClient, HttpErrorResponse, HttpResponse } from "@angular/common/http";
 import { FormsModule } from "@angular/forms";
 import { ReplaySubject, lastValueFrom } from "rxjs";
 
@@ -33,8 +33,12 @@ enum FormState {
 	templateUrl: "./page-contact.html",
 	styleUrl: "./page-contact.css",
 })
-export class PageContact {
-	constructor(private http: HttpClient) {}
+export class PageContact implements OnInit {
+	private http = inject(HttpClient);
+
+	constructor();
+
+	constructor() {}
 
 	form: ContactFormData = {
 		name: "",
@@ -91,7 +95,7 @@ export class PageContact {
 	}
 
 	public async submit() {
-		const response = this.responseMessage.next(" ");
+		this.responseMessage.next(" ");
 		if (!this.validate()) {
 			this.responseMessage.next("Some fields are invalid or required.");
 			return;
@@ -101,7 +105,7 @@ export class PageContact {
 		try {
 			this.formState = FormState.Loading;
 			this.responseMessage.next("Sending...");
-			const response: HttpResponse<Object> = await lastValueFrom(
+			const response: HttpResponse<object> = await lastValueFrom(
 				this.http.post(url, this.form, {
 					observe: "response",
 					headers: {
@@ -119,11 +123,17 @@ export class PageContact {
 					"Contact message was not sent due to an unspecified error. Please check the console logs or try again later.",
 				);
 			}
-		} catch (error: any) {
+		} catch (error: unknown) {
 			console.error("Error sending contact message: ", error);
-			this.responseMessage.next(
-				`Contact message was not sent. ${error?.error?.message || "An error has occurred."}`,
-			);
+			let message = "An error has occurred.";
+			if (error instanceof HttpErrorResponse) {
+				message = error?.error?.message ?? message;
+			} else if (error instanceof Error) {
+				message = error.message;
+			} else if (typeof error === "string") {
+				message = error;
+			} 
+			this.responseMessage.next(`Contact message was not sent. ${message}`);
 			this.formState = FormState.Error;
 		}
 	}

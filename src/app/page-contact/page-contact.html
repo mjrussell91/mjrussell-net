@@ -39,19 +39,19 @@
 		<!-- Row 4: Response Message & Submit Button -->
 		<div class="flex flex-col sm:flex-row items-center justify-between gap-8">
             <p class="mt-2 text-lg my-auto!" aria-live="polite">{{ responseMessage$ | async }}</p>
-			@if (formState == 'invalid') {
+			@if (formState === 'invalid') {
 				<button class="text-white-1 px-6 py-2 rounded-sm bg-white-3 cursor-not-allowed">Contact</button>
 			}
-			@if (formState == 'valid') {
+			@if (formState === 'valid') {
 				<button class="text-white-1 px-6 py-2 rounded-sm bg-brand-blue cursor-pointer">Contact</button>
 			}
-			@if (formState == 'loading') {
+			@if (formState === 'loading') {
 				<button class="text-white-1 px-6 py-2 rounded-sm bg-white-3 cursor-wait">Sending...</button>
 			}
-			@if (formState == 'success') {
+			@if (formState === 'success') {
 				<button class="text-white-1 px-6 py-2 rounded-sm bg-brand-green cursor-default">Success</button>
 			}
-			@if (formState == 'error') {
+			@if (formState === 'error') {
 				<button class="text-white-1 px-6 py-2 rounded-sm bg-brand-red cursor-default">Error</button>
 			}
 		</div>

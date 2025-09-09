@@ -16,7 +16,7 @@ const compat = new FlatCompat({
     allConfig: js.configs.all
 });
 
-export default defineConfig([globalIgnores(["projects/**/*"]), {
+export default defineConfig([globalIgnores(["projects/**/*", ".angular/"]), {
     files: ["**/*.ts"],
 
     extends: compat.extends(
@@ -32,11 +32,11 @@ export default defineConfig([globalIgnores(["projects/**/*"]), {
 
     languageOptions: {
         parser: tsParser,
-        ecmaVersion: 5,
+        ecmaVersion: 6,
         sourceType: "script",
 
         parserOptions: {
-            project: ["tsconfig.json"],
+            project: ["tsconfig.json", "src/**/*.ts"],
             createDefaultProgram: true,
         },
     },

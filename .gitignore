@@ -29,6 +29,7 @@ yarn-error.log*
 
 # Notes and TODOs
 TODO.md
+best-practice.md
 
 # MacOS
 .DS_Store

@@ -1,0 +1,9 @@
+# Ignore artifacts:
+dist/
+
+# Ignore Node Modules
+node_modules/
+
+# Ignore Angular and Managed files and folders
+.angular/
+bun.lockb

@@ -11,60 +11,70 @@ import { FlatCompat } from "@eslint/eslintrc";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const compat = new FlatCompat({
-    baseDirectory: __dirname,
-    recommendedConfig: js.configs.recommended,
-    allConfig: js.configs.all
+	baseDirectory: __dirname,
+	recommendedConfig: js.configs.recommended,
+	allConfig: js.configs.all,
 });
 
-export default defineConfig([globalIgnores(["projects/**/*", ".angular/"]), {
-    files: ["**/*.ts"],
+export default defineConfig([
+	globalIgnores(["projects/**/*", ".angular/"]),
+	{
+		files: ["**/*.ts"],
 
-    extends: compat.extends(
-        "plugin:@angular-eslint/recommended",
-        "plugin:@typescript-eslint/recommended",
-        "plugin:prettier/recommended",
-    ),
+		extends: compat.extends(
+			"plugin:@angular-eslint/recommended",
+			"plugin:@typescript-eslint/recommended",
+			"plugin:prettier/recommended",
+		),
 
-    plugins: {
-        "@typescript-eslint": typescriptEslint,
-        "@angular-eslint": angularEslint,
-    },
+		plugins: {
+			"@typescript-eslint": typescriptEslint,
+			"@angular-eslint": angularEslint,
+		},
 
-    languageOptions: {
-        parser: tsParser,
-        ecmaVersion: 6,
-        sourceType: "script",
+		languageOptions: {
+			parser: tsParser,
+			ecmaVersion: 6,
+			sourceType: "script",
 
-        parserOptions: {
-            project: ["tsconfig.json", "src/**/*.ts"],
-            createDefaultProgram: true,
-        },
-    },
+			parserOptions: {
+				project: ["tsconfig.json", "src/**/*.ts"],
+				createDefaultProgram: true,
+			},
+		},
 
-    rules: {
-        "@typescript-eslint/no-explicit-any": "warn",
+		rules: {
+			"@typescript-eslint/no-explicit-any": "warn",
 
-        "@typescript-eslint/explicit-function-return-type": ["warn", {
-            allowExpressions: true,
-        }],
+			"@typescript-eslint/explicit-function-return-type": [
+				"warn",
+				{
+					allowExpressions: true,
+				},
+			],
 
-        "@typescript-eslint/strict-boolean-expressions": "warn",
+			"@typescript-eslint/strict-boolean-expressions": "warn",
 
-        "no-console": ["warn", {
-            allow: ["warn", "error"],
-        }],
+			"no-console": [
+				"warn",
+				{
+					allow: ["warn", "error"],
+				},
+			],
 
-        "@angular-eslint/component-class-suffix": "error",
-        "@angular-eslint/directive-class-suffix": "error",
-        "@angular-eslint/no-empty-lifecycle-method": "warn",
-    },
-}, {
-    files: ["**/*.html"],
-    extends: compat.extends("plugin:@angular-eslint/template/recommended"),
+			"@angular-eslint/component-class-suffix": "error",
+			"@angular-eslint/directive-class-suffix": "error",
+			"@angular-eslint/no-empty-lifecycle-method": "warn",
+		},
+	},
+	{
+		files: ["**/*.html"],
+		extends: compat.extends("plugin:@angular-eslint/template/recommended"),
 
-    plugins: {
-        "@angular-eslint/template": angularEslintTemplate,
-    },
+		plugins: {
+			"@angular-eslint/template": angularEslintTemplate,
+		},
 
-    rules: {},
-}]);
+		rules: {},
+	},
+]);

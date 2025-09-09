@@ -1,24 +1,24 @@
 {
-  "printWidth": 120,
-  "tabWidth": 4,
-  "useTabs": true,
-  "semi": true,
-  "singleQuote": false,
-  "quoteProps": "consistent",
-  "trailingComma": "all",
-  "bracketSpacing": true,
-  "objectWrap": "preserve",
-  "bracketSameLine": true,
-  "arrowParens": "always",
-  "htmlWhitespaceSensitivity": "ignore",
-  "endOfLine": "lf",
-  "singleAttributePerLine": false,
-  "overrides": [
-    {
-      "files": "*.html",
-      "options": {
-        "parser": "angular"
-      }
-    }
-  ]
+	"printWidth": 120,
+	"tabWidth": 4,
+	"useTabs": true,
+	"semi": true,
+	"singleQuote": false,
+	"quoteProps": "consistent",
+	"trailingComma": "all",
+	"bracketSpacing": true,
+	"objectWrap": "preserve",
+	"bracketSameLine": true,
+	"arrowParens": "always",
+	"htmlWhitespaceSensitivity": "css",
+	"endOfLine": "lf",
+	"singleAttributePerLine": false,
+	"overrides": [
+		{
+			"files": "*.html",
+			"options": {
+				"parser": "angular"
+			}
+		}
+	]
 }

@@ -1,3 +1,5 @@
 {
-  "compatibility_date": "2025-08-28","name": "mjrussell-net", "assets": { "directory": "./dist/mjrussell-net/browser"}
+	"compatibility_date": "2025-08-28",
+	"name": "mjrussell-net",
+	"assets": { "directory": "./dist/mjrussell-net/browser" },
 }

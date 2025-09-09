@@ -20,14 +20,12 @@ type ContactFormValidation = {
 };
 
 enum FormState {
-	Invalid = 'invalid',
-	Valid = 'valid',
-	Loading = 'loading',
-	Success = 'success',
-	Error = 'error',
+	Invalid = "invalid",
+	Valid = "valid",
+	Loading = "loading",
+	Success = "success",
+	Error = "error",
 }
-
-
 
 @Component({
 	selector: "app-page-contact",
@@ -36,7 +34,7 @@ enum FormState {
 	styleUrl: "./page-contact.css",
 })
 export class PageContact {
-	constructor(private http: HttpClient) { }
+	constructor(private http: HttpClient) {}
 
 	form: ContactFormData = {
 		name: "",
@@ -44,7 +42,7 @@ export class PageContact {
 		email: "",
 		subject: "",
 		message: "",
-  	};
+	};
 
 	validationErrors: ContactFormValidation = {
 		name: "",
@@ -93,9 +91,7 @@ export class PageContact {
 	}
 
 	public async submit() {
-		const response = 
-
-		this.responseMessage.next(" ");
+		const response = this.responseMessage.next(" ");
 		if (!this.validate()) {
 			this.responseMessage.next("Some fields are invalid or required.");
 			return;
@@ -103,30 +99,35 @@ export class PageContact {
 
 		const url = "https://3ocqjazpxob7bmw7epb3w6sdlq0xnbth.lambda-url.ap-southeast-2.on.aws/";
 		try {
-			this.formState = FormState.Loading
+			this.formState = FormState.Loading;
 			this.responseMessage.next("Sending...");
-			const response: HttpResponse<Object> = await lastValueFrom(this.http
-				.post(url, this.form, {
+			const response: HttpResponse<Object> = await lastValueFrom(
+				this.http.post(url, this.form, {
 					observe: "response",
 					headers: {
 						"Content-Type": "application/json",
-					}
-				}));
+					},
+				}),
+			);
 			if (response.status === 200) {
 				this.responseMessage.next("Contact message successfully sent.");
 				this.formState = FormState.Success;
 			} else {
-				console.error('Error sending contact message: ',response);
-				this.formState = FormState.Error
-				this.responseMessage.next("Contact message was not sent due to an unspecified error. Please check the console logs or try again later.");
+				console.error("Error sending contact message: ", response);
+				this.formState = FormState.Error;
+				this.responseMessage.next(
+					"Contact message was not sent due to an unspecified error. Please check the console logs or try again later.",
+				);
 			}
 		} catch (error: any) {
-			console.error('Error sending contact message: ', error);
-			this.responseMessage.next(`Contact message was not sent. ${error?.error?.message || 'An error has occurred.'}`);
-			this.formState = FormState.Error
+			console.error("Error sending contact message: ", error);
+			this.responseMessage.next(
+				`Contact message was not sent. ${error?.error?.message || "An error has occurred."}`,
+			);
+			this.formState = FormState.Error;
 		}
 	}
-	
+
 	ngOnInit() {
 		this.validate();
 	}

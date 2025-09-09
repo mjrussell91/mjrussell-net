@@ -7,107 +7,111 @@
 @import "tailwindcss";
 
 @theme {
-    --color-blue-1: #004052;
-    --color-blue-2: #073642;
-    --color-blue-3: #002b36;
-    --color-blue-4: #00212B;
+	--color-blue-1: #004052;
+	--color-blue-2: #073642;
+	--color-blue-3: #002b36;
+	--color-blue-4: #00212b;
 
-    --color-white-1: #fdf6e3;
-    --color-white-2: #eee8d5;
-    --color-white-3: #879394;
-    --color-white-4: #96A0A0;
-    --color-white-5: #CBCBCB;
+	--color-white-1: #fdf6e3;
+	--color-white-2: #eee8d5;
+	--color-white-3: #879394;
+	--color-white-4: #96a0a0;
+	--color-white-5: #cbcbcb;
 
-    --color-gray-1: #93a1a1;
-    --color-gray-2: #839496;
-    --color-gray-3: #657b83;
-    --color-gray-4: #586e75;
+	--color-gray-1: #93a1a1;
+	--color-gray-2: #839496;
+	--color-gray-3: #657b83;
+	--color-gray-4: #586e75;
 
-    --color-brand-yellow: #b58900;
-    --color-brand-orange: #cb4b16;
-    --color-brand-red: #dc322f;
-    --color-brand-magenta: #d33682;
-    --color-brand-violet: #6c71c4;
-    --color-brand-blue: #268bd2;
-    --color-brand-cyan: #2aa198;
-    --color-brand-green: #859900;
+	--color-brand-yellow: #b58900;
+	--color-brand-orange: #cb4b16;
+	--color-brand-red: #dc322f;
+	--color-brand-magenta: #d33682;
+	--color-brand-violet: #6c71c4;
+	--color-brand-blue: #268bd2;
+	--color-brand-cyan: #2aa198;
+	--color-brand-green: #859900;
 }
 
 :root {
-    background-color: var(--color-blue-1);
-    /* background-color: linear-gradient(180deg, #004052 50%, #00212B 50%); */
-    color: var(--color-white-1);
+	background-color: var(--color-blue-1);
+	/* background-color: linear-gradient(180deg, #004052 50%, #00212B 50%); */
+	color: var(--color-white-1);
 
-    /* Font stack: Inter with sensible fallbacks for UI/system sans-serif */
-    --font-family-sans: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
-    /* font-family: var(--font-family-sans); */
-    font-family: "Inter";
+	/* Font stack: Inter with sensible fallbacks for UI/system sans-serif */
+	--font-family-sans:
+		Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans,
+		Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+	/* font-family: var(--font-family-sans); */
+	font-family: "Inter";
 }
 
 nav > a {
-    font-weight: 350;
+	font-weight: 350;
 }
 
-section, article {
-    color: var(--color-white-5);
-    max-width: 74ch;
-    margin-left: auto;
-    margin-right: auto;
+section,
+article {
+	color: var(--color-white-5);
+	max-width: 74ch;
+	margin-left: auto;
+	margin-right: auto;
 
-    h1, h2 {
-        font-weight: 650;
-        letter-spacing: 0.010em;
-        color: var(--color-white-1);
-    }
+	h1,
+	h2 {
+		font-weight: 650;
+		letter-spacing: 0.01em;
+		color: var(--color-white-1);
+	}
 
-    h1 {
-        font-size: 2.1rem;
-        text-align: center;
-    }
+	h1 {
+		font-size: 2.1rem;
+		text-align: center;
+	}
 
-    h2 {
-        font-size: 1.7rem;
-    }
+	h2 {
+		font-size: 1.7rem;
+	}
 
-    hr {
-        color: var(--color-gray-1);
-        margin-top: -1.15em;
-    }
+	hr {
+		color: var(--color-gray-1);
+		margin-top: -1.15em;
+	}
 
-    p {
-        color: var(--color-white-2);
-        text-align: justify;
-        font-size: 1.05em;
-        font-weight: 300;
-    
-        a {
-            color: var(--color-brand-blue);
-            
-            &:hover {
-                text-decoration: underline;
-                /* color: var(--color-white-1); */
-            }
-        }
-    }
+	p {
+		color: var(--color-white-2);
+		text-align: justify;
+		font-size: 1.05em;
+		font-weight: 300;
 
-    li {
-        /* font-size: 1.05em; */
-        font-weight: 300;
-    }
+		a {
+			color: var(--color-brand-blue);
 
-    li > strong {
-        font-weight: 450;
-        margin-left: 0.25rem;
-    }
+			&:hover {
+				text-decoration: underline;
+				/* color: var(--color-white-1); */
+			}
+		}
+	}
 
-    strong {
-        color: var(--color-white-1);
-        font-weight: 550;
-    }
+	li {
+		/* font-size: 1.05em; */
+		font-weight: 300;
+	}
 
-    .list {
-        margin-left: 1.5rem;
-        list-style-type: disc;
-        color: var(--color-white-5);
-    }
+	li > strong {
+		font-weight: 450;
+		margin-left: 0.25rem;
+	}
+
+	strong {
+		color: var(--color-white-1);
+		font-weight: 550;
+	}
+
+	.list {
+		margin-left: 1.5rem;
+		list-style-type: disc;
+		color: var(--color-white-5);
+	}
 }

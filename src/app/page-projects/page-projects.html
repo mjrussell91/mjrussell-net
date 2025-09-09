@@ -1,30 +1,53 @@
 <article class="flex flex-col mx-auto gap-4">
-    <h1>Projects</h1>
-    <p>Explore some of my personal and professional projects to see my work in action and a demonstration of my skills and experience in web development. GitHub repositories are provided where available but most code is private. 
-        Links to public projects are also provided where available. View my <a href="https://github.com/mjrussell91">GitHub profile</a> for more of my code. 
-    </p>
-    <br />
-    @for (project of projects; track project) { <section class="mb-12">
-        <div class="flex justify-between">
-            <h2 class="pb-4 hover:text-white-1">
-                @if (project.link) { <a [href]="project.link" target="_blank">{{ project.title }}</a> }
-                @if (!project.link) { <span>{{ project.title }}</span> }
-            </h2>
-            <h3 class="justify-end text-white-2 flex gap-2 items-center mb-5 text-l ">
-                @for (tech of project.technologies; track tech) { <a [href]="getTech(tech)?.url" target="_blank">
-                    @if (getTech(tech)?.selector) { <app-icon [icon]="getTech(tech)?.selector" [size]="30"></app-icon> }
-                </a> }
-                @if (project.repository) { <a [href]="project.repository" target="_blank" class="justify-end ml-4 ">
-                    <button class="flex gap-2 items-center px-3 py-1 bg-brand-blue rounded-sm text-white-1 hover:cursor-pointer">
-                        <app-icon [icon]="'github'" [size]="20" [color]="'var(--color-white-1)'"></app-icon>GitHub
-                    </button>
-                </a> }
-            </h3>
-        </div>
-        <hr />
-        <p class="mt-6">
-            {{ project.description }}
-        </p>
-    @if (project.imageSrc) { <img [src]="'projects/' + project.imageSrc" [alt]="project.title" class="rounded-md border-white-1 border-2 mt-6"/> }
-    </section> }
+	<h1>Projects</h1>
+	<p>
+		Explore some of my personal and professional projects to see my work in action and a demonstration of my skills
+		and experience in web development. GitHub repositories are provided where available but most code is private.
+		Links to public projects are also provided where available. View my
+		<a href="https://github.com/mjrussell91">GitHub profile</a>
+		for more of my code.
+	</p>
+	<br />
+	@for (project of projects; track project) {
+		<section class="mb-12">
+			<div class="flex justify-between">
+				<h2 class="pb-4 hover:text-white-1">
+					@if (project.link) {
+						<a [href]="project.link" target="_blank">{{ project.title }}</a>
+					}
+					@if (!project.link) {
+						<span>{{ project.title }}</span>
+					}
+				</h2>
+				<h3 class="justify-end text-white-2 flex gap-2 items-center mb-5 text-l">
+					@for (tech of project.technologies; track tech) {
+						<a [href]="getTech(tech)?.url" target="_blank">
+							@if (getTech(tech)?.selector) {
+								<app-icon [icon]="getTech(tech)?.selector" [size]="30"></app-icon>
+							}
+						</a>
+					}
+					@if (project.repository) {
+						<a [href]="project.repository" target="_blank" class="justify-end ml-4">
+							<button
+								class="flex gap-2 items-center px-3 py-1 bg-brand-blue rounded-sm text-white-1 hover:cursor-pointer">
+								<app-icon [icon]="'github'" [size]="20" [color]="'var(--color-white-1)'"></app-icon>
+								GitHub
+							</button>
+						</a>
+					}
+				</h3>
+			</div>
+			<hr />
+			<p class="mt-6">
+				{{ project.description }}
+			</p>
+			@if (project.imageSrc) {
+				<img
+					[src]="'projects/' + project.imageSrc"
+					[alt]="project.title"
+					class="rounded-md border-white-1 border-2 mt-6" />
+			}
+		</section>
+	}
 </article>

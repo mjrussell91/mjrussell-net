@@ -1,163 +1,206 @@
 <section class="flex flex-col mx-auto gap-4">
-    <h1 class="pb-6">Curriculum Vitae</h1>
-    <p>
-        Currently seeking remote (or Brisbane-based) opportunities for technical work where I can contribute as part of a team towards building applications and solving problems.
-    </p>
-    <div class="flex flex-col gap-4 md:flex-row justify-between">
-        <!-- Table of Contents -->
-        <ul class="text-white-2">
-            Jump to:
-            <li class="list-disc ml-6"><a href="/cv#education" class="text-brand-blue hover:underline">Education</a></li>
-            <li class="list-disc ml-6"><a href="/cv#certs" class="text-brand-blue hover:underline">Certifications and Training</a></li>
-            <li class="list-disc ml-6"><a href="/cv#skills" class="text-brand-blue hover:underline">Skills and Attributes</a></li>
-            <li class="list-disc ml-6"><a href="/cv#technologies" class="text-brand-blue hover:underline">Technologies and Software</a></li>
-            <li class="list-disc ml-6"><a href="/cv#employment" class="text-brand-blue hover:underline">Employment History</a></li>
-            <li class="list-disc ml-6"><a href="/cv#honours" class="text-brand-blue hover:underline">Honours and Achievements</a></li>
-            <li class="list-disc ml-6"><a href="/cv#references" class="text-brand-blue hover:underline">References</a></li>
-        </ul>
-        <div class="mx-auto md:mx-0 my-auto">
-            <a href="/cv/Matthew Russell CV - Software and Systems Engineering - September 2025.pdf" target="_blank" 
-                class="bg-brand-blue text-white-1 px-6 py-2 flex rounded-sm gap-2 items-center">
-                <app-icon [icon]="'pdf'" [size]="30"></app-icon>Download PDF
-            </a>
-        </div>
-    </div>
+	<h1 class="pb-6">Curriculum Vitae</h1>
+	<p>
+		Currently seeking remote (or Brisbane-based) opportunities for technical work where I can contribute as part of
+		a team towards building applications and solving problems.
+	</p>
+	<div class="flex flex-col gap-4 md:flex-row justify-between">
+		<!-- Table of Contents -->
+		<ul class="text-white-2">
+			Jump to:
+			<li class="list-disc ml-6">
+				<a href="/cv#education" class="text-brand-blue hover:underline">Education</a>
+			</li>
+			<li class="list-disc ml-6">
+				<a href="/cv#certs" class="text-brand-blue hover:underline">Certifications and Training</a>
+			</li>
+			<li class="list-disc ml-6">
+				<a href="/cv#skills" class="text-brand-blue hover:underline">Skills and Attributes</a>
+			</li>
+			<li class="list-disc ml-6">
+				<a href="/cv#technologies" class="text-brand-blue hover:underline">Technologies and Software</a>
+			</li>
+			<li class="list-disc ml-6">
+				<a href="/cv#employment" class="text-brand-blue hover:underline">Employment History</a>
+			</li>
+			<li class="list-disc ml-6">
+				<a href="/cv#honours" class="text-brand-blue hover:underline">Honours and Achievements</a>
+			</li>
+			<li class="list-disc ml-6">
+				<a href="/cv#references" class="text-brand-blue hover:underline">References</a>
+			</li>
+		</ul>
+		<div class="mx-auto md:mx-0 my-auto">
+			<a
+				href="/cv/Matthew Russell CV - Software and Systems Engineering - September 2025.pdf"
+				target="_blank"
+				class="bg-brand-blue text-white-1 px-6 py-2 flex rounded-sm gap-2 items-center">
+				<app-icon [icon]="'pdf'" [size]="30"></app-icon>
+				Download PDF
+			</a>
+		</div>
+	</div>
 
-    <h2 class="pt-6">Matthew Russell</h2>
-    <hr />
-    <p>
-        An educated and experienced systems and software engineer  interested in technical work that is engaging and
-        rewarding. I have a broad set of skills and experience with a deep understanding of software development and
-        the computer systems that they’re founded on. A personable and clear communicator who works well in teams and collaborating with others. 
-        Capable of managing projects and completing tasks independently to deliver results.
-    </p>
-    <br />
+	<h2 class="pt-6">Matthew Russell</h2>
+	<hr />
+	<p>
+		An educated and experienced systems and software engineer interested in technical work that is engaging and
+		rewarding. I have a broad set of skills and experience with a deep understanding of software development and the
+		computer systems that they’re founded on. A personable and clear communicator who works well in teams and
+		collaborating with others. Capable of managing projects and completing tasks independently to deliver results.
+	</p>
+	<br />
 
-    <h2 id="education">Education</h2>
-    <hr />
-    <div class="flex flex-col font-sans">
-        <div class="flex flex-row gap-2">
-            <span>{{ degree.year | date: 'yyyy' }}</span> <span><strong>{{ degree.title }}</strong>, {{ degree.institution}}</span>
-        </div>
-        <div class="flex fex-row gap-2">
-            <span class="text-blue-3">{{ degree.year | date: 'yyyy' }}</span>
-            <span>{{ degree.major }}</span>
-        </div>
-        <div class="flex md:flex-row flex-col gap-2 mt-2">
-            <ul>
-                <li><strong>Technical Competencies</strong></li>
-                @for (competency of degree.technicalCompetencies; track competency) {
-                    <li class="list">{{ competency }}</li>
-                } 
-            </ul>
-            <ul>
-                <li><strong>Business Competencies</strong></li>
-                @for (competency of degree.businessCompetencies; track competency) {
-                    <li class="list">{{ competency }}</li>
-                }
-            </ul>
-        </div>
-    </div>
-    <ul>
-        @for (edu of education; track edu) {
-            <li>{{ edu.year | date: 'yyyy' }} <strong>&nbsp;{{ edu.title }}</strong>, {{ edu.institution }}</li>
-        }
-    </ul>
-    <br />
+	<h2 id="education">Education</h2>
+	<hr />
+	<div class="flex flex-col font-sans">
+		<div class="flex flex-row gap-2">
+			<span>{{ degree.year | date: "yyyy" }}</span>
+			<span>
+				<strong>{{ degree.title }}</strong>
+				, {{ degree.institution }}
+			</span>
+		</div>
+		<div class="flex fex-row gap-2">
+			<span class="text-blue-3">{{ degree.year | date: "yyyy" }}</span>
+			<span>{{ degree.major }}</span>
+		</div>
+		<div class="flex md:flex-row flex-col gap-2 mt-2">
+			<ul>
+				<li><strong>Technical Competencies</strong></li>
+				@for (competency of degree.technicalCompetencies; track competency) {
+					<li class="list">{{ competency }}</li>
+				}
+			</ul>
+			<ul>
+				<li><strong>Business Competencies</strong></li>
+				@for (competency of degree.businessCompetencies; track competency) {
+					<li class="list">{{ competency }}</li>
+				}
+			</ul>
+		</div>
+	</div>
+	<ul>
+		@for (edu of education; track edu) {
+			<li>
+				{{ edu.year | date: "yyyy" }}
+				<strong>&nbsp;{{ edu.title }}</strong>
+				, {{ edu.institution }}
+			</li>
+		}
+	</ul>
+	<br />
 
-    <h2 id="certs">Certifications and Training</h2>
-    <hr />
-    <ul>
-        @for (course of certsAndTraining; track course) {
-            <li> {{ course.year | date: 'yyyy' }} <strong>&nbsp;{{ course.title }}</strong>, {{ course.institution }}</li>
-        }
-    </ul>
-    <br />
+	<h2 id="certs">Certifications and Training</h2>
+	<hr />
+	<ul>
+		@for (course of certsAndTraining; track course) {
+			<li>
+				{{ course.year | date: "yyyy" }}
+				<strong>&nbsp;{{ course.title }}</strong>
+				, {{ course.institution }}
+			</li>
+		}
+	</ul>
+	<br />
 
-    <h2 id="skills">Skills and Attributes</h2>
-    <hr />
-    @for (category of skills; track category) {
-        <ul>
-            <strong>{{ category.title }}</strong>
-            @for (skill of category.skills; track skill) {
-                <li class="list">
-                    {{ skill }}
-                </li>
-            }
-        </ul>
-    }
-    <br />
+	<h2 id="skills">Skills and Attributes</h2>
+	<hr />
+	@for (category of skills; track category) {
+		<ul>
+			<strong>{{ category.title }}</strong>
+			@for (skill of category.skills; track skill) {
+				<li class="list">
+					{{ skill }}
+				</li>
+			}
+		</ul>
+	}
+	<br />
 
-    <h2 id="technologies">Technologies and Software</h2>
-    <hr />
-    @for (tech of technologies; track tech) {
-        <ul>
-            <span class="flex items-center gap-2">
-                <strong>{{ tech.title }}</strong>
-                @for (icon of tech.icons; track icon) {
-                    <a [href]="getTech(icon)?.url" target="_blank"><app-icon [icon]="icon" [size]="20"></app-icon></a>
-                }
-            </span>
-            @for (skill of tech.skills; track skill) {
-                <li class="list">
-                    {{ skill }}
-                </li>
-            }
-        </ul>
-    }
-    <br />
+	<h2 id="technologies">Technologies and Software</h2>
+	<hr />
+	@for (tech of technologies; track tech) {
+		<ul>
+			<span class="flex items-center gap-2">
+				<strong>{{ tech.title }}</strong>
+				@for (icon of tech.icons; track icon) {
+					<a [href]="getTech(icon)?.url" target="_blank"><app-icon [icon]="icon" [size]="20"></app-icon></a>
+				}
+			</span>
+			@for (skill of tech.skills; track skill) {
+				<li class="list">
+					{{ skill }}
+				</li>
+			}
+		</ul>
+	}
+	<br />
 
-    <h2 id="employment">Employment History</h2>
-    <hr class="mb-4"/>
-    <p>Long and stable career working in the Higher Education sector at Griffith University from internal IT support and infrastructure roles to research management. 
-        Several years experience working as a software engineer developing various web applications and systems.</p>
-    <br />
-    @for (job of employmentHistory; track job) {
-        <ul>
-            <div class="flex justify-between pb-4 text-[1.2em]! font-[250]">
-                <span class=""><strong class="font-[450]!">{{ job.title }}</strong>, {{ job.organisation }}</span>
-                <span class="justify-end"><strong class="text-[0.9em]! font-[250]! text-white-5!">{{ job.startDate | date: 'MMM yyyy' }} - {{ job.endDate ? (job.endDate | date: 'MMM yyyy') : 'Present' }}</strong></span>
-            </div>
-            <hr />
-            <p class="my-4">{{ job.description }}</p>
-            <li>
-                <ul>
-                    <strong>Roles and Duties</strong>
-                    @for (role of job.rolesAndDuties; track role) {
-                        <li class="list">{{ role }}</li>
-                    }
-                </ul>
-                <ul>
-                    <strong>Outcomes and Achievements</strong>
-                    @for (outcome of job.outcomesAndAchievements; track outcome) {
-                        <li class="list">{{ outcome }}</li>
-                    }
-                </ul>
-                @if (job.projects && job.projects.length > 0) {
-                    <ul>
-                        <strong>Projects</strong>
-                        @for (project of job.projects; track project) {
-                            <li class="list">{{ project }}</li>
-                        }
-                    </ul>
-                }
-            </li>
-            <br />
-        </ul>
-    }
+	<h2 id="employment">Employment History</h2>
+	<hr class="mb-4" />
+	<p>
+		Long and stable career working in the Higher Education sector at Griffith University from internal IT support
+		and infrastructure roles to research management. Several years experience working as a software engineer
+		developing various web applications and systems.
+	</p>
+	<br />
+	@for (job of employmentHistory; track job) {
+		<ul>
+			<div class="flex justify-between pb-4 text-[1.2em]! font-[250]">
+				<span class="">
+					<strong class="font-[450]!">{{ job.title }}</strong>
+					, {{ job.organisation }}
+				</span>
+				<span class="justify-end">
+					<strong class="text-[0.9em]! font-[250]! text-white-5!">
+						{{ job.startDate | date: "MMM yyyy" }} -
+						{{ job.endDate ? (job.endDate | date: "MMM yyyy") : "Present" }}
+					</strong>
+				</span>
+			</div>
+			<hr />
+			<p class="my-4">{{ job.description }}</p>
+			<li>
+				<ul>
+					<strong>Roles and Duties</strong>
+					@for (role of job.rolesAndDuties; track role) {
+						<li class="list">{{ role }}</li>
+					}
+				</ul>
+				<ul>
+					<strong>Outcomes and Achievements</strong>
+					@for (outcome of job.outcomesAndAchievements; track outcome) {
+						<li class="list">{{ outcome }}</li>
+					}
+				</ul>
+				@if (job.projects && job.projects.length > 0) {
+					<ul>
+						<strong>Projects</strong>
+						@for (project of job.projects; track project) {
+							<li class="list">{{ project }}</li>
+						}
+					</ul>
+				}
+			</li>
+			<br />
+		</ul>
+	}
 
-    <h2 id="honours">Honours and Achievements</h2>
-    <hr />
-    <ul>
-        @for (honour of honoursAndAchievements; track honour) {
-            <li>
-                {{ honour.year | date: 'yyyy' }} <strong>{{ honour.title }}</strong>, {{ honour.institution }}
-            </li>
-        }
-    </ul>
-    <br />
+	<h2 id="honours">Honours and Achievements</h2>
+	<hr />
+	<ul>
+		@for (honour of honoursAndAchievements; track honour) {
+			<li>
+				{{ honour.year | date: "yyyy" }}
+				<strong>{{ honour.title }}</strong>
+				, {{ honour.institution }}
+			</li>
+		}
+	</ul>
+	<br />
 
-    <h2 id="references">References</h2>
-    <hr />
-    <p class="mx-auto">Available upon request.</p>
+	<h2 id="references">References</h2>
+	<hr />
+	<p class="mx-auto">Available upon request.</p>
 </section>

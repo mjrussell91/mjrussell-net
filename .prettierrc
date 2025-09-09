@@ -1,11 +1,24 @@
 {
-  "printWidth": 100,
+  "printWidth": 120,
   "tabWidth": 4,
   "useTabs": true,
   "semi": true,
-  "singleQuote": true,
-  "trailingComma": "es5",
+  "singleQuote": false,
+  "quoteProps": "consistent",
+  "trailingComma": "all",
   "bracketSpacing": true,
+  "objectWrap": "preserve",
+  "bracketSameLine": true,
   "arrowParens": "always",
-  "endOfLine": "lf"
+  "htmlWhitespaceSensitivity": "ignore",
+  "endOfLine": "lf",
+  "singleAttributePerLine": false,
+  "overrides": [
+    {
+      "files": "*.html",
+      "options": {
+        "parser": "angular"
+      }
+    }
+  ]
 }

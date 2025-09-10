@@ -12,7 +12,7 @@ export class Icon {
 	size = input<number>(18);
 	icon = input.required<string | undefined>();
 
-	public fillColor = computed(() => `${this.color()}`);
+	public fillColor = computed(() => this.color());
 	public iconSelector = computed(() => this.icon());
-	public iconSize = computed(() => `${this.size()}px`);
+	public iconSize = computed(() => `${this.size().toString()}px`);
 }

@@ -1,8 +1,8 @@
 import { Component, inject, OnInit } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { HttpClient, HttpErrorResponse, HttpResponse } from "@angular/common/http";
+import { HttpClient, HttpResponse } from "@angular/common/http";
 import { FormsModule } from "@angular/forms";
-import { ReplaySubject, lastValueFrom } from "rxjs";
+import { ReplaySubject } from "rxjs";
 
 interface ContactFormData {
 	name: string;
@@ -90,7 +90,7 @@ export class PageContact implements OnInit {
 		return valid;
 	}
 
-	public async submit() {
+	public submit() {
 		this.responseMessage.next(" ");
 		if (!this.validate()) {
 			this.responseMessage.next("Some fields are invalid or required.");
@@ -98,40 +98,29 @@ export class PageContact implements OnInit {
 		}
 
 		const url = "https://3ocqjazpxob7bmw7epb3w6sdlq0xnbth.lambda-url.ap-southeast-2.on.aws/";
-		try {
-			this.formState = FormState.Loading;
-			this.responseMessage.next("Sending...");
-			const response: HttpResponse<object> = await lastValueFrom(
-				this.http.post(url, this.form, {
-					observe: "response",
-					headers: {
-						"Content-Type": "application/json",
-					},
-				}),
-			);
-			if (response.status === 200) {
-				this.responseMessage.next("Contact message successfully sent.");
-				this.formState = FormState.Success;
-			} else {
-				console.error("Error sending contact message: ", response);
+		this.http.post(url, this.form, {
+			observe: "response",
+			headers: {
+				"Content-Type": "application/json",
+			},
+		})
+		.subscribe({
+			next: (response: HttpResponse<object>) => {
+				// Handle successful response
+				if (response.status === 200) {
+					this.responseMessage.next("Contact message successfully sent.");
+					this.formState = FormState.Success;
+				}
+			},
+			error: (error) => {
+				// Handle error response
+				console.error("Error sending contact message: ", error);
 				this.formState = FormState.Error;
 				this.responseMessage.next(
 					"Contact message was not sent due to an unspecified error. Please check the console logs or try again later.",
 				);
 			}
-		} catch (error: unknown) {
-			console.error("Error sending contact message: ", error);
-			let message = "An error has occurred.";
-			if (error instanceof HttpErrorResponse) {
-				message = error?.error?.message ?? message;
-			} else if (error instanceof Error) {
-				message = error.message;
-			} else if (typeof error === "string") {
-				message = error;
-			} 
-			this.responseMessage.next(`Contact message was not sent. ${message}`);
-			this.formState = FormState.Error;
-		}
+		});
 	}
 
 	ngOnInit() {

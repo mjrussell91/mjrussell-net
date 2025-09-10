@@ -42,7 +42,13 @@ app.use(
 app.use((req: Express.Request, res: Express.Response, next) => {
 	angularApp
 		.handle(req as IncomingMessage)
-		.then((response) => (response ? writeResponseToNodeResponse(response, res as ServerResponse<IncomingMessage>) : next()))
+		.then(async (response) => {
+			if (response) {
+				await writeResponseToNodeResponse(response, res as ServerResponse);
+			} else {
+				next();
+			}
+		})
 		.catch(next);
 });
 
@@ -57,7 +63,7 @@ if (isMainModule(import.meta.url)) {
 			throw error;
 		}
 
-		console.log(`Node Express server listening on http://localhost:${port}`);
+		console.log(`Node Express server listening on http://localhost:${port.toString()}`);
 	});
 }
 

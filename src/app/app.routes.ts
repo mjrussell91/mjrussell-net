@@ -1,4 +1,4 @@
-import { Routes } from "@angular/router";
+import { Data, Routes } from "@angular/router";
 
 import { PageAbout } from "./page-about/page-about";
 import { PageCv } from "./page-cv/page-cv";
@@ -6,7 +6,16 @@ import { PageProjects } from "./page-projects/page-projects";
 import { PageContact } from "./page-contact/page-contact";
 import { PageNotFound } from "./page-not-found/page-not-found";
 
-export const routes: Routes = [
+export interface RouteData extends Data {
+	title: string;
+	description: string;
+}
+
+interface AppRoutes extends Routes {
+	data?: RouteData;
+}
+
+export const routes: AppRoutes = [
 	{
 		path: "",
 		component: PageAbout,

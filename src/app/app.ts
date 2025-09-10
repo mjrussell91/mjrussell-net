@@ -31,8 +31,10 @@ export class App implements OnInit {
 				mergeMap((route: ActivatedRoute) => route.data),
 			)
 			.subscribe((event) => {
-				this.updateTitle(event["title"]);
-				this.updateDescription(event["description"]);
+
+				if (typeof event['title'] === "string") this.updateTitle(event["title"]);
+				if (typeof event['description'] === "string") this.updateDescription(event["description"]);
+				return true
 			});
 	}
 

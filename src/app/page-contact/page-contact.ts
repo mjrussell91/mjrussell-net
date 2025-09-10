@@ -98,29 +98,30 @@ export class PageContact implements OnInit {
 		}
 
 		const url = "https://3ocqjazpxob7bmw7epb3w6sdlq0xnbth.lambda-url.ap-southeast-2.on.aws/";
-		this.http.post(url, this.form, {
-			observe: "response",
-			headers: {
-				"Content-Type": "application/json",
-			},
-		})
-		.subscribe({
-			next: (response: HttpResponse<object>) => {
-				// Handle successful response
-				if (response.status === 200) {
-					this.responseMessage.next("Contact message successfully sent.");
-					this.formState = FormState.Success;
-				}
-			},
-			error: (error) => {
-				// Handle error response
-				console.error("Error sending contact message: ", error);
-				this.formState = FormState.Error;
-				this.responseMessage.next(
-					"Contact message was not sent due to an unspecified error. Please check the console logs or try again later.",
-				);
-			}
-		});
+		this.http
+			.post(url, this.form, {
+				observe: "response",
+				headers: {
+					"Content-Type": "application/json",
+				},
+			})
+			.subscribe({
+				next: (response: HttpResponse<object>) => {
+					// Handle successful response
+					if (response.status === 200) {
+						this.responseMessage.next("Contact message successfully sent.");
+						this.formState = FormState.Success;
+					}
+				},
+				error: (error) => {
+					// Handle error response
+					console.error("Error sending contact message: ", error);
+					this.formState = FormState.Error;
+					this.responseMessage.next(
+						"Contact message was not sent due to an unspecified error. Please check the console logs or try again later.",
+					);
+				},
+			});
 	}
 
 	ngOnInit() {

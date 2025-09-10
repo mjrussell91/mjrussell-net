@@ -49,7 +49,7 @@ export default defineConfig([
 			// TODO: from generated config, require double checking
 			"@angular-eslint/directive-class-suffix": "error",
 			"@angular-eslint/no-empty-lifecycle-method": "warn",
-			
+
 			// "@typescript-eslint/no-explicit-any": "warn",
 			// "@typescript-eslint/explicit-function-return-type": [
 			// 	"warn",
@@ -70,10 +70,6 @@ export default defineConfig([
 	tseslint.configs.stylisticTypeChecked,
 	tseslint.configs.strictTypeChecked,
 ]);
-
-
-
-
 
 // import { defineConfig, globalIgnores } from "eslint/config";
 // import typescriptEslint from "@typescript-eslint/eslint-plugin";

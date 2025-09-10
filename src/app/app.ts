@@ -31,14 +31,11 @@ export class App implements OnInit {
 				mergeMap((route: ActivatedRoute) => route.data),
 			)
 			.subscribe((event) => {
-
-				if (typeof event['title'] === "string") this.updateTitle(event["title"]);
-				if (typeof event['description'] === "string") this.updateDescription(event["description"]);
-				return true
+				if (typeof event["title"] === "string") this.updateTitle(event["title"]);
+				if (typeof event["description"] === "string") this.updateDescription(event["description"]);
+				return true;
 			});
 	}
-
-	
 
 	private updateTitle(title: string): void {
 		this.title.setTitle(title);

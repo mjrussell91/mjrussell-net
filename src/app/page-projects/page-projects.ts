@@ -2,19 +2,19 @@ import { Component } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { Icon } from "../icon/icon";
 
-type Project = {
+interface Project {
 	title: string;
 	link: string | null;
 	repository: string | null;
 	description: string;
 	imageSrc: string | null;
 	technologies: string[];
-};
+}
 
-type Technology = {
+interface Technology {
 	selector: string;
 	url: string;
-};
+}
 
 @Component({
 	selector: "app-page-projects",

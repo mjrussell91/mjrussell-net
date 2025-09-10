@@ -2,38 +2,38 @@ import { Component } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { Icon } from "../icon/icon";
 
-type Degree = {
+interface Degree {
 	title: string;
 	major: string;
 	institution: string;
 	year: Date;
 	technicalCompetencies: string[];
 	businessCompetencies: string[];
-};
+}
 
-type Education = {
+interface Education {
 	title: string;
 	institution: string;
 	year: Date;
-};
+}
 
-type Skills = {
+interface Skills {
 	title: string;
 	skills: string[];
-};
+}
 
-type Technologies = {
+interface Technologies {
 	title: string;
 	icons: string[];
 	skills: string[];
-};
+}
 
-type TechSelector = {
+interface TechSelector {
 	selector: string;
 	url: string;
-};
+}
 
-type Employment = {
+interface Employment {
 	title: string;
 	description: string;
 	organisation: string;
@@ -42,7 +42,7 @@ type Employment = {
 	rolesAndDuties: string[];
 	outcomesAndAchievements: string[];
 	projects: string[];
-};
+}
 @Component({
 	selector: "app-page-cv",
 	imports: [CommonModule, Icon],

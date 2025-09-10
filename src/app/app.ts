@@ -13,37 +13,36 @@ import { filter, map, mergeMap } from "rxjs";
 	styleUrl: "./app.css",
 })
 export class App implements OnInit {
-	private title = inject(Title);
-	private meta = inject(Meta);
-	private router = inject(Router);
-	private activatedRoute = inject(ActivatedRoute);
+	private readonly title = inject(Title);
+	private readonly meta = inject(Meta);
+	private readonly router = inject(Router);
+	private readonly activatedRoute = inject(ActivatedRoute);
 
-	constructor();
-
-	constructor() {}
-	updateTitle(title: string) {
-		this.title.setTitle(title);
-	}
-
-	updateDescription(desc: string) {
-		this.meta.updateTag({ name: "description", content: desc });
-	}
-
-	ngOnInit() {
+	ngOnInit(): void {
 		this.router.events
 			.pipe(
-				filter((event) => event instanceof NavigationEnd),
+				filter((event): event is NavigationEnd => event instanceof NavigationEnd),
 				map(() => this.activatedRoute),
-				map((route) => {
+				map((route: ActivatedRoute) => {
 					while (route.firstChild) route = route.firstChild;
 					return route;
 				}),
-				filter((route) => route.outlet === "primary"),
-				mergeMap((route) => route.data),
+				filter((route: ActivatedRoute) => route.outlet === "primary"),
+				mergeMap((route: ActivatedRoute) => route.data),
 			)
 			.subscribe((event) => {
 				this.updateTitle(event["title"]);
 				this.updateDescription(event["description"]);
 			});
+	}
+
+	
+
+	private updateTitle(title: string): void {
+		this.title.setTitle(title);
+	}
+
+	private updateDescription(desc: string): void {
+		this.meta.updateTag({ name: "description", content: desc });
 	}
 }

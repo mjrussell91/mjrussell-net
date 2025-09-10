@@ -4,20 +4,20 @@ import { HttpClient, HttpErrorResponse, HttpResponse } from "@angular/common/htt
 import { FormsModule } from "@angular/forms";
 import { ReplaySubject, lastValueFrom } from "rxjs";
 
-type ContactFormData = {
+interface ContactFormData {
 	name: string;
 	organisation: string;
 	email: string;
 	subject: string;
 	message: string;
-};
+}
 
-type ContactFormValidation = {
+interface ContactFormValidation {
 	name: string;
 	email: string;
 	subject: string;
 	message: string;
-};
+}
 
 enum FormState {
 	Invalid = "invalid",
@@ -35,10 +35,6 @@ enum FormState {
 })
 export class PageContact implements OnInit {
 	private http = inject(HttpClient);
-
-	constructor();
-
-	constructor() {}
 
 	form: ContactFormData = {
 		name: "",
@@ -66,7 +62,7 @@ export class PageContact implements OnInit {
 			subject: "",
 			message: "",
 		};
-		let valid: boolean = true;
+		let valid = true;
 		if (!this.form.name || this.form.name.trim().length < 1) {
 			this.validationErrors.name = "Name is required.";
 			valid = false;

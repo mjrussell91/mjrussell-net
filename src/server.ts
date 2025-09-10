@@ -5,6 +5,7 @@ import {
 	writeResponseToNodeResponse,
 } from "@angular/ssr/node";
 import express from "express";
+import { IncomingMessage, ServerResponse } from "node:http";
 import { join } from "node:path";
 
 const browserDistFolder = join(import.meta.dirname, "../browser");
@@ -38,10 +39,10 @@ app.use(
 /**
  * Handle all other requests by rendering the Angular application.
  */
-app.use((req, res, next) => {
+app.use((req: Express.Request, res: Express.Response, next) => {
 	angularApp
-		.handle(req)
-		.then((response) => (response ? writeResponseToNodeResponse(response, res) : next()))
+		.handle(req as IncomingMessage)
+		.then((response) => (response ? writeResponseToNodeResponse(response, res as ServerResponse<IncomingMessage>) : next()))
 		.catch(next);
 });
 
@@ -50,7 +51,7 @@ app.use((req, res, next) => {
  * The server listens on the port defined by the `PORT` environment variable, or defaults to 4000.
  */
 if (isMainModule(import.meta.url)) {
-	const port = process.env["PORT"] || 4000;
+	const port = process.env["PORT"] ?? 4000;
 	app.listen(port, (error) => {
 		if (error) {
 			throw error;

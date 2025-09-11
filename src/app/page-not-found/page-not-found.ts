@@ -7,6 +7,4 @@ import { RouterModule } from "@angular/router";
 	templateUrl: "./page-not-found.html",
 	styleUrl: "./page-not-found.css",
 })
-// eslint reason: component currently has no functionality
-// eslint-disable-next-line @typescript-eslint/no-extraneous-class
 export class PageNotFound {}

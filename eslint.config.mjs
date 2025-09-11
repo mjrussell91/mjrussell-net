@@ -74,7 +74,7 @@ export default defineConfig([
 					style: "camelCase",
 				},
 			],
-			
+			"@angular-eslint/consistent-component-styles": "error",
 
 			// TODO: from generated config, require double checking
 			// "@angular-eslint/directive-class-suffix": "error",
@@ -103,7 +103,10 @@ export default defineConfig([
 		plugins: {
 			"@angular-eslint/template": angularEslintTemplate,
 		},
-		rules: {},
+		rules: {
+			"@angular-eslint/template/prefer-control-flow": "error",
+			"@angular-eslint/prefer-on-push-component-change-detection": "error",
+		},
 	},
 	// Fix Express is not defined for server.ts file
 	// TODO: Need a better lint than turning off for this file, shouldn't globals.node handle this?

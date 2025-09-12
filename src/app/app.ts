@@ -1,4 +1,4 @@
-import { Component, inject, OnInit} from "@angular/core";
+import { Component, inject, OnInit } from "@angular/core";
 import { NavigationEnd, RouterOutlet, Router, ActivatedRoute } from "@angular/router";
 import { Header } from "./header/header";
 import { Footer } from "./footer/footer";

@@ -1,6 +1,7 @@
 import js from "@eslint/js";
 import jasmine from "eslint-plugin-jasmine";
 import globals from "globals";
+import eslint from "@eslint/js";
 import tseslint from "typescript-eslint";
 import { defineConfig, globalIgnores } from "eslint/config";
 
@@ -36,7 +37,14 @@ export default defineConfig([
 		},
 		// https://typescript-eslint.io/users/configs/#recommended-type-checked
 		// Linting TypeScript files - recommended + strict + stylistic + type checked
-		extends: ["js/recommended", tseslint.configs.stylisticTypeChecked, tseslint.configs.strictTypeChecked, angular.configs.tsRecommended],
+		extends: [
+			"js/recommended",
+			eslint.configs.recommended,
+			tseslint.configs.stylisticTypeChecked,
+			tseslint.configs.strictTypeChecked,
+			angular.configs.tsRecommended, // use instead of the below but with specific overrides
+			angular.configs.tsAll,
+		],
 		processor: angular.processInlineTemplates,
 		languageOptions: {
 			globals: { ...globals.browser, ...globals.es2020, ...globals.node },
@@ -101,7 +109,7 @@ export default defineConfig([
 			"@angular-eslint/prefer-inject": "error",
 			// Might only be worth implementing if ChangeDetection is experiencing poor performance
 			// https://blog.angular-university.io/onpush-change-detection-how-it-works/
-			// "@angular-eslint/prefer-on-push-component-change-detection": "error",
+			"@angular-eslint/prefer-on-push-component-change-detection": "off", // override from all
 			"@angular-eslint/prefer-output-emitter-ref": "warn", // not sure about this one, review on warn
 			"@angular-eslint/prefer-output-readonly": "error",
 			"@angular-eslint/prefer-signals": "warn", // not sure about this one, review on warn
@@ -114,18 +122,13 @@ export default defineConfig([
 			"@angular-eslint/sort-lifecycle-methods": "error",
 			"@angular-eslint/use-component-selector": "error",
 			"@angular-eslint/use-component-view-encapsulation": "error",
+			"@angular-eslint/component-class-suffix": "off", // override from all, handled by naming conventions
 			"@angular-eslint/use-injectable-provided-in": "error",
 			"@angular-eslint/use-lifecycle-interface": "error",
 			"@angular-eslint/use-pipe-transform-interface": "error",
 
-
-
-
-			
-
 			// TODO: from generated config, require double checking
-			// "@angular-eslint/directive-class-suffix": "error",
-			// "@angular-eslint/no-empty-lifecycle-method": "warn",
+			// "@angular-eslint/directive-class-suffix": "warn",
 
 			// "@typescript-eslint/no-explicit-any": "warn",
 			// "@typescript-eslint/explicit-function-return-type": [

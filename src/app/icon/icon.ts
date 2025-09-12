@@ -8,11 +8,11 @@ import { CommonModule } from "@angular/common";
 	styleUrl: "./icon.css",
 })
 export class Icon {
-	color = input<string>("var(--color-white-1)");
-	size = input<number>(18);
-	icon = input.required<string | undefined>();
+	readonly color = input<string>("var(--color-white-1)");
+	readonly size = input<number>(18);
+	readonly icon = input.required<string | undefined>();
 
-	public fillColor = computed(() => this.color());
-	public iconSelector = computed(() => this.icon());
-	public iconSize = computed(() => `${this.size().toString()}px`);
+	public readonly fillColor = computed(() => this.color());
+	public readonly iconSelector = computed(() => this.icon());
+	public readonly iconSize = computed(() => `${this.size().toString()}px`);
 }

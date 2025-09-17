@@ -1,6 +1,8 @@
-import { Component, inject, OnInit } from "@angular/core";
+import type { OnInit } from "@angular/core";
+import { Component, inject } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { HttpClient, HttpResponse } from "@angular/common/http";
+import type { HttpResponse } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 import { FormsModule } from "@angular/forms";
 import { ReplaySubject } from "rxjs";
 
@@ -34,7 +36,7 @@ enum FormState {
 	styleUrl: "./page-contact.css",
 })
 export class PageContact implements OnInit {
-	private http = inject(HttpClient);
+	private readonly http = inject(HttpClient);
 
 	form: ContactFormData = {
 		name: "",
@@ -51,7 +53,7 @@ export class PageContact implements OnInit {
 		message: "",
 	};
 
-	private responseMessage = new ReplaySubject<string>(1);
+	private readonly responseMessage = new ReplaySubject<string>(1);
 	public responseMessage$ = this.responseMessage.asObservable();
 	public formState: FormState = FormState.Invalid;
 
@@ -86,11 +88,13 @@ export class PageContact implements OnInit {
 			valid = false;
 		}
 		// Organisation is optional, no validation needed
-		if (valid) this.formState = FormState.Valid;
+		if (valid) {
+			this.formState = FormState.Valid;
+		}
 		return valid;
 	}
 
-	public submit() {
+	public submit(): void {
 		this.responseMessage.next(" ");
 		if (!this.validate()) {
 			this.responseMessage.next("Some fields are invalid or required.");
@@ -107,14 +111,12 @@ export class PageContact implements OnInit {
 			})
 			.subscribe({
 				next: (response: HttpResponse<object>) => {
-					// Handle successful response
 					if (response.status === 200) {
 						this.responseMessage.next("Contact message successfully sent.");
 						this.formState = FormState.Success;
 					}
 				},
 				error: (error) => {
-					// Handle error response
 					console.error("Error sending contact message: ", error);
 					this.formState = FormState.Error;
 					this.responseMessage.next(
@@ -124,7 +126,7 @@ export class PageContact implements OnInit {
 			});
 	}
 
-	ngOnInit() {
+	ngOnInit(): void {
 		this.validate();
 	}
 }

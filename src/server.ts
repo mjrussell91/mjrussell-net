@@ -63,7 +63,7 @@ if (isMainModule(import.meta.url)) {
 			throw error;
 		}
 
-		console.log(`Node Express server listening on http://localhost:${port.toString()}`);
+		// console.log(`Node Express server listening on http://localhost:${port.toString()}`);
 	});
 }
 

@@ -111,7 +111,7 @@ export class PageContact implements OnInit {
 			})
 			.subscribe({
 				next: (response: HttpResponse<object>) => {
-					if (response.status === 200) {
+					if (response.status == 200) {
 						this.responseMessage.next("Contact message successfully sent.");
 						this.formState = FormState.Success;
 					}

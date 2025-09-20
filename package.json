@@ -7,7 +7,12 @@
 		"build": "ng build",
 		"watch": "ng build --watch --configuration development",
 		"test": "ng test",
-		"serve:ssr:mjrussell-net": "node dist/mjrussell-net/server/server.mjs"
+		"serve:ssr:mjrussell-net": "node dist/mjrussell-net/server/server.mjs",
+		"prettier": "prettier . --write --list-different",
+		"tsc": "tsc --noEmit",
+		"lint": "eslint",
+		"lint-no-warn": "eslint --max_warnings=0",
+		"lint-fix": "eslint --fix"
 	},
 	"private": true,
 	"dependencies": {

@@ -1,9 +1,63 @@
 #!/usr/bin/env bash
 
-# bunx prettier . --write --list-different
-# bunx tsc --noEmit
-# bunx eslint  # --fix --max-warnings=0
-    # check output for fixes possible and prompt to run eslint --fix
+# This script will interactively run pre-commit steps such as formatting and linting,
+# then add, commit, and push changes with user direction. This is to ensure that the
+# commit uniform, to standard, and reviews changes for accuracy.
+
+# Pre-commit steps: prettier, tsc, eslint
+
+# Detect alternative NodeJS environment
+js_env="npm"
+if which bun > /dev/null; then
+    printf "BunJS detected. Switching to bun from npm.\n"
+    js_env="bun"
+fi
+
+# prettier
+if $js_env run prettier; then
+    printf "No prettier issues detected.\n"
+else
+    if [ "$?" -eq 1 ]; then
+        printf "Prettier issues detected.\nExiting."
+        exit 1
+    else
+        printf "prettier returned unexpected exit code %d\nExiting." "$?"
+        exit 1
+    fi
+fi
+
+# tsc
+if $js_env run tsc; then
+    printf "No TypeScript issues detected.\n"
+else
+    # when the script invokes run tsc with an error, exit code 1 is returned but does not equal 1 for the if condition
+    # exit code 2 is returned when running command directly with an error
+    # regardless both are errors and script should exit but reporting is inconsistent
+    # run tsx . --noEmit to force an error for debugging
+    if [ "$?" -eq 1 ]; then
+        printf "TypeScript issues detected.\nExiting."
+        exit 1
+    else
+        printf "tsc returned unexpected exit code %d\nExiting." "$?"
+        exit 1
+    fi
+fi
+
+
+# lint
+if $js_env run lint; then
+    printf "No linting errors or warnings exceeded.\n"
+else
+    if [ "$?" -eq 1 ]; then
+        printf "There are linting errors or warnings exceeded.\nExiting."
+        exit 1
+    else
+        printf "lint returned unexpected exit code %d\nExiting." "$?"
+        exit 1
+    fi
+fi
+# check output for fixes possible and prompt to run eslint --fix
+
 
 ## Commit functionality
 
@@ -87,8 +141,10 @@ else
             esac
         done
     else
-        printf "git diff returned unexpected exit code %d\n" "$?"
+        printf "git push returned unexpected exit code %d\n" "$?"
+        exit 1
     fi
 fi
 
-printf "Exiting.\n"
+printf "Exiting."
+exit

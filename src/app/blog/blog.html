@@ -1,11 +1,15 @@
 <article>
-    <h1>Blog</h1>
-    @for (blog of blogs; track blog) {
-        <div >
-            <h2><a [routerLink]="['/blog', blog.slug]">{{ blog.title }}</a></h2>
-            <p><em>{{ blog.date | date:'longDate' }}</em></p>
-            <p>{{ blog.excerpt }}</p>
-            <hr />
-        </div>
-    }
+	<h1>Blog</h1>
+	@for (blog of blogs; track blog) {
+		<div>
+			<h2>
+				<a [routerLink]="['/blog', blog.slug]">{{ blog.title }}</a>
+			</h2>
+			<p>
+				<em>{{ blog.date | date: "longDate" }}</em>
+			</p>
+			<p>{{ blog.excerpt }}</p>
+			<hr />
+		</div>
+	}
 </article>

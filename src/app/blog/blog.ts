@@ -1,13 +1,13 @@
 import { Component } from "@angular/core";
 import { RouterLink } from "@angular/router";
-import { DatePipe } from "@angular/common"
+import { DatePipe } from "@angular/common";
 
 interface BlogPost {
 	title: string;
 	slug: string;
 	date: Date;
 	excerpt: string;
-};
+}
 @Component({
 	selector: "app-blog",
 	imports: [RouterLink, DatePipe],

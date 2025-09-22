@@ -1,6 +1,7 @@
 import { Data, Routes } from "@angular/router";
 
 import { PageAbout } from "./page-about/page-about";
+import { Blog } from "./blog/blog";
 import { PageCv } from "./page-cv/page-cv";
 import { PageProjects } from "./page-projects/page-projects";
 import { PageContact } from "./page-contact/page-contact";
@@ -50,6 +51,14 @@ export const routes: AppRoutes = [
 			title: "Matthew Russell︱Contact",
 			description:
 				"Contact page for Matthew Russell, a software and systems engineer from Brisbane, Australia. Get in touch for inquiries about my Curriculum Vitae (CV, resume, resumé), projects, work, freelance, job, offer, interview, opportunities, and more.",
+		},
+	},
+	{
+		path: "blog",
+		component: Blog,
+		data: {
+			title: "Matthew Russell︱Blog",
+			description: "Matthew Russell's blog about homebrewing and programming.",
 		},
 	},
 	{

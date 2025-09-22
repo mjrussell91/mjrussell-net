@@ -19,5 +19,6 @@ export class Header {
 		{ label: "CV", route: "cv" },
 		{ label: "Projects", route: "projects" },
 		{ label: "Contact", route: "contact" },
+		{ label: "Blog", route: "blog" },
 	];
 }

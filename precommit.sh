@@ -131,7 +131,7 @@ else
     if [ "$?" -eq 1 ]; then
         printf "There are commits that have not been pushed.\n"
         git log @{push}..
-        printf "Do you want to push the above commits:\n> "
+        printf "Do you want to push the above commits?\n> "
         while true; do
             read -r response
             case $response in

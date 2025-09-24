@@ -17,10 +17,6 @@ highlight=$(tput setaf 4) # blue
 prefix="${highlight}[${reset}commit.sh${highlight}]${reset} "
 
 # Helper functions
-print() {
-    printf "%s%s\n" "$prefix" "$1"
-}
-
 print_error() {
     printf "%s[${error}-${reset}] ${error}%s${reset}\n" "$prefix" "$1"
 }
@@ -58,36 +54,42 @@ if which bun > /dev/null; then
 fi
 
 # prettier
-if $js_env run prettier; then
+$js_env run prettier
+prettier_exit_code=$?
+if [ "$prettier_exit_code" -eq 0 ]; then
     print_success "No prettier issues detected."
 else
-    if [ "$?" -eq 1 ]; then
+    if [ "$prettier_exit_code" -eq 1 ]; then
         exit_with_error "Prettier issues detected."
     else
-        exit_with_error "prettier returned unexpected exit code $?"
+        exit_with_error "prettier returned unexpected exit code $prettier_exit_code"
     fi
 fi
 
 # tsc
-if $js_env run tsc; then
+$js_env run tsc
+tsc_exit_code=$?
+if [ "$tsc_exit_code" -eq 0 ]; then
     print_success "No TypeScript issues detected."
 else
-    if [ "$?" -eq 1 ]; then
+    if [ "$tsc_exit_code" -eq 1 ]; then
         exit_with_error "TypeScript issues detected."
     else
-        exit_with_error "tsc returned unexpected exit code $?"
+        exit_with_error "tsc returned unexpected exit code $tsc_exit_code"
     fi
 fi
 
 
 # lint
-if $js_env run lint; then
+$js_env run lint
+lint_exit_code=$?
+if [ "$lint_exit_code" -eq 0 ]; then
     print_success "No linting errors or warnings exceeded."
 else
-    if [ "$?" -eq 1 ]; then
+    if [ "$lint_exit_code" -eq 1 ]; then
         exit_with_error "There are linting errors or warnings exceeded."
     else
-        exit_with_error "lint returned unexpected exit code $?"
+        exit_with_error "lint returned unexpected exit code $lint_exit_code"
     fi
 fi
 # check output for fixes possible and prompt to run eslint --fix
@@ -96,12 +98,14 @@ fi
 # Commit functionality
 
 # Check if there are changes (exit code 1 means differences exist)
-if git diff --quiet --exit-code; then
+git diff --quiet --exit-code
+diff_exit_code=$?
+if [ "$diff_exit_code" -eq 0 ]; then
     # exit-code 0: no changes
     print_info "No changes detected."
 else
     # git diff --exit-code returned non-zero (usually 1) meaning there are staged changes
-    if [ "$?" -eq 1 ]; then
+    if [ "$diff_exit_code" -eq 1 ]; then
         git diff
         while true; do
         print_input "There are unstaged changes to add. Do you want to add the above changes to staging (Y/n)? [default: Yes]"
@@ -114,20 +118,22 @@ else
             esac
         done
     else
-        exit_with_error "git diff returned unexpected exit code %d" "$?"
+        exit_with_error "git diff returned unexpected exit code %d" "$diff_exit_code"
     fi
 fi
 
 # Check if there are staged changes
-if git diff --cached --quiet --exit-code; then
+git diff --cached --quiet --exit-code
+diff_staged_exit_code=$?
+if [ "$diff_staged_exit_code" -eq 0 ]; then
     # exit-code 0: no staged changes
     print_info "No staged changes detected."
 else
     # git diff --cached --exit-code returned non-zero (usually 1) meaning there are staged changes
-    if [ "$?" -eq 1 ]; then
+    if [ "$diff_staged_exit_code" -eq 1 ]; then
         print_info "There are staged changes. Proceeding to commit."
     else
-        exit_with_error "git diff returned unexpected exit code %d" "$?"
+        exit_with_error "git diff returned unexpected exit code %d" "$diff_staged_exit_code"
     fi
 fi
 
@@ -158,14 +164,16 @@ while true; do
 done
 
 # Check for any commits to push (exit code 1 means commits exist)
-if git log @{push}.. --quiet --exit-code; then
+git log "@{push}.." --quiet --exit-code
+push_exit_code=$?
+if [ "$push_exit_code" -eq 0 ]; then
     # exit-code 0: no staged changes
     print_info "No commits detected to push."
 else
     # git diff --cached --exit-code returned non-zero (usually 1) meaning there are staged changes
-    if [ "$?" -eq 1 ]; then
+    if [ "$push_exit_code" -eq 1 ]; then
         print_info "There are commits that have not been pushed."
-        git log @{push}..
+        git log "@{push}.."
         while true; do
         print_input "Do you want to push the above commits (Y/n)? [default: Yes]"
             read -r response
@@ -177,7 +185,7 @@ else
             esac
         done
     else
-        exit_with_error "git push returned unexpected exit code %d" "$?"
+        exit_with_error "git push returned unexpected exit code %d" "$push_exit_code"
     fi
 fi
 

@@ -4,97 +4,130 @@
 # then add, commit, and push changes with user direction. This is to ensure that the
 # commit uniform, to standard, and reviews changes for accuracy.
 
+# Variables
+
+# Color codes
+reset=$(tput sgr0)  # reset
+error=$(tput setaf 1) # red
+success=$(tput setaf 2) # green
+warning=$(tput setaf 3) # yellow
+highlight=$(tput setaf 4) # blue
+
+# Prefix for messages
+prefix="${highlight}[${reset}commit.sh${highlight}]${reset} "
+
+# Helper functions
+print() {
+    printf "%s%s\n" "$prefix" "$1"
+}
+
+print_error() {
+    printf "%s[${error}-${reset}] ${error}%s${reset}\n" "$prefix" "$1"
+}
+
+print_success() {
+    printf "%s[${success}+${reset}] ${success}%s${reset}\n" "$prefix" "$1"
+}
+
+print_warning() {
+    printf "%s[${warning}!${reset}] ${warning}%s${reset}\n" "$prefix" "$1"
+}
+
+print_input() {
+    printf "%s[${highlight}?${reset}] \e[1m%s\e[0m\n" "$prefix" "$1"
+}
+
+print_info() {
+    printf "%s[${highlight}*${reset}] ${highlight}%s${reset}\n" "$prefix" "$1"
+}
+
+exit_with_error() {
+    print_error "$1"
+    printf "%s%s" "$prefix" "Exiting."
+    exit 1
+}
+
+
 # Pre-commit steps: prettier, tsc, eslint
 
 # Detect alternative NodeJS environment
 js_env="npm"
 if which bun > /dev/null; then
-    printf "BunJS detected. Switching to bun from npm.\n"
+    print_success "BunJS detected. Switching to bun from npm."
     js_env="bun"
 fi
 
 # prettier
 if $js_env run prettier; then
-    printf "No prettier issues detected.\n"
+    print_success "No prettier issues detected."
 else
     if [ "$?" -eq 1 ]; then
-        printf "Prettier issues detected.\nExiting."
-        exit 1
+        exit_with_error "Prettier issues detected."
     else
-        printf "prettier returned unexpected exit code %d\nExiting." "$?"
-        exit 1
+        exit_with_error "prettier returned unexpected exit code $?"
     fi
 fi
 
 # tsc
 if $js_env run tsc; then
-    printf "No TypeScript issues detected.\n"
+    print_success "No TypeScript issues detected."
 else
-    # when the script invokes run tsc with an error, exit code 1 is returned but does not equal 1 for the if condition
-    # exit code 2 is returned when running command directly with an error
-    # regardless both are errors and script should exit but reporting is inconsistent
-    # run tsx . --noEmit to force an error for debugging
     if [ "$?" -eq 1 ]; then
-        printf "TypeScript issues detected.\nExiting."
-        exit 1
+        exit_with_error "TypeScript issues detected."
     else
-        printf "tsc returned unexpected exit code %d\nExiting." "$?"
-        exit 1
+        exit_with_error "tsc returned unexpected exit code $?"
     fi
 fi
 
 
 # lint
 if $js_env run lint; then
-    printf "No linting errors or warnings exceeded.\n"
+    print_success "No linting errors or warnings exceeded."
 else
     if [ "$?" -eq 1 ]; then
-        printf "There are linting errors or warnings exceeded.\nExiting."
-        exit 1
+        exit_with_error "There are linting errors or warnings exceeded."
     else
-        printf "lint returned unexpected exit code %d\nExiting." "$?"
-        exit 1
+        exit_with_error "lint returned unexpected exit code $?"
     fi
 fi
 # check output for fixes possible and prompt to run eslint --fix
 
 
-## Commit functionality
+# Commit functionality
 
 # Check if there are changes (exit code 1 means differences exist)
 if git diff --quiet --exit-code; then
     # exit-code 0: no changes
-    printf "No changes detected.\n"
+    print_info "No changes detected."
 else
-    # git diff --cached --exit-code returned non-zero (usually 1) meaning there are staged changes
+    # git diff --exit-code returned non-zero (usually 1) meaning there are staged changes
     if [ "$?" -eq 1 ]; then
         git diff
-        printf "\nThere are unstaged changes to add. Do you want to add the above changes to staging?\n> "
         while true; do
+        print_input "There are unstaged changes to add. Do you want to add the above changes to staging (Y/n)? [default: Yes]"
             read -r response
+            response=${response:-y}  # default to 'y' if empty
             case $response in
-                [yY] ) printf "Adding changes...\n"; git add .; break;;
-                [nN] ) printf "No changes added to staging.\n"; break;;
-                * ) printf "Invalid response. Please enter 'y' or 'n'.\n> ";;
+                [yY] ) print_info "Adding changes..."; git add .; break;;
+                [nN] ) print_info "No changes added to staging."; break;;
+                * ) print_warning "Invalid response.";;
             esac
         done
     else
-        printf "git diff returned unexpected exit code %d\n" "$?"
-        exit
+        exit_with_error "git diff returned unexpected exit code %d" "$?"
     fi
 fi
-
 
 # Check if there are staged changes
 if git diff --cached --quiet --exit-code; then
     # exit-code 0: no staged changes
-    printf "No staged changes detected.\n"
+    print_info "No staged changes detected."
 else
     # git diff --cached --exit-code returned non-zero (usually 1) meaning there are staged changes
     if [ "$?" -eq 1 ]; then
-        printf "There are staged changes. Proceeding to commit.\n"
+        print_info "There are staged changes. Proceeding to commit."
     else
-        printf "git diff returned unexpected exit code %d\n" "$?"
+        exit_with_error "git diff returned unexpected exit code %d" "$?"
     fi
 fi
 
@@ -103,48 +136,50 @@ git status
 while true; do
     ## If no commit message provided as an argument, prompt for one.
     if [ -z "$1" ]; then
-        printf "No commit message provided. Enter commit message:\n> "
+        print_input "No commit message provided. Enter commit message:"
         IFS= read -r user_msg
         if [ -z "$user_msg" ]; then
-            printf "No commit message entered.\n"; break;
+            print_warning "No commit message entered."; break;
         fi
         commit_msg="$user_msg"
     else
         commit_msg="$1"
     fi
 
-    printf 'Are you sure you want to commit the above as: "%s"\n> ' "$commit_msg"
+    print_info "$commit_msg"
+    print_input "Are you sure you want to commit the above with the above message (Y/n)? [default: Yes]" "$commit_msg"
     read -r response
+    response=${response:-y}  # default to 'y' if empty
     case $response in
-        [yY] ) echo "Committing changes..."; git commit -m "$commit_msg"; break;;
-        [nN] ) printf "Commit cancelled."; break;;
-        * ) printf "Invalid response. Please enter 'y' or 'n'.\n> ";;
+        [yY] ) print_info "Committing changes..."; git commit -m "$commit_msg"; break;;
+        [nN] ) print_info "Commit cancelled."; break;;
+        * ) print_warning "Invalid response.";;
     esac
 done
 
-## Check for any commits to push (exit code 1 means commits exist)
+# Check for any commits to push (exit code 1 means commits exist)
 if git log @{push}.. --quiet --exit-code; then
     # exit-code 0: no staged changes
-    printf "No commits detected to push.\n"
+    print_info "No commits detected to push."
 else
     # git diff --cached --exit-code returned non-zero (usually 1) meaning there are staged changes
     if [ "$?" -eq 1 ]; then
-        printf "There are commits that have not been pushed.\n"
+        print_info "There are commits that have not been pushed."
         git log @{push}..
-        printf "Do you want to push the above commits?\n> "
         while true; do
+        print_input "Do you want to push the above commits (Y/n)? [default: Yes]"
             read -r response
+            response=${response:-y}  # default to 'y' if empty
             case $response in
-                [yY] ) printf "Pushing commits...\n"; git push; break;;
-                [nN] ) printf "Push cancelled.\n"; break;;
-                * ) printf "Invalid response. Please enter 'y' or 'n'.\n> ";;
+                [yY] ) print_info "Pushing commits..."; git push; break;;
+                [nN] ) print_info "Push cancelled."; break;;
+                * ) print_warning "Invalid response.";;
             esac
         done
     else
-        printf "git push returned unexpected exit code %d\n" "$?"
-        exit 1
+        exit_with_error "git push returned unexpected exit code %d" "$?"
     fi
 fi
 
-printf "Exiting."
+print_info "Exiting."
 exit

@@ -94,6 +94,25 @@ else
 fi
 # check output for fixes possible and prompt to run eslint --fix
 
+# lint shell scripts with shellcheck
+which shellcheck > /dev/null
+shellcheck_installed=$?
+if [ "$shellcheck_installed" -eq 0 ]; then
+    shellcheck commit.sh
+    shellcheck_exit_code=$?
+    if [ "$shellcheck_exit_code" -eq 0 ]; then
+        print_success "No shellcheck issues detected."
+    else
+        if [ "$shellcheck_exit_code" -eq 1 ]; then
+            exit_with_error "Shellcheck issues detected."
+        else
+            exit_with_error "shellcheck returned unexpected exit code $shellcheck_exit_code"
+        fi
+    fi
+else
+    print_warning "shellcheck not installed. Skipping shellcheck."
+fi
+
 
 # Commit functionality
 

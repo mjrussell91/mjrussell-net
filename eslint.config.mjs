@@ -33,7 +33,7 @@ export default defineConfig([
 		plugins: {
 			js,
 			"@angular-eslint": angularEslint,
-			typescriptEslint,
+			"@typescript-eslint": typescriptEslint,
 		},
 		// https://typescript-eslint.io/users/configs/#recommended-type-checked
 		// Linting TypeScript files - recommended + strict + stylistic + type checked
@@ -100,8 +100,8 @@ export default defineConfig([
 		files: ["src/app/**/*.html"],
 		extends: [...angular.configs.templateRecommended, ...angular.configs.templateAccessibility],
 		plugins: {
-			angularEslint,
-			angularEslintTemplate,
+			"@angular-eslint": angularEslint,
+			"@angular-eslint/template": angularEslintTemplate,
 		},
 		rules: {
 			"@angular-eslint/template/prefer-control-flow": "error",

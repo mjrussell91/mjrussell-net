@@ -7,10 +7,10 @@
 # Variables
 
 # Color codes
-reset=$(tput sgr0)  # reset
-error=$(tput setaf 1) # red
-success=$(tput setaf 2) # green
-warning=$(tput setaf 3) # yellow
+reset=$(tput sgr0)        # reset
+error=$(tput setaf 1)     # red
+success=$(tput setaf 2)   # green
+warning=$(tput setaf 3)   # yellow
 highlight=$(tput setaf 4) # blue
 
 # Prefix for messages
@@ -18,31 +18,30 @@ prefix="${highlight}[${reset}commit.sh${highlight}]${reset} "
 
 # Helper functions
 print_error() {
-    printf "%s[${error}-${reset}] ${error}%s${reset}\n" "$prefix" "$1"
+	printf "%s[${error}-${reset}] ${error}%s${reset}\n" "$prefix" "$1"
 }
 
 print_success() {
-    printf "%s[${success}+${reset}] ${success}%s${reset}\n" "$prefix" "$1"
+	printf "%s[${success}+${reset}] ${success}%s${reset}\n" "$prefix" "$1"
 }
 
 print_warning() {
-    printf "%s[${warning}!${reset}] ${warning}%s${reset}\n" "$prefix" "$1"
+	printf "%s[${warning}!${reset}] ${warning}%s${reset}\n" "$prefix" "$1"
 }
 
 print_input() {
-    printf "%s[${highlight}?${reset}] \e[1m%s\e[0m\n" "$prefix" "$1"
+	printf "%s[${highlight}?${reset}] \e[1m%s\e[0m\n" "$prefix" "$1"
 }
 
 print_info() {
-    printf "%s[${highlight}*${reset}] ${highlight}%s${reset}\n" "$prefix" "$1"
+	printf "%s[${highlight}*${reset}] ${highlight}%s${reset}\n" "$prefix" "$1"
 }
 
 exit_with_error() {
-    print_error "$1"
-    printf "%s%s" "$prefix" "Exiting."
-    exit 1
+	print_error "$1"
+	printf "%s%s" "$prefix" "Exiting."
+	exit 1
 }
-
 
 # Pre-commit steps: prettier, tsc, eslint
 
@@ -57,40 +56,39 @@ fi
 $js_env run prettier
 prettier_exit_code=$?
 if [ "$prettier_exit_code" -eq 0 ]; then
-    print_success "No prettier issues detected."
+	print_success "No prettier issues detected."
 else
-    if [ "$prettier_exit_code" -eq 1 ]; then
-        exit_with_error "Prettier issues detected."
-    else
-        exit_with_error "prettier returned unexpected exit code $prettier_exit_code"
-    fi
+	if [ "$prettier_exit_code" -eq 1 ]; then
+		exit_with_error "Prettier issues detected."
+	else
+		exit_with_error "prettier returned unexpected exit code $prettier_exit_code"
+	fi
 fi
 
 # tsc
 $js_env run tsc
 tsc_exit_code=$?
 if [ "$tsc_exit_code" -eq 0 ]; then
-    print_success "No TypeScript issues detected."
+	print_success "No TypeScript issues detected."
 else
-    if [ "$tsc_exit_code" -eq 1 ]; then
-        exit_with_error "TypeScript issues detected."
-    else
-        exit_with_error "tsc returned unexpected exit code $tsc_exit_code"
-    fi
+	if [ "$tsc_exit_code" -eq 1 ]; then
+		exit_with_error "TypeScript issues detected."
+	else
+		exit_with_error "tsc returned unexpected exit code $tsc_exit_code"
+	fi
 fi
-
 
 # lint
 $js_env run lint
 lint_exit_code=$?
 if [ "$lint_exit_code" -eq 0 ]; then
-    print_success "No linting errors or warnings exceeded."
+	print_success "No linting errors or warnings exceeded."
 else
-    if [ "$lint_exit_code" -eq 1 ]; then
-        exit_with_error "There are linting errors or warnings exceeded."
-    else
-        exit_with_error "lint returned unexpected exit code $lint_exit_code"
-    fi
+	if [ "$lint_exit_code" -eq 1 ]; then
+		exit_with_error "There are linting errors or warnings exceeded."
+	else
+		exit_with_error "lint returned unexpected exit code $lint_exit_code"
+	fi
 fi
 # check output for fixes possible and prompt to run eslint --fix
 
@@ -129,9 +127,8 @@ if [ "$shellcheck_installed" -eq 0 ]; then
 		fi
 	fi
 else
-    print_warning "shellcheck not installed. Skipping shellcheck."
+	print_warning "shellcheck not installed. Skipping shellcheck."
 fi
-
 
 # Commit functionality
 
@@ -139,8 +136,8 @@ fi
 git diff --quiet --exit-code
 diff_exit_code=$?
 if [ "$diff_exit_code" -eq 0 ]; then
-    # exit-code 0: no changes
-    print_info "No changes detected."
+	# exit-code 0: no changes
+	print_info "No changes detected."
 else
 	# git diff --exit-code returned non-zero (usually 1) meaning there are staged changes
 	if [ "$diff_exit_code" -eq 1 ]; then
@@ -171,31 +168,32 @@ fi
 git diff --cached --quiet --exit-code
 diff_staged_exit_code=$?
 if [ "$diff_staged_exit_code" -eq 0 ]; then
-    # exit-code 0: no staged changes
-    print_info "No staged changes detected."
+	# exit-code 0: no staged changes
+	print_info "No staged changes detected."
 else
-    # git diff --cached --exit-code returned non-zero (usually 1) meaning there are staged changes
-    if [ "$diff_staged_exit_code" -eq 1 ]; then
-        print_info "There are staged changes. Proceeding to commit."
-    else
-        exit_with_error "git diff returned unexpected exit code %d" "$diff_staged_exit_code"
-    fi
+	# git diff --cached --exit-code returned non-zero (usually 1) meaning there are staged changes
+	if [ "$diff_staged_exit_code" -eq 1 ]; then
+		print_info "There are staged changes. Proceeding to commit."
+	else
+		exit_with_error "git diff returned unexpected exit code %d" "$diff_staged_exit_code"
+	fi
 fi
 
 # Commit items and check for commit message
 git status
 while true; do
-    ## If no commit message provided as an argument, prompt for one.
-    if [ -z "$1" ]; then
-        print_input "No commit message provided. Enter commit message:"
-        IFS= read -r user_msg
-        if [ -z "$user_msg" ]; then
-            print_warning "No commit message entered."; break;
-        fi
-        commit_msg="$user_msg"
-    else
-        commit_msg="$1"
-    fi
+	## If no commit message provided as an argument, prompt for one.
+	if [ -z "$1" ]; then
+		print_input "No commit message provided. Enter commit message:"
+		IFS= read -r user_msg
+		if [ -z "$user_msg" ]; then
+			print_warning "No commit message entered."
+			break
+		fi
+		commit_msg="$user_msg"
+	else
+		commit_msg="$1"
+	fi
 
 	print_info "$commit_msg"
 	print_input "Are you sure you want to commit the above with the above message (Y/n)? [default: Yes]" "$commit_msg"
@@ -219,8 +217,8 @@ done
 git log "@{push}.." --quiet --exit-code
 push_exit_code=$?
 if [ "$push_exit_code" -eq 0 ]; then
-    # exit-code 0: no staged changes
-    print_info "No commits detected to push."
+	# exit-code 0: no staged changes
+	print_info "No commits detected to push."
 else
 	# git diff --cached --exit-code returned non-zero (usually 1) meaning there are staged changes
 	if [ "$push_exit_code" -eq 1 ]; then

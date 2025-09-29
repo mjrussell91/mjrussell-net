@@ -96,7 +96,7 @@ fi
 which shfmt >/dev/null
 shfmt_installed=$?
 if [ "$shfmt_installed" -eq 0 ]; then
-	shfmt -w ./*.sh
+	shfmt -w -- **/*.sh
 	shfmt_exit_code=$?
 	if [ "$shfmt_exit_code" -eq 0 ]; then
 		print_success "No shfmt issues detected."
@@ -115,7 +115,7 @@ fi
 which shellcheck >/dev/null
 shellcheck_installed=$?
 if [ "$shellcheck_installed" -eq 0 ]; then
-	shellcheck ./*.sh
+	shellcheck -- **/*.sh
 	shellcheck_exit_code=$?
 	if [ "$shellcheck_exit_code" -eq 0 ]; then
 		print_success "No shellcheck issues detected."
@@ -130,121 +130,4 @@ else
 	print_warning "shellcheck not installed. Skipping shellcheck."
 fi
 
-# Commit functionality
-
-# Check if there are changes (exit code 1 means differences exist)
-git diff --quiet --exit-code
-diff_exit_code=$?
-if [ "$diff_exit_code" -eq 0 ]; then
-	# exit-code 0: no changes
-	print_info "No changes detected."
-else
-	# git diff --exit-code returned non-zero (usually 1) meaning there are staged changes
-	if [ "$diff_exit_code" -eq 1 ]; then
-		git diff
-		while true; do
-			print_input "There are unstaged changes to add. Do you want to add the above changes to staging (Y/n)? [default: Yes]"
-			read -r response
-			response=${response:-y} # default to 'y' if empty
-			case $response in
-			[yY])
-				print_info "Adding changes..."
-				git add .
-				break
-				;;
-			[nN])
-				print_info "No changes added to staging."
-				break
-				;;
-			*) print_warning "Invalid response." ;;
-			esac
-		done
-	else
-		exit_with_error "git diff returned unexpected exit code %d" "$diff_exit_code"
-	fi
-fi
-
-# Check if there are staged changes
-git diff --cached --quiet --exit-code
-diff_staged_exit_code=$?
-if [ "$diff_staged_exit_code" -eq 0 ]; then
-	# exit-code 0: no staged changes
-	print_info "No staged changes detected."
-else
-	# git diff --cached --exit-code returned non-zero (usually 1) meaning there are staged changes
-	if [ "$diff_staged_exit_code" -eq 1 ]; then
-		print_info "There are staged changes. Proceeding to commit."
-	else
-		exit_with_error "git diff returned unexpected exit code %d" "$diff_staged_exit_code"
-	fi
-fi
-
-# Commit items and check for commit message
-git status
-while true; do
-	## If no commit message provided as an argument, prompt for one.
-	if [ -z "$1" ]; then
-		print_input "No commit message provided. Enter commit message:"
-		IFS= read -r user_msg
-		if [ -z "$user_msg" ]; then
-			print_warning "No commit message entered."
-			break
-		fi
-		commit_msg="$user_msg"
-	else
-		commit_msg="$1"
-	fi
-
-	print_info "$commit_msg"
-	print_input "Are you sure you want to commit the above with the above message (Y/n)? [default: Yes]" "$commit_msg"
-	read -r response
-	response=${response:-y} # default to 'y' if empty
-	case $response in
-	[yY])
-		print_info "Committing changes..."
-		git commit -m "$commit_msg"
-		break
-		;;
-	[nN])
-		print_info "Commit cancelled."
-		break
-		;;
-	*) print_warning "Invalid response." ;;
-	esac
-done
-
-# Check for any commits to push (exit code 1 means commits exist)
-git log "@{push}.." --quiet --exit-code
-push_exit_code=$?
-if [ "$push_exit_code" -eq 0 ]; then
-	# exit-code 0: no staged changes
-	print_info "No commits detected to push."
-else
-	# git diff --cached --exit-code returned non-zero (usually 1) meaning there are staged changes
-	if [ "$push_exit_code" -eq 1 ]; then
-		print_info "There are commits that have not been pushed."
-		git log "@{push}.."
-		while true; do
-			print_input "Do you want to push the above commits (Y/n)? [default: Yes]"
-			read -r response
-			response=${response:-y} # default to 'y' if empty
-			case $response in
-			[yY])
-				print_info "Pushing commits..."
-				git push
-				break
-				;;
-			[nN])
-				print_info "Push cancelled."
-				break
-				;;
-			*) print_warning "Invalid response." ;;
-			esac
-		done
-	else
-		exit_with_error "git push returned unexpected exit code %d" "$push_exit_code"
-	fi
-fi
-
-print_info "Exiting."
-exit
+printf "%s%s" "$prefix" "Precommit checks passed.\n"

@@ -130,4 +130,4 @@ else
 	print_warning "shellcheck not installed. Skipping shellcheck."
 fi
 
-printf "%s%s" "$prefix" "Precommit checks passed.\n"
+printf "%s%s" "$prefix" "Precommit checks passed."

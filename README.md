@@ -12,6 +12,18 @@ ng serve
 
 Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
+## Git Hooks
+
+Run the scripts/install-hooks.sh script after cloning to add the required git hooks for this repository. You can also run the scripts/pre-commit.sh script to check your changes for correctness before committing.
+
+```bash
+./scripts/install-hooks.sh
+```
+
+```bash
+./scripts/pre-commit.sh
+```
+
 ## Code scaffolding
 
 Angular CLI includes powerful code scaffolding tools. To generate a new component, run:

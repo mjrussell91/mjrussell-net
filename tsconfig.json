@@ -33,7 +33,7 @@
 		"allowSyntheticDefaultImports": true,
 		"allowJs": true,
 		"checkJs": false,
-		"jsx": "react",
+		"jsx": "react"
 	},
 	"angularCompilerOptions": {
 		"enableI18nLegacyMessageIdFormat": false,

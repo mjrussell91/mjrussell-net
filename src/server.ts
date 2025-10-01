@@ -6,6 +6,7 @@ import {
 } from "@angular/ssr/node";
 import express from "express";
 import { IncomingMessage, ServerResponse } from "node:http";
+import type { AngularSSRResponse } from "./server.types";
 import { join } from "node:path";
 
 const browserDistFolder = join(import.meta.dirname, "../browser");
@@ -39,12 +40,15 @@ app.use(
 /**
  * Handle all other requests by rendering the Angular application.
  */
-app.use((req: Express.Request, res: Express.Response, next) => {
+app.use((req: Express.Request, res: Express.Response, next: express.NextFunction) => {
 	angularApp
 		.handle(req as IncomingMessage)
-		.then(async (response) => {
-			if (response) {
-				await writeResponseToNodeResponse(response, res as ServerResponse);
+		.then(async (response: unknown) => {
+			// narrow explicit nullish check so linters don't allow implicit any in conditional
+			if (response != null) {
+				// The Angular SSR response is expected to match AngularSSRResponse
+				const webRes = response as AngularSSRResponse;
+				await writeResponseToNodeResponse(webRes as unknown as Response, res as ServerResponse);
 			} else {
 				next();
 			}
@@ -58,7 +62,7 @@ app.use((req: Express.Request, res: Express.Response, next) => {
  */
 if (isMainModule(import.meta.url)) {
 	const port = process.env["PORT"] ?? 4000;
-	app.listen(port, (error) => {
+	app.listen(port, (error?: Error) => {
 		if (error) {
 			throw error;
 		}

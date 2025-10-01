@@ -8,6 +8,7 @@ import { provideHttpClient, withFetch } from "@angular/common/http";
 export const appConfig: ApplicationConfig = {
 	providers: [
 		provideBrowserGlobalErrorListeners(),
+		// eslint-disable-next-line @angular-eslint/no-developer-preview
 		provideZonelessChangeDetection(),
 		provideRouter(routes),
 		provideClientHydration(withEventReplay()),

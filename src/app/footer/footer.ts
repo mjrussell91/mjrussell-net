@@ -6,4 +6,5 @@ import { Component } from "@angular/core";
 	templateUrl: "./footer.html",
 	styleUrl: "./footer.css",
 })
+// eslint-disable-next-line @typescript-eslint/no-extraneous-class
 export class Footer {}

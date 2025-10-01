@@ -2,6 +2,8 @@ import { Component, inject, OnInit } from "@angular/core";
 import { ActivatedRoute, NavigationEnd, Router, RouterOutlet } from "@angular/router";
 import { Header } from "./header/header";
 import { Footer } from "./footer/footer";
+import type { RouteData } from "./app.routes";
+import type { Data } from "@angular/router";
 
 import { Meta, Title } from "@angular/platform-browser";
 import { filter, map, mergeMap } from "rxjs";
@@ -32,12 +34,13 @@ export class App implements OnInit {
 				filter((route: ActivatedRoute) => route.outlet === "primary"),
 				mergeMap((route: ActivatedRoute) => route.data),
 			)
-			.subscribe((event) => {
-				if (typeof event["title"] === "string") {
-					this.updateTitle(event["title"]);
+			.subscribe((event: Data) => {
+				const routeData = event as RouteData;
+				if (typeof routeData.title === "string") {
+					this.updateTitle(routeData.title);
 				}
-				if (typeof event["description"] === "string") {
-					this.updateDescription(event["description"]);
+				if (typeof routeData.description === "string") {
+					this.updateDescription(routeData.description);
 				}
 				return true;
 			});

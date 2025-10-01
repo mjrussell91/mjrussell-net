@@ -116,7 +116,7 @@ export class PageContact implements OnInit {
 						this.formState = FormState.Success;
 					}
 				},
-				error: (error) => {
+				error: (error: unknown) => {
 					console.error("Error sending contact message: ", error);
 					this.formState = FormState.Error;
 					this.responseMessage.next(
